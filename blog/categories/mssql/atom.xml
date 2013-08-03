@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: mssql | Pragmatic Development Notes]]></title>
+  <link href="http://bosko.github.io/blog/categories/mssql/atom.xml" rel="self"/>
+  <link href="http://bosko.github.io/"/>
+  <updated>2013-08-03T21:24:42+02:00</updated>
+  <id>http://bosko.github.io/</id>
+  <author>
+    <name><![CDATA[Boško Ivanišević]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby, Rails and MS SQL server]]></title>
+    <link href="http://bosko.github.io/blog/2010/02/18/ruby-rails-and-ms-sql-server/"/>
+    <updated>2010-02-18T22:34:00+01:00</updated>
+    <id>http://bosko.github.io/blog/2010/02/18/ruby-rails-and-ms-sql-server</id>
+    <content type="html"><![CDATA[<p>Setting up Rails and Ruby to use MS SQL server was always painful task. Fortunately things have changed &ndash; a lot! With new <a href="http://github.com/rails-sqlserver/2000-2005-adapter">Rails SQL Server 2000, 2005 and 2008 Adapter</a> and Christian Werner’s <a href="http://www.ch-werner.de/rubyodbc">ruby-odbc gem</a> you can do it in a few minutes.</p>
+
+<p>If you want to use these gems on Windows grab Ruby installation from <a href="http://www.rubyinstaller.org">RubyInstaller</a> site and be sure to install <a href="http://rubyforge.org/frs/download.php/66888/devkit-3.4.5r3-20091110.7z">DevKit</a> prior to installing ruby-odbc.</p>
+
+<p>Versions of ruby-odbc before 0.9999 do not work on mingw based (RubyInstaller) Ruby. Luckily author was very fast and made new version very quickly after I sent him a patch. Thanks Christian!</p>
+
+<p>Both gems work well on Ruby 1.8.6 and 1.9.1 Ruby versions on Windows with old ActiveRecords, but I hope rails adapter will be ported to ActiveRecords 3 soon.</p>
+]]></content>
+  </entry>
+  
+</feed>

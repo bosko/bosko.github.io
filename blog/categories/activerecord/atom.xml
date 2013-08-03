@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ActiveRecord | Pragmatic Development Notes]]></title>
+  <link href="http://bosko.github.io/blog/categories/activerecord/atom.xml" rel="self"/>
+  <link href="http://bosko.github.io/"/>
+  <updated>2013-08-03T21:24:42+02:00</updated>
+  <id>http://bosko.github.io/</id>
+  <author>
+    <name><![CDATA[Boško Ivanišević]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ActiveRecord SchemaDumper and MySQL problem]]></title>
+    <link href="http://bosko.github.io/blog/2010/10/03/activerecord-schemadumper-and-mysql-problem/"/>
+    <updated>2010-10-03T20:31:00+02:00</updated>
+    <id>http://bosko.github.io/blog/2010/10/03/activerecord-schemadumper-and-mysql-problem</id>
+    <content type="html"><![CDATA[<p>After finishing first version of <a href="http://github.com/bosko/rmre">Rmre</a> and issuing fix gem dependency in version 0.0.2, I got an idea for additional functionality. Why not use Rmre for dumping complete schema with all foreign keys data? What would be possible scenario for using this, one might ask? We have possibility to create ActiveRecord models in order to move to Ruby on Rails where main premise is to keep logic out of database and maintain it in application. Therefore we do not need foreign keys since we already have constraints defined in models.</p>
+
+<p>But what if you cannot move to Ruby on Rails and you only have to change DBE, i.e. instead of MS SQL you must use Oracle? In that case you still have to work with legacy database from PHP or Hibernate in Java and “<em>only</em>” thing you have to do is to make create script for all tables but for another DBE. When database has hundreds of tables with lots of relations this can turn into nightmare, especially if you have to maintain both versions.</p>
+
+<p>Rmre should simplify this. First you use Rmre to dump schema to some file and later you can use ActiveRecord’s capabilities to load it on different DBE. Since loading schema in ActiveRecord is DBE agnostic it should correctly create tables, indices and foreign keys on any database engine. That’s theory and, as usual, practice is a little bit different. On a very first step I’ve faced problem in MySQL database.</p>
+
+<p>Let’s examine database with just a two tables &ndash; <code>city</code> and <code>country</code>. Create script would look like (example from <a href="http://dev.mysql.com/doc/sakila/en/sakila.html">Sakila</a> database):</p>
+
+<p>```sql
+CREATE TABLE city (
+  city_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  city VARCHAR(50) NOT NULL,
+  country_id SMALLINT UNSIGNED NOT NULL,
+  last_update TIMESTAMP NOT NULL DEFAULT</p>
+
+<pre><code>CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+</code></pre>
+
+<p>  PRIMARY KEY  (city_id),
+  KEY idx_fk_country_id (country_id),
+  CONSTRAINT <code>fk_city_country</code></p>
+
+<pre><code>FOREIGN KEY (country_id)
+REFERENCES country (country_id)
+ON DELETE RESTRICT ON UPDATE CASCADE
+</code></pre>
+
+<p>) ENGINE=InnoDB DEFAULT CHARSET=utf8;</p>
+
+<p>CREATE TABLE country (
+  country_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  country VARCHAR(50) NOT NULL,
+  last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP</p>
+
+<pre><code>ON UPDATE CURRENT_TIMESTAMP,
+</code></pre>
+
+<p>  PRIMARY KEY  (country_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```</p>
+
+<p>As can be seen from above script table <code>city</code> has foreign key on table <code>country</code>. Now let’s see what is result of a dump:</p>
+
+<p>```ruby
+ActiveRecord::Schema.define(:version => 0) do</p>
+
+<p>  create_table &ldquo;actor&rdquo;, :primary_key => &ldquo;actor_id&rdquo;, :force => true do |t|
+  create_table &ldquo;city&rdquo;, :primary_key => &ldquo;city_id&rdquo;, :force => true do |t|</p>
+
+<pre><code>t.string    "city",        :limit =&gt; 50, :null =&gt; false
+t.integer   "country_id",  :limit =&gt; 2,  :null =&gt; false
+t.timestamp "last_update",               :null =&gt; false
+</code></pre>
+
+<p>  end</p>
+
+<p>  add_index &ldquo;city&rdquo;, [&ldquo;country_id&rdquo;], :name => &ldquo;idx_fk_country_id&rdquo;</p>
+
+<p>  create_table &ldquo;country&rdquo;, :primary_key => &ldquo;country_id&rdquo;, :force => true do |t|</p>
+
+<pre><code>t.string    "country",     :limit =&gt; 50, :null =&gt; false
+t.timestamp "last_update",               :null =&gt; false
+</code></pre>
+
+<p>  end</p>
+
+<p>  execute &ldquo;ALTER TABLE city ADD CONSTRAINT fk_city_country FOREIGN KEY (country_id) REFERENCES country(country_id)&rdquo;
+end
+```</p>
+
+<p>At the first glance this looks good but unfortunately doesn’t work. Problem is that loading this schema through ActiveRecord will create columns <code>city_id</code> in table <code>city</code> and <code>country_id</code> in table <code>country</code> as <code>integer</code> type but column <code>country_id</code> in table <code>city</code> is created as <code>smallint</code>. Defining constraint on columns which are not of same type is not allowed so last statement for altering table fails. At the moment I have no idea how to fix this and any suggestion is very welcome. I still have to check what happens on other DBEs: PostgreSQL, Oracle and MS SQL.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RMRE - rails models reverse engineering gem]]></title>
+    <link href="http://bosko.github.io/blog/2010/09/30/rmre-rails-models-reverse-engineering-gem/"/>
+    <updated>2010-09-30T13:50:00+02:00</updated>
+    <id>http://bosko.github.io/blog/2010/09/30/rmre-rails-models-reverse-engineering-gem</id>
+    <content type="html"><![CDATA[<p>Very often I have to work on databases which do not follow ActiveRecord convention and making ActiveRecord models, if number of tables is large, is very slow and boring task. In order to speed up and simplify it I’ve created <a href="http://github.com/bosko/rmre">Rmre gem</a>. Gem is quite simple yet you might find it useful if you want to create fixtures, migrations or simply port application to Ruby on Rails.</p>
+
+<p>So how it works? For each table in the database, gem creates model. Name of the model is created using Rails <code>classify</code> method. Moreover, if table’s primary key is not column named “id” gem sets primary key by adding <code>set_primary_key "primaryKeyColumnName"</code> line to the model. In addition for MySQL, PostgreSQL, Oracle or MS SQL foreign keys are analyzed and for each constraint gem generates <code>belongs_to</code> or <code>has_many</code> lines. Here is model created for table <em>store</em> in <a href="http://dev.mysql.com/doc/sakila/en/sakila.html">Sakila</a> MySQL test database:</p>
+
+<p><code>ruby
+class Store &lt; ActiveRecord::Base
+  set_primary_key :store_id
+  set_table_name 'store'
+  has_many :customers, :class_name =&gt; 'Customer'
+  has_many :inventories, :class_name =&gt; 'Inventory'
+  has_many :staffs, :class_name =&gt; 'Staff'
+  belongs_to :address, :class_name =&gt; 'Addres', :foreign_key =&gt; :address_id
+  belongs_to :staff, :class_name =&gt; 'Staff', :foreign_key =&gt; :manager_staff_id
+end
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>

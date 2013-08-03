@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: general | Pragmatic Development Notes]]></title>
+  <link href="http://bosko.github.io/blog/categories/general/atom.xml" rel="self"/>
+  <link href="http://bosko.github.io/"/>
+  <updated>2013-08-03T21:24:42+02:00</updated>
+  <id>http://bosko.github.io/</id>
+  <author>
+    <name><![CDATA[Boško Ivanišević]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Upgrade to Lucid Lynx problems]]></title>
+    <link href="http://bosko.github.io/blog/2010/05/16/upgrade-to-lucid-lynx-problems/"/>
+    <updated>2010-05-16T10:41:00+02:00</updated>
+    <id>http://bosko.github.io/blog/2010/05/16/upgrade-to-lucid-lynx-problems</id>
+    <content type="html"><![CDATA[<p>After several successful updates of Ubuntu (starting from 8.10) last one was, more or less, complete mess. I was waiting impatiently for new Lucid Lynx to be released and started update as soon as I downloaded and burned DVD iso image. It seems everything goes smoothly till first reboot. Emacs was completely removed and new version was not installed. On my Compaq 8710w laptop with Quadro FX 1600M graphics card splash screen was displayed in low resolution and looked quite ugly. Moreover I was not able to install Emacs again.</p>
+
+<p>I’ve decided to reinstall everything, so I’ve made backup of my home folder and start installation on a newly formatted partitions. Situation was a little bit better. I was able to install Emacs and all applications I need but problem with graphics card was still there as well as lousy splash screen. I’ve found few suggestions how to fix that by altering grub files and it really solved resolution problem but, at the same time, whole splash screen was shifted left and basically I was again on the beginning.</p>
+
+<p>There is one more thing that annoyed me. I like Shere Khan Black Hand mouse pointers so I’ve installed that theme, but arrow pointer was still white, although some other pointers were changed (hand is small and black). Whatever I’ve tried arrow was keep staying white.</p>
+
+<p>Then, after a few days, I saw black arrow and was really surprised. It turned out that it was unpleasant surprise because compiz stopped working and Nvidia driver was not enabled. Obviously it was time to try latest Nvidia drivers so I’ve downloaded and installed them. I must say that situation is now a little bit better &ndash; compiz is working, but I still have no luck with mouse pointers, nor with splash screen.</p>
+
+<p>If Canonical’s goal is to increase number of Ubuntu users, they should really try to avoid such problems, since average user will certainly not be able to fix them and will switch to some other operating system.</p>
+]]></content>
+  </entry>
+  
+</feed>

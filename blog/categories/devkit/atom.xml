@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: devkit | Pragmatic Development Notes]]></title>
+  <link href="http://bosko.github.io/blog/categories/devkit/atom.xml" rel="self"/>
+  <link href="http://bosko.github.io/"/>
+  <updated>2013-08-03T21:24:42+02:00</updated>
+  <id>http://bosko.github.io/</id>
+  <author>
+    <name><![CDATA[Boško Ivanišević]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[dep_walker Gem]]></title>
+    <link href="http://bosko.github.io/blog/2011/05/07/dep-walker-gem/"/>
+    <updated>2011-05-07T06:40:00+02:00</updated>
+    <id>http://bosko.github.io/blog/2011/05/07/dep-walker-gem</id>
+    <content type="html"><![CDATA[<p>Common problem that Ruby developers face on Windows is missing dll message box that appears when they try to use gem that has extension library. Usually these Gems are packed with pre-built binary\ extensions for windows and, even though, installation passes without any error or warning, when they try to use them they realize that dll these Gems depend on are missing on the system.</p>
+
+<p>Maybe most common Gem for which this happens is sqlite3, Ruby binding for the SQlite3 embedded database. If sqlite3.dll is missing from the system, after installation of sqlite3 Gem any attempt to use it causes following message box to appear.</p>
+
+<p><img src="/images/dep_walker/missing_dll_msg_box.png" title="Missing DLL message box." ></p>
+
+<p>If two versions of a required dll exist on the system Gem might use the wrong one and strange crashes can appear.</p>
+
+<p>These errors are not limited to the Gems that have pre-built binary extensions but can also happen if extension library was built with the <a href="http://www.rubyinstaller.org">RubyInstaller’s</a> <a href="http://www.rubyinstaller.org/add-ons/devkit">DevKit</a>. If development files (header and library files) needed for the extension library to be built exist on the system while target dll is missing gem usage\ will cause the same message box to appear.</p>
+
+<p>Frequently novice Ruby users on Windows ask question on mailing lists why Gem is not working even if it was installed without any error. That’s why I made dep_walker, small utility Gem, that can be used to check whether all dependencies for extension libraries used by installed Gem (s) are met or not. Source of the Gem can be found on <a href="http://github.com/bosko/dep_walker">GitHub</a>.</p>
+
+<p>Usage is very simple. If you want to check all installed Gems just invoke dep_walker with the ’-a’ switch.</p>
+
+<p><code>sh
+dep_walker -a
+</code></p>
+
+<p>And for particular gem swith <code>-c</code> can be used.</p>
+
+<p><code>sh
+dep_walker -c sqlite3
+</code></p>
+
+<p>More verbose output is obtained via <code>-t</code> and colour with <code>--color</code> swith. Happy dependencies walking!</p>
+]]></content>
+  </entry>
+  
+</feed>

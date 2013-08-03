@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: internet-radio, | Pragmatic Development Notes]]></title>
+  <link href="http://bosko.github.io/blog/categories/internet-radio/atom.xml" rel="self"/>
+  <link href="http://bosko.github.io/"/>
+  <updated>2013-08-03T21:24:42+02:00</updated>
+  <id>http://bosko.github.io/</id>
+  <author>
+    <name><![CDATA[Boško Ivanišević]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[RStreamTuner in action]]></title>
+    <link href="http://bosko.github.io/blog/2010/01/26/rstreamtuner-in-action/"/>
+    <updated>2010-01-26T19:00:00+01:00</updated>
+    <id>http://bosko.github.io/blog/2010/01/26/rstreamtuner-in-action</id>
+    <content type="html"><![CDATA[<p>Friend of mine criticised me why I didn’t put some screenshots on <a href="http://github.com/bosko/rstreamtuner">project page</a>. Since I couldn’t find a way to do it there I’ve decided to put some screenshots here, so
+here they are.</p>
+
+<p><img src="/images/rst-screenshots/rst_xiph.png" title="RST Xiph plugin." >
+<img src="/images/rst-screenshots/rst_search.png" title="RST SHOUTcast search in action" >
+<img src="/images/rst-screenshots/rst_preferences.png" title="RST plugin preferences." ></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RStreamTuner - new streaming directories browser]]></title>
+    <link href="http://bosko.github.io/blog/2010/01/22/rstreamtuner-new-streaming-directories-browser/"/>
+    <updated>2010-01-22T19:00:00+01:00</updated>
+    <id>http://bosko.github.io/blog/2010/01/22/rstreamtuner-new-streaming-directories-browser</id>
+    <content type="html"><![CDATA[<p>I like to listen various Internet radio stations while I work. My favourite application was
+<a href="http://www.nongnu.org/streamtuner">streamtuner</a> mostly because it had support for SHOUTcast. Unluckily new SHOUTcast design cannot be handled by <strong>streamtuner</strong> and future development on this application is
+stopped. In other words there is a little chance for streamtuner to be upgraded so I’ve decided to make my own streaming directories browser &ndash; <a href="http://github.com/bosko/rstreamtuner">RStreamTuner (Ruby Stream Tuner)</a>.</p>
+
+<p>As usual developing in Ruby was real pleasure and only doubt was what to use for GUI part. I’ve started with Ruby/Tk and left it very quickly due to very poor documentation (and probably lack of Tcl knowledge). I had
+to find replacement and my primary goal was to find library that works equally well on Linux and Windows. WxWidgets with WxRuby gem was my final choice. Although <strong>RStreamTuner</strong> is still in early development
+phase it is quite usable. At the moment it supports SHOUTcast and Xiph directories, but I plan to add more as soon as I find good one. Good candidate could be Live365 but they’ve made their pages quite hard to
+parse so I’ll probably leave it for later.</p>
+
+<p>Once I reach beta version, making support for new streaming directories will be quite easy and will require implementation of just a few methods. As a matter of act it is already so simple but I’m not
+satisfied with the code and will change it once I find a little bit more time. Code is quite rough (I had little time to make <strong>RStreamTuner</strong> and was eager to get working version as soon as possible). Besides I
+want to write detailed instructions how to add support for new directories. Anyway if you like to listen Internet radion stations and like Ruby clone <a href="http://github.com/bosko/rstreamtuner">RStreamTuner</a>. Of
+course if you have suggestions do not hasitate to drop me a note and if you make support for new streaming directory just send me a pull request and I’ll try to grab it as soon as possible.</p>
+]]></content>
+  </entry>
+  
+</feed>

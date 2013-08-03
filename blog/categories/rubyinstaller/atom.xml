@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: RubyInstaller | Pragmatic Development Notes]]></title>
+  <link href="http://bosko.github.io/blog/categories/rubyinstaller/atom.xml" rel="self"/>
+  <link href="http://bosko.github.io/"/>
+  <updated>2013-08-03T21:24:42+02:00</updated>
+  <id>http://bosko.github.io/</id>
+  <author>
+    <name><![CDATA[Boško Ivanišević]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Make Ruby Tests Greener]]></title>
+    <link href="http://bosko.github.io/blog/2012/06/27/make-ruby-tests-greener/"/>
+    <updated>2012-06-27T01:42:00+02:00</updated>
+    <id>http://bosko.github.io/blog/2012/06/27/make-ruby-tests-greener</id>
+    <content type="html"><![CDATA[<p><a href="https://groups.google.com/forum/?fromgroups#!topic/rubyinstaller/A92K_EYJX2A">The Ruby Greener Test Challenge</a> is here. It is attempt to make Ruby on Windows better and more stable and direct goal of this challenge is to fix all tests and to reach 0F0E (0 failures, 0 errors) state. If you are Ruby developer on Windows you should consider taking a role in the challenge.</p>
+
+<p>If you decide to try to fix some failing tests or existing errors it is easy to set up complete environment with the help of <a href="http://cdn.rubyinstaller.org/archives/experimental/RubyChallengePack-v1.exe">Ruby Challenge Pack</a>. I will not write about details here since you have all you need in the initial challenge post given in the link on top of the article. Instead I will give you few suggestions about participating in the challenge.</p>
+
+<p>You should be aware of three things when you run tests:</p>
+
+<ol>
+<li><strong>Set up console code page to 1252 or 65001.</strong> Some tests may fail due to the console code page, so before running tests you should execute <code>chcp 1252</code> or <code>chcp 65001</code>.</li>
+<li><strong>Option -j2 may lead to errors.</strong> In case you want to run tests faster you can use <code>make test-al TESTS="-qv -j2"</code> but be aware that this can also lead to fals failures or errors.</li>
+<li><strong>Anti-virus software.</strong> If you see <code>Errno::EACCES: Permission denied</code> error in test, most likely the cause is anti-virus which locked the file during tests.</li>
+</ol>
+
+
+<p>With these things on your mind you can proceed to fixing. Here is simple workflow you can use. The very first thing you should do is to clone Ruby source from GitHub:</p>
+
+<p><code>sh
+git clone git://github.com/ruby/ruby.git
+</code></p>
+
+<p>After deciding what you want to fix you should make new local branch in which you work:</p>
+
+<p><code>sh
+git checkout -b fix-win32ole-fso-encoding-misuse
+</code></p>
+
+<p>After you find a source of failures or errors you will make fixes and commit changes to your local branch. I would suggest making small commits. If commits contain too many changes, patches are harder to apply and are more likely to cause conflicts. Finally after finishing all fixes you just have to make a patch (es).</p>
+
+<p><code>sh
+git checkout -b fix-win32ole-fso-encoding-misuse
+</code></p>
+
+<p>Adjust last number in above command to the number of commits you made on your local branch. This will create one or more patch files (one file per commit). In the case of <a href="https://bugs.ruby-lang.org/issues/6650">already submitted fix</a> single file was created: <code>0001-FileSystemObject-does-not-support-UTF-8.patch</code>. At the end open a ticket, write small description, attach your patch file (s) and assign ticket to Luis Lavena.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Exefy ‘Em All]]></title>
+    <link href="http://bosko.github.io/blog/2012/06/25/exefy-em-all/"/>
+    <updated>2012-06-25T01:51:00+02:00</updated>
+    <id>http://bosko.github.io/blog/2012/06/25/exefy-em-all</id>
+    <content type="html"><![CDATA[<p>Recently Luis Lavena started thread <a href="https://groups.google.com/d/topic/rubyinstaller/fQCuPfiuuRc/discussion">Idea: executable stubs to replace batch files</a> on RubyInstaller mailing list. In short, the idea is to use command line applications &ndash; executable stubs &ndash; instead of batch files in RubyInstaller Ruby versions. Using command line applications instead of batch files has several benefits. First one, maybe not so important, is to avoid annoying</p>
+
+<p>Terminate batch job (Y/N)?</p>
+
+<p>question when execution is interrupted with Ctrl-C key combination. The second is to get meaningful list of processes in the system. With batch files we can only see bunch of ruby.exe processes in the list. This gives us possibility to define firewall rules for these applications which will not be applied globally for all Ruby scripts. Finally, installing Ruby applications as services, with the help of some service wrapper, is usually easier if we use executable file. These are reasons why new <a href="http://github.com/bosko/gem-exefy">gem-exefy</a> gem was made.</p>
+
+<h3>Gem-exefy Internals</h3>
+
+<p>Gem-exefy mimics behavior of batch files installed by RubyGems and to see how it works we must know how existing batch files work. First step is to install gem that has executable value defined in gem specification. Example of such gem is Bundler. After installing it on Windows, RubyGems will create bundle.bat file in <code>&lt;path_to_ruby_installation&gt;/bin</code> folder. Content of that file is:</p>
+
+<p><code>bat
+@ECHO OFF
+IF NOT "%~f0" == "~f0" GOTO :WinNT
+@"ruby.exe" "c:/path/to/ruby/installation/bin/bundle" %1 %2 %3 %4 %5 %6 %7 %8 %9
+GOTO :EOF
+:WinNT
+@"ruby.exe" "%~dpn0" %*
+</code></p>
+
+<p>Without digging too much into all details we can see that batch file starts ruby.exe passing it full path to Ruby script (bundle, in this case) using all arguments passed to batch file as arguments of Ruby script. So all we have to do is to make application which will be able to execute Ruby script and will accept arguments passed in the command line. Sounds familiar, isn’t it? Exactly! We already have ruby.exe and in Ruby code we can find almost everything we need. Here is a slightly simplified version of Ruby’s main.c file:</p>
+
+<p>```c</p>
+
+<h1>include &ldquo;ruby.h&rdquo;</h1>
+
+<h1>ifdef HAVE_LOCALE_H</h1>
+
+<h1>include &lt;locale.h></h1>
+
+<h1>endif</h1>
+
+<p>int
+main(int argc, char **argv)
+{</p>
+
+<h1>ifdef HAVE_LOCALE_H</h1>
+
+<p>  setlocale(LC_CTYPE, &ldquo;&rdquo;);</p>
+
+<h1>endif</h1>
+
+<p>  ruby_sysinit(&amp;argc, &amp;argv);
+  {</p>
+
+<pre><code>RUBY_INIT_STACK;
+ruby_init();
+return ruby_run_node(ruby_options(argc, argv));
+</code></pre>
+
+<p>  }
+}
+```</p>
+
+<p>If we build application from this source we will get the same application as ruby.exe. This means if we want to execute some Ruby script we will have to pass path to it as a first argument with optional arguments following it. But our goal is not to invoke application with the path to Ruby script. Instead we want to invoke predefined script. In order to achieve that, we obviously have to alter the list of arguments (argv) and to insert path to target Ruby script. But there is a catch (I spent almost whole day to figure it out). We must change the list of arguments after the call</p>
+
+<p><code>c
+ruby_sysinit(&amp;argc, &amp;argv);
+</code></p>
+
+<p>Ruby performs system dependent arguments initialization in the above method and the list of arguments will be reverted back if we change it before this initialization. Of course there are some additional details that we must take care of, but you can figure them out directly from &ldquo;the source&rdquo;:<a href="https://github.com/bosko/gem-exefy/blob/master/templates/gem_exe.c.">https://github.com/bosko/gem-exefy/blob/master/templates/gem_exe.c.</a> After we change the list of arguments, Ruby will execute script we passed it and that’s all the magic gem-exefy does.</p>
+
+<h3>Let’s Exefy</h3>
+
+<p>We are now ready to exefy existing and new gems on our RubyInstaller version. gem-exefy is made as RubyGems plugin. After installing it with:</p>
+
+<p><code>sh
+gem install gem-exefy
+</code></p>
+
+<p>new gem command will be available &ndash; exefy. This command is used for replacing batch files for single or all installed gems. Replacing batch files with executable stubs for single gem is performed by passing name of the targeted gem to the exefy command.</p>
+
+<p><code>sh
+gem exefy bundler
+</code></p>
+
+<p>Exefying all installed gems is simple &ndash; just pass <code>--all</code> to <code>exefy</code> command</p>
+
+<p><code>sh
+gem exefy --all
+</code></p>
+
+<p>If you are not satisfied and still want to use batch files &ndash; don’t worry. You can always revert old batch files for single or all gems with <code>--revert</code> argument</p>
+
+<p><code>sh
+gem exefy bundler --revert
+gem exefy --all --revert
+</code></p>
+
+<p>After gem-exefy is installed it will, by default, install executable stubs instead of batch files for all gems installed after it.</p>
+
+<p>It is important to mention that gem-exefy will not replace batch files for commands installed with RubyInstaller (irb, rake&hellip;) and are part of Ruby core. Will support for converting these batch files be implemented is yet to be seen.</p>
+
+<h3>Acknowledgements</h3>
+
+<p>I want to thanks <a href="https://github.com/luislavena">@luislavena</a>,<a href="https://github.com/azolo">@azolo</a> and <a href="https://github.com/jonforums">@jonforums</a> for helping me out making gem-exefy.</p>
+]]></content>
+  </entry>
+  
+</feed>

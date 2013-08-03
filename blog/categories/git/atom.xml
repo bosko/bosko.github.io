@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: git | Pragmatic Development Notes]]></title>
+  <link href="http://bosko.github.io/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://bosko.github.io/"/>
+  <updated>2013-08-03T21:24:42+02:00</updated>
+  <id>http://bosko.github.io/</id>
+  <author>
+    <name><![CDATA[Boško Ivanišević]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Still on CVS? Too Bad!]]></title>
+    <link href="http://bosko.github.io/blog/2009/06/05/still-on-cvs-too-bad/"/>
+    <updated>2009-06-05T19:00:00+02:00</updated>
+    <id>http://bosko.github.io/blog/2009/06/05/still-on-cvs-too-bad</id>
+    <content type="html"><![CDATA[<p>At the and of May 2009 Savannah disks crashed. You can read more about it <a href="http://lists.gnu.org/archive/html/savannah-users/2009-05/msg00023.html">here</a>. This is something no one can predict. You never know when your hardware will let you down, and there is no cure for that. Disks will be replaced, system reinstalled, backups restored and that’s it. Or is it?</p>
+
+<p>Not completely if you are using CVS or SVN and there were some commits after the last backup. Emacs developers spent few days in the <a href="http://lists.gnu.org/archive/html/emacs-devel/2009-06/msg00056.html">discussion</a> to determine what commits they lost.</p>
+
+<p>Luckily they had Git mirror of CVS repository but what surprises me is they didn’t move to Git yet. If they were using Git they would have been able to restore complete repository in a few minutes (maybe longer for
+large repositories). Since they already have Git mirror for Emacs code I really do not understand why do they not switch to Git completely. Having full history at each developer’s computer is a huge benefit. Not
+to mention that Git gives you possibilities you can only dream of in CVS and SVN.</p>
+]]></content>
+  </entry>
+  
+</feed>

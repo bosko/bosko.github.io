@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rails, | Pragmatic Development Notes]]></title>
+  <link href="http://bosko.github.io/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="http://bosko.github.io/"/>
+  <updated>2013-08-03T21:24:42+02:00</updated>
+  <id>http://bosko.github.io/</id>
+  <author>
+    <name><![CDATA[Boško Ivanišević]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby on Windows Guides - The Book]]></title>
+    <link href="http://bosko.github.io/blog/2012/03/07/ruby-on-windows-guides-the-book/"/>
+    <updated>2012-03-07T20:02:00+01:00</updated>
+    <id>http://bosko.github.io/blog/2012/03/07/ruby-on-windows-guides-the-book</id>
+    <content type="html"><![CDATA[<p>I use Windows on my everyday work. First thing I do after installing Windows is to set up complete environment for Ruby. In “ancient” days (measuring in computer years, of course) I have used One Click Installer. Later, <a href="http://www.rubyinstaller.org">RubyInstaller</a> came on the scene.</p>
+
+<p>With much better foundations, RubyInstaller simplified Ruby usage and made it look like on Linux, Ruby’s native platform. Key benefit of RubyInstaller over One Click installer was possibility to install Ruby native gems written in C. Switching from commercial VisualStudio, used in One Click Installer, to MinGW build tool-chain in RubyInstaller was crucial decision made by Luis Lavena, great author of RubyInstaller.</p>
+
+<p>After RubyInstaller, one more project appeared with the goal to simplify Ruby on Rails installation and usage on Windows. RailsInstaller. I haven’t tried it, but I’m sure it will help increasing number of Rails users on Windows.</p>
+
+<p>But do you really need installer for Ruby on Rails on Windows? It depends of your attitude. If you are not interested what is going on behind the scenes and just want to be able to start using Rails after few mouse clicks RailsInstaller is definitely for you.</p>
+
+<p>If, on the other hand, you want to know how things work, you should try to install Ruby on Rails without installer. With RubyInstaller installing Ruby on Rails on Windows is, actually, just a matter of issuing</p>
+
+<p><code>sh
+gem install rails
+gem install sqlite3
+</code></p>
+
+<p>Of course you might face problems building and installing some gems, primarily because gem authors don’t want to bother with Windows support or simply because gems rely of third party libraries that are not ported to Windows. In any case you can ask for help on <a href="http://groups.google.com/group/rubyinstaller">RubyInstaller mailing list</a>.</p>
+
+<p>People wonder if Ruby and Ruby on Rails are really usable on Windows. My opinion is that they are. Of course, there are some problems mainly with speed, but I would dare to say that solutions are on the way and hopefully very soon this will not be problem any more. I guess main reason why they are not so widespread on Windows platforms is scepticism and lack of experience.</p>
+
+<p>As one of contributors to RubyInstaller project I noticed same questions are repeated on RubyInstaller mailing list. Mainly because of lack of familiarity with Ruby and RoR on Windows. That’s why I decided to write <a href="http://rubyonwindowsguides.github.com">a book</a> where I tried to give deeper insight on all details about installing and using Ruby and Ruby on Rails on Windows. The <a href="http://rubyonwindowsguides.github.io">Ruby on Windows Guides</a> is still in beta. However it already covers the most important issues and I think all novices and advanced developers can learn something new from it. Work on the book is still in progress so if you have any suggestions, ideas and wishes you can send them as an <a href="https://github.com/rubyonwindowsguides/rubyonwindowsguides.github.com/issues">issue on the GitHub</a>.</p>
+
+<p>If you want to get deeper understanding of Ruby and Ruby on Rails on Windows, find out how to build native gems in several ways or just want to get an idea for what you can use Ruby on Windows go ahead and read the book. Of course I expect your comments, here or on GitHub.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Using Selenium with Cucumber through Webrat or Capybara. Which one to choose?]]></title>
+    <link href="http://bosko.github.io/blog/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose/"/>
+    <updated>2010-10-31T13:55:00+01:00</updated>
+    <id>http://bosko.github.io/blog/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose</id>
+    <content type="html"><![CDATA[<h2>Introduction</h2>
+
+<p>Testing is (or should be) important part of every software development. Over time various testing strategies and supporting tools and frameworks have been developed. Regarding Web development biggest advance has been made in Behavior Driven Development. Consequently many tools for BDD are published and used.</p>
+
+<p><a href="http://www.rubyonrails.org">Ruby on Rails</a> framework had great built-in support for testing from the very beginning. As it usually happens, lot of specialised testing tools appeared aside of it and among all of them my favourites are <a href="http://rspec.info">RSpec</a> and <a href="http://github.com/aslakhellesoy/cucumber/wiki">Cucumber</a>. The first one for unit and the second for functional tests. Both of them are well integrated with Ruby on Rails and are very easy to set up and start with. Moreover there is no need to use real browsers which results in fast tests execution. Perfect way for BDD.</p>
+
+<p>But what if you have to perform functional tests on non Ruby on Rails applications or your application relies heavily on JavaScript (no matter in which framework it is written)? Luckily Cucumber can be used in that case too. Since Cucumber supports Rails out of the box there is basically no need for some special configuration. On the other hand if a real browser must be used in tests, or functional testing must be done outside of the Rails environment setting up Cucumber can be little tricky but still simple enough. In this article I will focus on this scenario &ndash; <em>testing non Rails applications with <a href="http://github.com/aslakhellesoy/cucumber/wiki">Cucumber</a> and <a href="http://seleniumhq.org">Selenium</a></em>.</p>
+
+<p>Using Selenium in Cucumber tests is done through <a href="http://github.com/brynary/webrat/wiki">Webrat</a> or <a href="http://github.com/jnicklas/capybara">Capybara</a>. First we must set up complete environment, and in the first step all necessary gems must be installed:</p>
+
+<p><code>ruby
+gem install launchy
+gem install rspec
+gem install cucumber
+gem install webrat
+gem install capybara --pre
+gem install selenium-client
+gem install selenium-webdriver
+</code></p>
+
+<p><em>Option —pre is used to install Capybara 0.4.0 rc</em></p>
+
+<p><strong>Important notice for MS Windows users: Webrat depends on Json gem which installs binaries compiled against <a href="http://www.rubyinstaller.org">Rubyinstaller</a> Ruby 1.8.x version. If you are using 1.9.2 Ruby you must uninstall Json gem and install it again but with <code>--platform=ruby</code> option:</strong></p>
+
+<p><code>ruby
+gem uninstall json
+gem install json --platform=ruby
+</code></p>
+
+<p>Since article focuses on the functional testing outside of Rails we should manually create folder structure that Cucumber expects.</p>
+
+<pre><code>tests
+ |- features
+     |- support
+     |- step_definitions
+</code></pre>
+
+<p>All <code>.feature</code> files go in the <code>features</code> folder. In the <code>support</code> folder <code>env.rb</code> file should be created and within it all set up must be made. Finally steps are implemented in Ruby files in <code>step_definitions</code> folder.</p>
+
+<h2>Webrat</h2>
+
+<p><a href="http://github.com/brynary/webrat/wiki">Webrat</a> controls Selenium through Selenium RC (remote control) and selenium-client gem. In order to use Selenium through Webrat put following code in your <code>env.rb</code>:</p>
+
+<p>```ruby
+require &lsquo;cucumber/formatter/unicode&rsquo;</p>
+
+<p>require &lsquo;webrat&rsquo;
+require &lsquo;webrat/core/matchers&rsquo;</p>
+
+<p>Webrat.configure do |config|
+  config.mode = :selenium
+  config.application_framework = :external
+  config.selenium_server_address = &lsquo;127.0.0.1&rsquo;</p>
+
+<pre><code>if RbConfig::CONFIG['host_os'] =~ /mingw|mswin/
+</code></pre>
+
+<p>  config.selenium_browser_startup_timeout = 60
+  config.application_address = &lsquo;localhost&rsquo;
+  config.application_port = &lsquo;3000&rsquo;
+end</p>
+
+<p>World do
+  session = Webrat::Session.new
+  session.extend(Webrat::Methods)
+  session.extend(Webrat::Selenium::Methods)
+  session.extend(Webrat::Selenium::Matchers)
+  session
+end
+```</p>
+
+<p>That’s all if you are running Linux based system. On Windows a little bit more effort must be made. First of all, Webrat usess 0.0.0.0 IP address when it starts Selenium and MS Windows does not like it at all. Secondly it uses <code>/dev/null</code> stream which is not available on MS Windows. Patch is already submitted and you can follow a ticket at <a href="https://webrat.lighthouseapp.com/projects/10503/tickets/387-tiny-patch-for-work-with-selenium-on-windows#ticket-387-2">Webrat Lighthouse</a>. But until fix is accepted and new version is released, you can take a patch from <a href="http://gist.github.com/584005">Github gitst</a> and apply it to Webrat sources.</p>
+
+<p><div><script src='https://gist.github.com/584005.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>Besides this patch few more things must be done. Line:</p>
+
+<p><code>ruby
+config.selenium_server_address = '127.0.0.1' if RbConfig::CONFIG['host_os'] =~ /mingw|mswin/
+</code></p>
+
+<p>must be added to the <code>config</code> block as is already shown in the above snippet. Unfortunately selenium-client gem does not recognize <a href="http://www.rubyinstaller.org">Rubyinstaller</a> since it is built using MinGW tools. Therefore one more tiny patch must be made in the <code>selenium-client-1.2.18/lib/nautilus/shell.rb</code> file. Function <code>windows?</code> must be replaced with:</p>
+
+<p><code>ruby
+def windows?
+  ::RbConfig::CONFIG['host_os'] =~ /mswin|mingw/
+end
+</code></p>
+
+<p>You are ready for application testing. By default Selenium will use Firefox and if you want to use other browser (in the example Internet Explorer is set) add following line to <code>config</code> block:</p>
+
+<p><code>ruby
+config.selenium_browser_key = '*iexplore'
+</code></p>
+
+<h2>Capybara</h2>
+
+<p>Although <a href="http://github.com/jnicklas/capybara">Capybara</a> can use Selenium RC, it primarily uses Selenium WebDriver which is still in beta phase but is working good. Since we already installed all necessary gems we can go on with configuring our testing environment. File <code>env.rb</code> should look like this:</p>
+
+<p>```ruby
+require &lsquo;rbconfig&rsquo;
+require &lsquo;cucumber/formatter/unicode&rsquo;</p>
+
+<p>require &lsquo;capybara&rsquo;
+require &lsquo;capybara/dsl&rsquo;
+require &ldquo;capybara/cucumber&rdquo;</p>
+
+<p>Capybara.default_driver = :selenium
+Capybara.app_host = &ldquo;<a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a>&rdquo;
+Capybara.register_driver :selenium do |app|
+  Capybara::Driver::Selenium.new(app, :browser => :firefox)
+end</p>
+
+<p>World(Capybara)
+```</p>
+
+<p>Setting up Capybara is definitely much easier. But on MS Windows systems, if you want to use Internet Explorer, you still have to patch sources. Authors are already <a href="http://groups.google.com/group/webdriver/browse_thread/thread/a8ed4ce6f98e8322">notified about required patch</a> and I believe that new version of <code>selenium-webdriver</code> gem will be released with it. In the meantime you just have to change definition of <code>initialize</code> method in <code>selenium-webdriver-0.0.28/lib/selenium/webdriver/ie/bridge.rb</code> from:</p>
+
+<p><code>ruby
+def initialize()
+</code></p>
+
+<p>to</p>
+
+<p><code>ruby
+def initialize(opts = {})
+</code></p>
+
+<p>Changing browser is as easy as changing <code>:firefox</code> to <code>:ie</code> or <code>:chrome</code>. Instead of <code>:firefox</code> you can also use <code>:ff</code> and for Internet Explorer <code>:internet_explorer</code>. One more notice about differences if you are switching from Webrat to Capybara. Capybara will reset session after each step. If you do not want that (for example you log in to your application in the first scenario, and do not want to repeat it in each succeeding one) just add:</p>
+
+<p><code>ruby
+After do
+end
+</code></p>
+
+<p>in <code>env.rb</code> file.</p>
+
+<p>With Capybara you are not limited to Selenium WebDriver. If you want to use Selenium RC you just need to configure it in <code>env.rb</code> file:</p>
+
+<p>```ruby
+require &lsquo;rbconfig&rsquo;
+require &lsquo;cucumber/formatter/unicode&rsquo;</p>
+
+<p>require &lsquo;capybara&rsquo;
+require &lsquo;capybara/dsl&rsquo;
+require &ldquo;capybara/cucumber&rdquo;</p>
+
+<p>Capybara.default_driver = :selenium
+Capybara.app_host = &ldquo;<a href="http://127.0.0.1:9000/">http://127.0.0.1:9000/</a>&rdquo;
+Capybara.register_driver :selenium do |app|
+  # This way we are using Selenium-RC
+  Capybara::Driver::Selenium.new(app,</p>
+
+<pre><code>                             :browser =&gt; :remote,
+                             :url =&gt; "http://127.0.0.1:4444/wd/hub",
+                             :desired_capabilities =&gt; :internet_explorer)
+</code></pre>
+
+<p>end</p>
+
+<p>World(Capybara)
+```</p>
+
+<h2>Conclusion</h2>
+
+<p>Both gems for running Selenium as a base for functional tests &ndash; Webrat and Capybara are easy to use. Although Webrat needs more patching to work under Windows it has one advantage. It can be used with <a href="http://mechanize.rubyforge.org/mechanize/">Mechanize</a> if you do not need real browser and you still want to test non Rails application. But as much as it is advantage for “classic” Web application Mechanize cannot interpret JavaScript. So if you want to include JavaScript testing you either have to use real browser or switch to Capybara.</p>
+
+<p>Capybara, on the other hand, needs significantly less patching on MS Windows systems and it cannot use Mechanize as far as I know. But, from my point of view, it is easier to use then Webrat. Currently it cannot use Mechanize, but it can use <a href="http://github.com/langalex/culerity/">Culerity</a> and <a href="http://celerity.rubyforge.org/">Celerity</a> for JavaScript testing. Moreover <a href="http://github.com/smparkes/capybara-envjs">capybara-envjs driver</a> can be used to interpret JavaScript outside of the browser.</p>
+
+<p>Although I’m still not sure which one is better to use, I switched from Webrat to Capybara and I think that tests that use Selenium WebDriver are running faster. There is an <a href="http://groups.google.com/group/ruby-capybara/browse_thread/thread/4bcc26a9cfa20ef2">initiative for merging</a> these projects into one but I do not know if it will happen and when. I would like to hear what you think. What is your choice: Webrat or Capybara?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ActiveRecord SchemaDumper and MySQL problem]]></title>
+    <link href="http://bosko.github.io/blog/2010/10/03/activerecord-schemadumper-and-mysql-problem/"/>
+    <updated>2010-10-03T20:31:00+02:00</updated>
+    <id>http://bosko.github.io/blog/2010/10/03/activerecord-schemadumper-and-mysql-problem</id>
+    <content type="html"><![CDATA[<p>After finishing first version of <a href="http://github.com/bosko/rmre">Rmre</a> and issuing fix gem dependency in version 0.0.2, I got an idea for additional functionality. Why not use Rmre for dumping complete schema with all foreign keys data? What would be possible scenario for using this, one might ask? We have possibility to create ActiveRecord models in order to move to Ruby on Rails where main premise is to keep logic out of database and maintain it in application. Therefore we do not need foreign keys since we already have constraints defined in models.</p>
+
+<p>But what if you cannot move to Ruby on Rails and you only have to change DBE, i.e. instead of MS SQL you must use Oracle? In that case you still have to work with legacy database from PHP or Hibernate in Java and “<em>only</em>” thing you have to do is to make create script for all tables but for another DBE. When database has hundreds of tables with lots of relations this can turn into nightmare, especially if you have to maintain both versions.</p>
+
+<p>Rmre should simplify this. First you use Rmre to dump schema to some file and later you can use ActiveRecord’s capabilities to load it on different DBE. Since loading schema in ActiveRecord is DBE agnostic it should correctly create tables, indices and foreign keys on any database engine. That’s theory and, as usual, practice is a little bit different. On a very first step I’ve faced problem in MySQL database.</p>
+
+<p>Let’s examine database with just a two tables &ndash; <code>city</code> and <code>country</code>. Create script would look like (example from <a href="http://dev.mysql.com/doc/sakila/en/sakila.html">Sakila</a> database):</p>
+
+<p>```sql
+CREATE TABLE city (
+  city_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  city VARCHAR(50) NOT NULL,
+  country_id SMALLINT UNSIGNED NOT NULL,
+  last_update TIMESTAMP NOT NULL DEFAULT</p>
+
+<pre><code>CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+</code></pre>
+
+<p>  PRIMARY KEY  (city_id),
+  KEY idx_fk_country_id (country_id),
+  CONSTRAINT <code>fk_city_country</code></p>
+
+<pre><code>FOREIGN KEY (country_id)
+REFERENCES country (country_id)
+ON DELETE RESTRICT ON UPDATE CASCADE
+</code></pre>
+
+<p>) ENGINE=InnoDB DEFAULT CHARSET=utf8;</p>
+
+<p>CREATE TABLE country (
+  country_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  country VARCHAR(50) NOT NULL,
+  last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP</p>
+
+<pre><code>ON UPDATE CURRENT_TIMESTAMP,
+</code></pre>
+
+<p>  PRIMARY KEY  (country_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```</p>
+
+<p>As can be seen from above script table <code>city</code> has foreign key on table <code>country</code>. Now let’s see what is result of a dump:</p>
+
+<p>```ruby
+ActiveRecord::Schema.define(:version => 0) do</p>
+
+<p>  create_table &ldquo;actor&rdquo;, :primary_key => &ldquo;actor_id&rdquo;, :force => true do |t|
+  create_table &ldquo;city&rdquo;, :primary_key => &ldquo;city_id&rdquo;, :force => true do |t|</p>
+
+<pre><code>t.string    "city",        :limit =&gt; 50, :null =&gt; false
+t.integer   "country_id",  :limit =&gt; 2,  :null =&gt; false
+t.timestamp "last_update",               :null =&gt; false
+</code></pre>
+
+<p>  end</p>
+
+<p>  add_index &ldquo;city&rdquo;, [&ldquo;country_id&rdquo;], :name => &ldquo;idx_fk_country_id&rdquo;</p>
+
+<p>  create_table &ldquo;country&rdquo;, :primary_key => &ldquo;country_id&rdquo;, :force => true do |t|</p>
+
+<pre><code>t.string    "country",     :limit =&gt; 50, :null =&gt; false
+t.timestamp "last_update",               :null =&gt; false
+</code></pre>
+
+<p>  end</p>
+
+<p>  execute &ldquo;ALTER TABLE city ADD CONSTRAINT fk_city_country FOREIGN KEY (country_id) REFERENCES country(country_id)&rdquo;
+end
+```</p>
+
+<p>At the first glance this looks good but unfortunately doesn’t work. Problem is that loading this schema through ActiveRecord will create columns <code>city_id</code> in table <code>city</code> and <code>country_id</code> in table <code>country</code> as <code>integer</code> type but column <code>country_id</code> in table <code>city</code> is created as <code>smallint</code>. Defining constraint on columns which are not of same type is not allowed so last statement for altering table fails. At the moment I have no idea how to fix this and any suggestion is very welcome. I still have to check what happens on other DBEs: PostgreSQL, Oracle and MS SQL.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RMRE - rails models reverse engineering gem]]></title>
+    <link href="http://bosko.github.io/blog/2010/09/30/rmre-rails-models-reverse-engineering-gem/"/>
+    <updated>2010-09-30T13:50:00+02:00</updated>
+    <id>http://bosko.github.io/blog/2010/09/30/rmre-rails-models-reverse-engineering-gem</id>
+    <content type="html"><![CDATA[<p>Very often I have to work on databases which do not follow ActiveRecord convention and making ActiveRecord models, if number of tables is large, is very slow and boring task. In order to speed up and simplify it I’ve created <a href="http://github.com/bosko/rmre">Rmre gem</a>. Gem is quite simple yet you might find it useful if you want to create fixtures, migrations or simply port application to Ruby on Rails.</p>
+
+<p>So how it works? For each table in the database, gem creates model. Name of the model is created using Rails <code>classify</code> method. Moreover, if table’s primary key is not column named “id” gem sets primary key by adding <code>set_primary_key "primaryKeyColumnName"</code> line to the model. In addition for MySQL, PostgreSQL, Oracle or MS SQL foreign keys are analyzed and for each constraint gem generates <code>belongs_to</code> or <code>has_many</code> lines. Here is model created for table <em>store</em> in <a href="http://dev.mysql.com/doc/sakila/en/sakila.html">Sakila</a> MySQL test database:</p>
+
+<p><code>ruby
+class Store &lt; ActiveRecord::Base
+  set_primary_key :store_id
+  set_table_name 'store'
+  has_many :customers, :class_name =&gt; 'Customer'
+  has_many :inventories, :class_name =&gt; 'Inventory'
+  has_many :staffs, :class_name =&gt; 'Staff'
+  belongs_to :address, :class_name =&gt; 'Addres', :foreign_key =&gt; :address_id
+  belongs_to :staff, :class_name =&gt; 'Staff', :foreign_key =&gt; :manager_staff_id
+end
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby, Rails and MS SQL server]]></title>
+    <link href="http://bosko.github.io/blog/2010/02/18/ruby-rails-and-ms-sql-server/"/>
+    <updated>2010-02-18T22:34:00+01:00</updated>
+    <id>http://bosko.github.io/blog/2010/02/18/ruby-rails-and-ms-sql-server</id>
+    <content type="html"><![CDATA[<p>Setting up Rails and Ruby to use MS SQL server was always painful task. Fortunately things have changed &ndash; a lot! With new <a href="http://github.com/rails-sqlserver/2000-2005-adapter">Rails SQL Server 2000, 2005 and 2008 Adapter</a> and Christian Werner’s <a href="http://www.ch-werner.de/rubyodbc">ruby-odbc gem</a> you can do it in a few minutes.</p>
+
+<p>If you want to use these gems on Windows grab Ruby installation from <a href="http://www.rubyinstaller.org">RubyInstaller</a> site and be sure to install <a href="http://rubyforge.org/frs/download.php/66888/devkit-3.4.5r3-20091110.7z">DevKit</a> prior to installing ruby-odbc.</p>
+
+<p>Versions of ruby-odbc before 0.9999 do not work on mingw based (RubyInstaller) Ruby. Luckily author was very fast and made new version very quickly after I sent him a patch. Thanks Christian!</p>
+
+<p>Both gems work well on Ruby 1.8.6 and 1.9.1 Ruby versions on Windows with old ActiveRecords, but I hope rails adapter will be ported to ActiveRecords 3 soon.</p>
+]]></content>
+  </entry>
+  
+</feed>
