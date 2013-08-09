@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: rails, | Pragmatic Development Notes]]></title>
-  <link href="http://bosko.github.io/blog/categories/rails/atom.xml" rel="self"/>
-  <link href="http://bosko.github.io/"/>
-  <updated>2013-08-07T17:56:27+02:00</updated>
-  <id>http://bosko.github.io/</id>
+  <link href="http://pragdevnotes.com/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="http://pragdevnotes.com/"/>
+  <updated>2013-08-09T23:42:07+02:00</updated>
+  <id>http://pragdevnotes.com/</id>
   <author>
     <name><![CDATA[Boško Ivanišević]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ruby on Windows Guides - The Book]]></title>
-    <link href="http://bosko.github.io/blog/2012/03/07/ruby-on-windows-guides-the-book/"/>
+    <link href="http://pragdevnotes.com/blog/2012/03/07/ruby-on-windows-guides-the-book/"/>
     <updated>2012-03-07T20:02:00+01:00</updated>
-    <id>http://bosko.github.io/blog/2012/03/07/ruby-on-windows-guides-the-book</id>
+    <id>http://pragdevnotes.com/blog/2012/03/07/ruby-on-windows-guides-the-book</id>
     <content type="html"><![CDATA[<p>I use Windows on my everyday work. First thing I do after installing Windows is to set up complete environment for Ruby. In “ancient” days (measuring in computer years, of course) I have used One Click Installer. Later, <a href="http://www.rubyinstaller.org">RubyInstaller</a> came on the scene.</p>
 
 <p>With much better foundations, RubyInstaller simplified Ruby usage and made it look like on Linux, Ruby’s native platform. Key benefit of RubyInstaller over One Click installer was possibility to install Ruby native gems written in C. Switching from commercial VisualStudio, used in One Click Installer, to MinGW build tool-chain in RubyInstaller was crucial decision made by Luis Lavena, great author of RubyInstaller.</p>
@@ -45,9 +45,9 @@ gem install sqlite3
   
   <entry>
     <title type="html"><![CDATA[Using Selenium with Cucumber through Webrat or Capybara. Which one to choose?]]></title>
-    <link href="http://bosko.github.io/blog/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose/"/>
+    <link href="http://pragdevnotes.com/blog/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose/"/>
     <updated>2010-10-31T13:55:00+01:00</updated>
-    <id>http://bosko.github.io/blog/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose</id>
+    <id>http://pragdevnotes.com/blog/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose</id>
     <content type="html"><![CDATA[<h2>Introduction</h2>
 
 <p>Testing is (or should be) important part of every software development. Over time various testing strategies and supporting tools and frameworks have been developed. Regarding Web development biggest advance has been made in Behavior Driven Development. Consequently many tools for BDD are published and used.</p>
@@ -225,9 +225,9 @@ Capybara.register_driver :selenium do |app|
   
   <entry>
     <title type="html"><![CDATA[ActiveRecord SchemaDumper and MySQL problem]]></title>
-    <link href="http://bosko.github.io/blog/2010/10/03/activerecord-schemadumper-and-mysql-problem/"/>
+    <link href="http://pragdevnotes.com/blog/2010/10/03/activerecord-schemadumper-and-mysql-problem/"/>
     <updated>2010-10-03T20:31:00+02:00</updated>
-    <id>http://bosko.github.io/blog/2010/10/03/activerecord-schemadumper-and-mysql-problem</id>
+    <id>http://pragdevnotes.com/blog/2010/10/03/activerecord-schemadumper-and-mysql-problem</id>
     <content type="html"><![CDATA[<p>After finishing first version of <a href="http://github.com/bosko/rmre">Rmre</a> and issuing fix gem dependency in version 0.0.2, I got an idea for additional functionality. Why not use Rmre for dumping complete schema with all foreign keys data? What would be possible scenario for using this, one might ask? We have possibility to create ActiveRecord models in order to move to Ruby on Rails where main premise is to keep logic out of database and maintain it in application. Therefore we do not need foreign keys since we already have constraints defined in models.</p>
 
 <p>But what if you cannot move to Ruby on Rails and you only have to change DBE, i.e. instead of MS SQL you must use Oracle? In that case you still have to work with legacy database from PHP or Hibernate in Java and “<em>only</em>” thing you have to do is to make create script for all tables but for another DBE. When database has hundreds of tables with lots of relations this can turn into nightmare, especially if you have to maintain both versions.</p>
@@ -304,9 +304,9 @@ end
   
   <entry>
     <title type="html"><![CDATA[RMRE - rails models reverse engineering gem]]></title>
-    <link href="http://bosko.github.io/blog/2010/09/30/rmre-rails-models-reverse-engineering-gem/"/>
+    <link href="http://pragdevnotes.com/blog/2010/09/30/rmre-rails-models-reverse-engineering-gem/"/>
     <updated>2010-09-30T13:50:00+02:00</updated>
-    <id>http://bosko.github.io/blog/2010/09/30/rmre-rails-models-reverse-engineering-gem</id>
+    <id>http://pragdevnotes.com/blog/2010/09/30/rmre-rails-models-reverse-engineering-gem</id>
     <content type="html"><![CDATA[<p>Very often I have to work on databases which do not follow ActiveRecord convention and making ActiveRecord models, if number of tables is large, is very slow and boring task. In order to speed up and simplify it I’ve created <a href="http://github.com/bosko/rmre">Rmre gem</a>. Gem is quite simple yet you might find it useful if you want to create fixtures, migrations or simply port application to Ruby on Rails.</p>
 
 <p>So how it works? For each table in the database, gem creates model. Name of the model is created using Rails <code>classify</code> method. Moreover, if table’s primary key is not column named “id” gem sets primary key by adding <code>set_primary_key "primaryKeyColumnName"</code> line to the model. In addition for MySQL, PostgreSQL, Oracle or MS SQL foreign keys are analyzed and for each constraint gem generates <code>belongs_to</code> or <code>has_many</code> lines. Here is model created for table <em>store</em> in <a href="http://dev.mysql.com/doc/sakila/en/sakila.html">Sakila</a> MySQL test database:</p>
@@ -327,9 +327,9 @@ end
   
   <entry>
     <title type="html"><![CDATA[Ruby, Rails and MS SQL server]]></title>
-    <link href="http://bosko.github.io/blog/2010/02/18/ruby-rails-and-ms-sql-server/"/>
+    <link href="http://pragdevnotes.com/blog/2010/02/18/ruby-rails-and-ms-sql-server/"/>
     <updated>2010-02-18T22:34:00+01:00</updated>
-    <id>http://bosko.github.io/blog/2010/02/18/ruby-rails-and-ms-sql-server</id>
+    <id>http://pragdevnotes.com/blog/2010/02/18/ruby-rails-and-ms-sql-server</id>
     <content type="html"><![CDATA[<p>Setting up Rails and Ruby to use MS SQL server was always painful task. Fortunately things have changed &ndash; a lot! With new <a href="http://github.com/rails-sqlserver/2000-2005-adapter">Rails SQL Server 2000, 2005 and 2008 Adapter</a> and Christian Werner’s <a href="http://www.ch-werner.de/rubyodbc">ruby-odbc gem</a> you can do it in a few minutes.</p>
 
 <p>If you want to use these gems on Windows grab Ruby installation from <a href="http://www.rubyinstaller.org">RubyInstaller</a> site and be sure to install <a href="http://rubyforge.org/frs/download.php/66888/devkit-3.4.5r3-20091110.7z">DevKit</a> prior to installing ruby-odbc.</p>

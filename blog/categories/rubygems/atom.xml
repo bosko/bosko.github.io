@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: rubygems, | Pragmatic Development Notes]]></title>
-  <link href="http://bosko.github.io/blog/categories/rubygems/atom.xml" rel="self"/>
-  <link href="http://bosko.github.io/"/>
-  <updated>2013-08-07T17:56:27+02:00</updated>
-  <id>http://bosko.github.io/</id>
+  <link href="http://pragdevnotes.com/blog/categories/rubygems/atom.xml" rel="self"/>
+  <link href="http://pragdevnotes.com/"/>
+  <updated>2013-08-09T23:42:07+02:00</updated>
+  <id>http://pragdevnotes.com/</id>
   <author>
     <name><![CDATA[Boško Ivanišević]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Exefy ‘Em All]]></title>
-    <link href="http://bosko.github.io/blog/2012/06/25/exefy-em-all/"/>
+    <link href="http://pragdevnotes.com/blog/2012/06/25/exefy-em-all/"/>
     <updated>2012-06-25T01:51:00+02:00</updated>
-    <id>http://bosko.github.io/blog/2012/06/25/exefy-em-all</id>
+    <id>http://pragdevnotes.com/blog/2012/06/25/exefy-em-all</id>
     <content type="html"><![CDATA[<p>Recently Luis Lavena started thread <a href="https://groups.google.com/d/topic/rubyinstaller/fQCuPfiuuRc/discussion">Idea: executable stubs to replace batch files</a> on RubyInstaller mailing list. In short, the idea is to use command line applications &ndash; executable stubs &ndash; instead of batch files in RubyInstaller Ruby versions. Using command line applications instead of batch files has several benefits. First one, maybe not so important, is to avoid annoying</p>
 
 <p>Terminate batch job (Y/N)?</p>

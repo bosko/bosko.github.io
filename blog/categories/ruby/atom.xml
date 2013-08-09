@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: ruby, | Pragmatic Development Notes]]></title>
-  <link href="http://bosko.github.io/blog/categories/ruby/atom.xml" rel="self"/>
-  <link href="http://bosko.github.io/"/>
-  <updated>2013-08-07T17:56:27+02:00</updated>
-  <id>http://bosko.github.io/</id>
+  <link href="http://pragdevnotes.com/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://pragdevnotes.com/"/>
+  <updated>2013-08-09T23:42:07+02:00</updated>
+  <id>http://pragdevnotes.com/</id>
   <author>
     <name><![CDATA[Boško Ivanišević]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Make Ruby Tests Greener]]></title>
-    <link href="http://bosko.github.io/blog/2012/06/27/make-ruby-tests-greener/"/>
+    <link href="http://pragdevnotes.com/blog/2012/06/27/make-ruby-tests-greener/"/>
     <updated>2012-06-27T01:42:00+02:00</updated>
-    <id>http://bosko.github.io/blog/2012/06/27/make-ruby-tests-greener</id>
+    <id>http://pragdevnotes.com/blog/2012/06/27/make-ruby-tests-greener</id>
     <content type="html"><![CDATA[<p><a href="https://groups.google.com/forum/?fromgroups#!topic/rubyinstaller/A92K_EYJX2A">The Ruby Greener Test Challenge</a> is here. It is attempt to make Ruby on Windows better and more stable and direct goal of this challenge is to fix all tests and to reach 0F0E (0 failures, 0 errors) state. If you are Ruby developer on Windows you should consider taking a role in the challenge.</p>
 
 <p>If you decide to try to fix some failing tests or existing errors it is easy to set up complete environment with the help of <a href="http://cdn.rubyinstaller.org/archives/experimental/RubyChallengePack-v1.exe">Ruby Challenge Pack</a>. I will not write about details here since you have all you need in the initial challenge post given in the link on top of the article. Instead I will give you few suggestions about participating in the challenge.</p>
@@ -55,9 +55,9 @@ git checkout -b fix-win32ole-fso-encoding-misuse
   
   <entry>
     <title type="html"><![CDATA[Exefy ‘Em All]]></title>
-    <link href="http://bosko.github.io/blog/2012/06/25/exefy-em-all/"/>
+    <link href="http://pragdevnotes.com/blog/2012/06/25/exefy-em-all/"/>
     <updated>2012-06-25T01:51:00+02:00</updated>
-    <id>http://bosko.github.io/blog/2012/06/25/exefy-em-all</id>
+    <id>http://pragdevnotes.com/blog/2012/06/25/exefy-em-all</id>
     <content type="html"><![CDATA[<p>Recently Luis Lavena started thread <a href="https://groups.google.com/d/topic/rubyinstaller/fQCuPfiuuRc/discussion">Idea: executable stubs to replace batch files</a> on RubyInstaller mailing list. In short, the idea is to use command line applications &ndash; executable stubs &ndash; instead of batch files in RubyInstaller Ruby versions. Using command line applications instead of batch files has several benefits. First one, maybe not so important, is to avoid annoying</p>
 
 <p>Terminate batch job (Y/N)?</p>
@@ -158,9 +158,9 @@ gem exefy --all --revert
   
   <entry>
     <title type="html"><![CDATA[Ruby on Windows Guides - The Book]]></title>
-    <link href="http://bosko.github.io/blog/2012/03/07/ruby-on-windows-guides-the-book/"/>
+    <link href="http://pragdevnotes.com/blog/2012/03/07/ruby-on-windows-guides-the-book/"/>
     <updated>2012-03-07T20:02:00+01:00</updated>
-    <id>http://bosko.github.io/blog/2012/03/07/ruby-on-windows-guides-the-book</id>
+    <id>http://pragdevnotes.com/blog/2012/03/07/ruby-on-windows-guides-the-book</id>
     <content type="html"><![CDATA[<p>I use Windows on my everyday work. First thing I do after installing Windows is to set up complete environment for Ruby. In “ancient” days (measuring in computer years, of course) I have used One Click Installer. Later, <a href="http://www.rubyinstaller.org">RubyInstaller</a> came on the scene.</p>
 
 <p>With much better foundations, RubyInstaller simplified Ruby usage and made it look like on Linux, Ruby’s native platform. Key benefit of RubyInstaller over One Click installer was possibility to install Ruby native gems written in C. Switching from commercial VisualStudio, used in One Click Installer, to MinGW build tool-chain in RubyInstaller was crucial decision made by Luis Lavena, great author of RubyInstaller.</p>
@@ -188,9 +188,9 @@ gem install sqlite3
   
   <entry>
     <title type="html"><![CDATA[dep_walker Gem]]></title>
-    <link href="http://bosko.github.io/blog/2011/05/07/dep-walker-gem/"/>
+    <link href="http://pragdevnotes.com/blog/2011/05/07/dep-walker-gem/"/>
     <updated>2011-05-07T06:40:00+02:00</updated>
-    <id>http://bosko.github.io/blog/2011/05/07/dep-walker-gem</id>
+    <id>http://pragdevnotes.com/blog/2011/05/07/dep-walker-gem</id>
     <content type="html"><![CDATA[<p>Common problem that Ruby developers face on Windows is missing dll message box that appears when they try to use gem that has extension library. Usually these Gems are packed with pre-built binary\ extensions for windows and, even though, installation passes without any error or warning, when they try to use them they realize that dll these Gems depend on are missing on the system.</p>
 
 <p>Maybe most common Gem for which this happens is sqlite3, Ruby binding for the SQlite3 embedded database. If sqlite3.dll is missing from the system, after installation of sqlite3 Gem any attempt to use it causes following message box to appear.</p>
@@ -221,9 +221,9 @@ dep_walker -c sqlite3
   
   <entry>
     <title type="html"><![CDATA[Using Selenium with Cucumber through Webrat or Capybara. Which one to choose?]]></title>
-    <link href="http://bosko.github.io/blog/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose/"/>
+    <link href="http://pragdevnotes.com/blog/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose/"/>
     <updated>2010-10-31T13:55:00+01:00</updated>
-    <id>http://bosko.github.io/blog/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose</id>
+    <id>http://pragdevnotes.com/blog/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose</id>
     <content type="html"><![CDATA[<h2>Introduction</h2>
 
 <p>Testing is (or should be) important part of every software development. Over time various testing strategies and supporting tools and frameworks have been developed. Regarding Web development biggest advance has been made in Behavior Driven Development. Consequently many tools for BDD are published and used.</p>

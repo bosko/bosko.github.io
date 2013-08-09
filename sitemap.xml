@@ -1,87 +1,87 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://bosko.github.io/blog/2009/05/20/easy-emacs/</loc>
+        <loc>http://pragdevnotes.com/blog/2009/05/20/easy-emacs/</loc>
         <lastmod>2013-07-29T13:57:54+02:00</lastmod>
     </url>
     <url>
-        <loc>http://bosko.github.io/blog/2009/06/04/splitting-ruby-array/</loc>
+        <loc>http://pragdevnotes.com/blog/2009/06/04/splitting-ruby-array/</loc>
         <lastmod>2013-07-29T13:52:53+02:00</lastmod>
     </url>
     <url>
-        <loc>http://bosko.github.io/blog/2009/06/05/still-on-cvs-too-bad/</loc>
+        <loc>http://pragdevnotes.com/blog/2009/06/05/still-on-cvs-too-bad/</loc>
         <lastmod>2013-07-29T13:28:52+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://bosko.github.io/blog/2010/01/22/rstreamtuner-new-streaming-directories-browser/
+            http://pragdevnotes.com/blog/2010/01/22/rstreamtuner-new-streaming-directories-browser/
         </loc>
         <lastmod>2013-07-29T13:37:38+02:00</lastmod>
     </url>
     <url>
-        <loc>http://bosko.github.io/blog/2010/01/26/rstreamtuner-in-action/</loc>
+        <loc>http://pragdevnotes.com/blog/2010/01/26/rstreamtuner-in-action/</loc>
         <lastmod>2013-07-29T14:01:24+02:00</lastmod>
     </url>
     <url>
-        <loc>http://bosko.github.io/blog/2010/02/18/ruby-rails-and-ms-sql-server/</loc>
+        <loc>http://pragdevnotes.com/blog/2010/02/18/ruby-rails-and-ms-sql-server/</loc>
         <lastmod>2013-07-29T14:39:00+02:00</lastmod>
     </url>
     <url>
-        <loc>http://bosko.github.io/blog/2010/05/16/upgrade-to-lucid-lynx-problems/</loc>
+        <loc>http://pragdevnotes.com/blog/2010/05/16/upgrade-to-lucid-lynx-problems/</loc>
         <lastmod>2013-07-29T14:49:04+02:00</lastmod>
     </url>
     <url>
-        <loc>http://bosko.github.io/blog/2010/08/19/ruby-1-9-2-on-windows-coming-soon/</loc>
+        <loc>http://pragdevnotes.com/blog/2010/08/19/ruby-1-9-2-on-windows-coming-soon/</loc>
         <lastmod>2013-07-29T14:43:09+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://bosko.github.io/blog/2010/09/30/rmre-rails-models-reverse-engineering-gem/
+            http://pragdevnotes.com/blog/2010/09/30/rmre-rails-models-reverse-engineering-gem/
         </loc>
         <lastmod>2013-07-29T14:48:34+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://bosko.github.io/blog/2010/10/03/activerecord-schemadumper-and-mysql-problem/
+            http://pragdevnotes.com/blog/2010/10/03/activerecord-schemadumper-and-mysql-problem/
         </loc>
         <lastmod>2013-07-29T14:54:46+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://bosko.github.io/blog/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose/
+            http://pragdevnotes.com/blog/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose/
         </loc>
         <lastmod>2013-07-29T15:15:30+02:00</lastmod>
     </url>
     <url>
-        <loc>http://bosko.github.io/blog/2011/05/07/dep-walker-gem/</loc>
+        <loc>http://pragdevnotes.com/blog/2011/05/07/dep-walker-gem/</loc>
         <lastmod>2013-07-29T15:24:19+02:00</lastmod>
     </url>
     <url>
-        <loc>http://bosko.github.io/blog/2012/03/07/ruby-on-windows-guides-the-book/</loc>
+        <loc>http://pragdevnotes.com/blog/2012/03/07/ruby-on-windows-guides-the-book/</loc>
         <lastmod>2013-07-29T15:28:21+02:00</lastmod>
     </url>
     <url>
-        <loc>http://bosko.github.io/blog/2012/06/25/exefy-em-all/</loc>
+        <loc>http://pragdevnotes.com/blog/2012/06/25/exefy-em-all/</loc>
         <lastmod>2013-07-29T15:39:30+02:00</lastmod>
     </url>
     <url>
-        <loc>http://bosko.github.io/blog/2012/06/27/make-ruby-tests-greener/</loc>
+        <loc>http://pragdevnotes.com/blog/2012/06/27/make-ruby-tests-greener/</loc>
         <lastmod>2013-07-29T15:44:53+02:00</lastmod>
     </url>
     <url>
-        <loc>http://bosko.github.io/about/</loc>
+        <loc>http://pragdevnotes.com/about/</loc>
         <lastmod>2013-07-28T20:16:02+02:00</lastmod>
     </url>
     <url>
-        <loc>http://bosko.github.io/blog/archives/</loc>
+        <loc>http://pragdevnotes.com/blog/archives/</loc>
         <lastmod>2013-07-29T15:44:53+02:00</lastmod>
     </url>
     <url>
-        <loc>http://bosko.github.io/</loc>
+        <loc>http://pragdevnotes.com/</loc>
         <lastmod>2013-07-29T15:44:53+02:00</lastmod>
     </url>
     <url>
-        <loc>http://bosko.github.io/robots.txt</loc>
+        <loc>http://pragdevnotes.com/robots.txt</loc>
         <lastmod>2013-07-28T20:08:05+02:00</lastmod>
     </url>
 </urlset>

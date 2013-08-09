@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://bosko.github.io/sitemap.xml 
+Sitemap: http://pragdevnotes.com/sitemap.xml 

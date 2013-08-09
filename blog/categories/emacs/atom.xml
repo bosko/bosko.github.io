@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: emacs, | Pragmatic Development Notes]]></title>
-  <link href="http://bosko.github.io/blog/categories/emacs/atom.xml" rel="self"/>
-  <link href="http://bosko.github.io/"/>
-  <updated>2013-08-07T17:56:27+02:00</updated>
-  <id>http://bosko.github.io/</id>
+  <link href="http://pragdevnotes.com/blog/categories/emacs/atom.xml" rel="self"/>
+  <link href="http://pragdevnotes.com/"/>
+  <updated>2013-08-09T23:42:07+02:00</updated>
+  <id>http://pragdevnotes.com/</id>
   <author>
     <name><![CDATA[Boško Ivanišević]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Still on CVS? Too Bad!]]></title>
-    <link href="http://bosko.github.io/blog/2009/06/05/still-on-cvs-too-bad/"/>
+    <link href="http://pragdevnotes.com/blog/2009/06/05/still-on-cvs-too-bad/"/>
     <updated>2009-06-05T19:00:00+02:00</updated>
-    <id>http://bosko.github.io/blog/2009/06/05/still-on-cvs-too-bad</id>
+    <id>http://pragdevnotes.com/blog/2009/06/05/still-on-cvs-too-bad</id>
     <content type="html"><![CDATA[<p>At the and of May 2009 Savannah disks crashed. You can read more about it <a href="http://lists.gnu.org/archive/html/savannah-users/2009-05/msg00023.html">here</a>. This is something no one can predict. You never know when your hardware will let you down, and there is no cure for that. Disks will be replaced, system reinstalled, backups restored and that’s it. Or is it?</p>
 
 <p>Not completely if you are using CVS or SVN and there were some commits after the last backup. Emacs developers spent few days in the <a href="http://lists.gnu.org/archive/html/emacs-devel/2009-06/msg00056.html">discussion</a> to determine what commits they lost.</p>
@@ -30,9 +30,9 @@ to mention that Git gives you possibilities you can only dream of in CVS and SVN
   
   <entry>
     <title type="html"><![CDATA[Easy Emacs]]></title>
-    <link href="http://bosko.github.io/blog/2009/05/20/easy-emacs/"/>
+    <link href="http://pragdevnotes.com/blog/2009/05/20/easy-emacs/"/>
     <updated>2009-05-20T21:43:00+02:00</updated>
-    <id>http://bosko.github.io/blog/2009/05/20/easy-emacs</id>
+    <id>http://pragdevnotes.com/blog/2009/05/20/easy-emacs</id>
     <content type="html"><![CDATA[<h2>First step</h2>
 
 <p>In my <a href="http://pragmaticdevnotes.wordpress.com">previous articles</a> I wrote a lot about Emacs, its customization and adjusting it for Ruby and Ruby on Rails development. Although these articles give detailed

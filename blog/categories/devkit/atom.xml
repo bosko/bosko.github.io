@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: devkit | Pragmatic Development Notes]]></title>
-  <link href="http://bosko.github.io/blog/categories/devkit/atom.xml" rel="self"/>
-  <link href="http://bosko.github.io/"/>
-  <updated>2013-08-07T17:56:27+02:00</updated>
-  <id>http://bosko.github.io/</id>
+  <link href="http://pragdevnotes.com/blog/categories/devkit/atom.xml" rel="self"/>
+  <link href="http://pragdevnotes.com/"/>
+  <updated>2013-08-09T23:42:07+02:00</updated>
+  <id>http://pragdevnotes.com/</id>
   <author>
     <name><![CDATA[Boško Ivanišević]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[dep_walker Gem]]></title>
-    <link href="http://bosko.github.io/blog/2011/05/07/dep-walker-gem/"/>
+    <link href="http://pragdevnotes.com/blog/2011/05/07/dep-walker-gem/"/>
     <updated>2011-05-07T06:40:00+02:00</updated>
-    <id>http://bosko.github.io/blog/2011/05/07/dep-walker-gem</id>
+    <id>http://pragdevnotes.com/blog/2011/05/07/dep-walker-gem</id>
     <content type="html"><![CDATA[<p>Common problem that Ruby developers face on Windows is missing dll message box that appears when they try to use gem that has extension library. Usually these Gems are packed with pre-built binary\ extensions for windows and, even though, installation passes without any error or warning, when they try to use them they realize that dll these Gems depend on are missing on the system.</p>
 
 <p>Maybe most common Gem for which this happens is sqlite3, Ruby binding for the SQlite3 embedded database. If sqlite3.dll is missing from the system, after installation of sqlite3 Gem any attempt to use it causes following message box to appear.</p>

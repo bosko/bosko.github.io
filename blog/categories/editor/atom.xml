@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: editor | Pragmatic Development Notes]]></title>
-  <link href="http://bosko.github.io/blog/categories/editor/atom.xml" rel="self"/>
-  <link href="http://bosko.github.io/"/>
-  <updated>2013-08-07T17:56:27+02:00</updated>
-  <id>http://bosko.github.io/</id>
+  <link href="http://pragdevnotes.com/blog/categories/editor/atom.xml" rel="self"/>
+  <link href="http://pragdevnotes.com/"/>
+  <updated>2013-08-09T23:42:07+02:00</updated>
+  <id>http://pragdevnotes.com/</id>
   <author>
     <name><![CDATA[Boško Ivanišević]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Easy Emacs]]></title>
-    <link href="http://bosko.github.io/blog/2009/05/20/easy-emacs/"/>
+    <link href="http://pragdevnotes.com/blog/2009/05/20/easy-emacs/"/>
     <updated>2009-05-20T21:43:00+02:00</updated>
-    <id>http://bosko.github.io/blog/2009/05/20/easy-emacs</id>
+    <id>http://pragdevnotes.com/blog/2009/05/20/easy-emacs</id>
     <content type="html"><![CDATA[<h2>First step</h2>
 
 <p>In my <a href="http://pragmaticdevnotes.wordpress.com">previous articles</a> I wrote a lot about Emacs, its customization and adjusting it for Ruby and Ruby on Rails development. Although these articles give detailed
