@@ -4,7 +4,7 @@
   <title><![CDATA[Category: testing | Pragmatic Development Notes]]></title>
   <link href="http://pragdevnotes.com/blog/categories/testing/atom.xml" rel="self"/>
   <link href="http://pragdevnotes.com/"/>
-  <updated>2013-08-26T08:56:57+02:00</updated>
+  <updated>2013-10-14T09:13:12+02:00</updated>
   <id>http://pragdevnotes.com/</id>
   <author>
     <name><![CDATA[Boško Ivanišević]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Using Selenium with Cucumber through Webrat or Capybara. Which one to choose?]]></title>
-    <link href="http://pragdevnotes.com/blog/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose/"/>
+    <link href="http://pragdevnotes.com/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose/"/>
     <updated>2010-10-31T13:55:00+01:00</updated>
-    <id>http://pragdevnotes.com/blog/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose</id>
+    <id>http://pragdevnotes.com/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose</id>
     <content type="html"><![CDATA[<h2>Introduction</h2>
 
 <p>Testing is (or should be) important part of every software development. Over time various testing strategies and supporting tools and frameworks have been developed. Regarding Web development biggest advance has been made in Behavior Driven Development. Consequently many tools for BDD are published and used.</p>

@@ -4,7 +4,7 @@
   <title><![CDATA[Pragmatic Development Notes]]></title>
   <link href="http://pragdevnotes.com/atom.xml" rel="self"/>
   <link href="http://pragdevnotes.com/"/>
-  <updated>2013-08-26T08:56:57+02:00</updated>
+  <updated>2013-10-14T09:13:12+02:00</updated>
   <id>http://pragdevnotes.com/</id>
   <author>
     <name><![CDATA[Boško Ivanišević]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Make Ruby Tests Greener]]></title>
-    <link href="http://pragdevnotes.com/blog/2012/06/27/make-ruby-tests-greener/"/>
+    <link href="http://pragdevnotes.com/2012/06/27/make-ruby-tests-greener/"/>
     <updated>2012-06-27T01:42:00+02:00</updated>
-    <id>http://pragdevnotes.com/blog/2012/06/27/make-ruby-tests-greener</id>
+    <id>http://pragdevnotes.com/2012/06/27/make-ruby-tests-greener</id>
     <content type="html"><![CDATA[<p><a href="https://groups.google.com/forum/?fromgroups#!topic/rubyinstaller/A92K_EYJX2A">The Ruby Greener Test Challenge</a> is here. It is attempt to make Ruby on Windows better and more stable and direct goal of this challenge is to fix all tests and to reach 0F0E (0 failures, 0 errors) state. If you are Ruby developer on Windows you should consider taking a role in the challenge.</p>
 
 <p>If you decide to try to fix some failing tests or existing errors it is easy to set up complete environment with the help of <a href="http://cdn.rubyinstaller.org/archives/experimental/RubyChallengePack-v1.exe">Ruby Challenge Pack</a>. I will not write about details here since you have all you need in the initial challenge post given in the link on top of the article. Instead I will give you few suggestions about participating in the challenge.</p>
@@ -58,9 +58,9 @@
   
   <entry>
     <title type="html"><![CDATA[Exefy ‘Em All]]></title>
-    <link href="http://pragdevnotes.com/blog/2012/06/25/exefy-em-all/"/>
+    <link href="http://pragdevnotes.com/2012/06/25/exefy-em-all/"/>
     <updated>2012-06-25T01:51:00+02:00</updated>
-    <id>http://pragdevnotes.com/blog/2012/06/25/exefy-em-all</id>
+    <id>http://pragdevnotes.com/2012/06/25/exefy-em-all</id>
     <content type="html"><![CDATA[<p>Recently Luis Lavena started thread <a href="https://groups.google.com/d/topic/rubyinstaller/fQCuPfiuuRc/discussion">Idea: executable stubs to replace batch files</a> on RubyInstaller mailing list. In short, the idea is to use command line applications &ndash; executable stubs &ndash; instead of batch files in RubyInstaller Ruby versions. Using command line applications instead of batch files has several benefits. First one, maybe not so important, is to avoid annoying</p>
 
 <p>Terminate batch job (Y/N)?</p>
@@ -184,9 +184,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ruby on Windows Guides - The Book]]></title>
-    <link href="http://pragdevnotes.com/blog/2012/03/07/ruby-on-windows-guides-the-book/"/>
+    <link href="http://pragdevnotes.com/2012/03/07/ruby-on-windows-guides-the-book/"/>
     <updated>2012-03-07T20:02:00+01:00</updated>
-    <id>http://pragdevnotes.com/blog/2012/03/07/ruby-on-windows-guides-the-book</id>
+    <id>http://pragdevnotes.com/2012/03/07/ruby-on-windows-guides-the-book</id>
     <content type="html"><![CDATA[<p>I use Windows on my everyday work. First thing I do after installing Windows is to set up complete environment for Ruby. In “ancient” days (measuring in computer years, of course) I have used One Click Installer. Later, <a href="http://www.rubyinstaller.org">RubyInstaller</a> came on the scene.</p>
 
 <p>With much better foundations, RubyInstaller simplified Ruby usage and made it look like on Linux, Ruby’s native platform. Key benefit of RubyInstaller over One Click installer was possibility to install Ruby native gems written in C. Switching from commercial VisualStudio, used in One Click Installer, to MinGW build tool-chain in RubyInstaller was crucial decision made by Luis Lavena, great author of RubyInstaller.</p>
@@ -216,9 +216,9 @@
   
   <entry>
     <title type="html"><![CDATA[dep_walker Gem]]></title>
-    <link href="http://pragdevnotes.com/blog/2011/05/07/dep-walker-gem/"/>
+    <link href="http://pragdevnotes.com/2011/05/07/dep-walker-gem/"/>
     <updated>2011-05-07T06:40:00+02:00</updated>
-    <id>http://pragdevnotes.com/blog/2011/05/07/dep-walker-gem</id>
+    <id>http://pragdevnotes.com/2011/05/07/dep-walker-gem</id>
     <content type="html"><![CDATA[<p>Common problem that Ruby developers face on Windows is missing dll message box that appears when they try to use gem that has extension library. Usually these Gems are packed with pre-built binary\ extensions for windows and, even though, installation passes without any error or warning, when they try to use them they realize that dll these Gems depend on are missing on the system.</p>
 
 <p>Maybe most common Gem for which this happens is sqlite3, Ruby binding for the SQlite3 embedded database. If sqlite3.dll is missing from the system, after installation of sqlite3 Gem any attempt to use it causes following message box to appear.</p>
@@ -251,9 +251,9 @@
   
   <entry>
     <title type="html"><![CDATA[Using Selenium with Cucumber through Webrat or Capybara. Which one to choose?]]></title>
-    <link href="http://pragdevnotes.com/blog/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose/"/>
+    <link href="http://pragdevnotes.com/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose/"/>
     <updated>2010-10-31T13:55:00+01:00</updated>
-    <id>http://pragdevnotes.com/blog/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose</id>
+    <id>http://pragdevnotes.com/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose</id>
     <content type="html"><![CDATA[<h2>Introduction</h2>
 
 <p>Testing is (or should be) important part of every software development. Over time various testing strategies and supporting tools and frameworks have been developed. Regarding Web development biggest advance has been made in Behavior Driven Development. Consequently many tools for BDD are published and used.</p>
@@ -497,9 +497,9 @@
   
   <entry>
     <title type="html"><![CDATA[ActiveRecord SchemaDumper and MySQL problem]]></title>
-    <link href="http://pragdevnotes.com/blog/2010/10/03/activerecord-schemadumper-and-mysql-problem/"/>
+    <link href="http://pragdevnotes.com/2010/10/03/activerecord-schemadumper-and-mysql-problem/"/>
     <updated>2010-10-03T20:31:00+02:00</updated>
-    <id>http://pragdevnotes.com/blog/2010/10/03/activerecord-schemadumper-and-mysql-problem</id>
+    <id>http://pragdevnotes.com/2010/10/03/activerecord-schemadumper-and-mysql-problem</id>
     <content type="html"><![CDATA[<p>After finishing first version of <a href="http://github.com/bosko/rmre">Rmre</a> and issuing fix gem dependency in version 0.0.2, I got an idea for additional functionality. Why not use Rmre for dumping complete schema with all foreign keys data? What would be possible scenario for using this, one might ask? We have possibility to create ActiveRecord models in order to move to Ruby on Rails where main premise is to keep logic out of database and maintain it in application. Therefore we do not need foreign keys since we already have constraints defined in models.</p>
 
 <p>But what if you cannot move to Ruby on Rails and you only have to change DBE, i.e. instead of MS SQL you must use Oracle? In that case you still have to work with legacy database from PHP or Hibernate in Java and “<em>only</em>” thing you have to do is to make create script for all tables but for another DBE. When database has hundreds of tables with lots of relations this can turn into nightmare, especially if you have to maintain both versions.</p>
@@ -600,9 +600,9 @@
   
   <entry>
     <title type="html"><![CDATA[RMRE - rails models reverse engineering gem]]></title>
-    <link href="http://pragdevnotes.com/blog/2010/09/30/rmre-rails-models-reverse-engineering-gem/"/>
+    <link href="http://pragdevnotes.com/2010/09/30/rmre-rails-models-reverse-engineering-gem/"/>
     <updated>2010-09-30T13:50:00+02:00</updated>
-    <id>http://pragdevnotes.com/blog/2010/09/30/rmre-rails-models-reverse-engineering-gem</id>
+    <id>http://pragdevnotes.com/2010/09/30/rmre-rails-models-reverse-engineering-gem</id>
     <content type="html"><![CDATA[<p>Very often I have to work on databases which do not follow ActiveRecord convention and making ActiveRecord models, if number of tables is large, is very slow and boring task. In order to speed up and simplify it I’ve created <a href="http://github.com/bosko/rmre">Rmre gem</a>. Gem is quite simple yet you might find it useful if you want to create fixtures, migrations or simply port application to Ruby on Rails.</p>
 
 <p>So how it works? For each table in the database, gem creates model. Name of the model is created using Rails <code>classify</code> method. Moreover, if table’s primary key is not column named “id” gem sets primary key by adding <code>set_primary_key "primaryKeyColumnName"</code> line to the model. In addition for MySQL, PostgreSQL, Oracle or MS SQL foreign keys are analyzed and for each constraint gem generates <code>belongs_to</code> or <code>has_many</code> lines. Here is model created for table <em>store</em> in <a href="http://dev.mysql.com/doc/sakila/en/sakila.html">Sakila</a> MySQL test database:</p>
@@ -632,18 +632,18 @@
   
   <entry>
     <title type="html"><![CDATA[Ruby 1.9.2 on Windows - coming soon]]></title>
-    <link href="http://pragdevnotes.com/blog/2010/08/19/ruby-1-9-2-on-windows-coming-soon/"/>
+    <link href="http://pragdevnotes.com/2010/08/19/ruby-1-9-2-on-windows-coming-soon/"/>
     <updated>2010-08-19T22:33:00+02:00</updated>
-    <id>http://pragdevnotes.com/blog/2010/08/19/ruby-1-9-2-on-windows-coming-soon</id>
+    <id>http://pragdevnotes.com/2010/08/19/ruby-1-9-2-on-windows-coming-soon</id>
     <content type="html"><![CDATA[<p>I guess all Ruby and Windows users will be happy to hear that <a href="http://rubyinstaller.org/">RubyInstaller</a> team is about to release Ruby 1.9.2p0 very soon. See details in <a href="http://groups.google.com/group/rubyinstaller/browse_thread/thread/a9b1149f9ee77a72">this thread</a>. It will take some time to update documentation so be patient and keep an eye on the project home page.</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Upgrade to Lucid Lynx problems]]></title>
-    <link href="http://pragdevnotes.com/blog/2010/05/16/upgrade-to-lucid-lynx-problems/"/>
+    <link href="http://pragdevnotes.com/2010/05/16/upgrade-to-lucid-lynx-problems/"/>
     <updated>2010-05-16T10:41:00+02:00</updated>
-    <id>http://pragdevnotes.com/blog/2010/05/16/upgrade-to-lucid-lynx-problems</id>
+    <id>http://pragdevnotes.com/2010/05/16/upgrade-to-lucid-lynx-problems</id>
     <content type="html"><![CDATA[<p>After several successful updates of Ubuntu (starting from 8.10) last one was, more or less, complete mess. I was waiting impatiently for new Lucid Lynx to be released and started update as soon as I downloaded and burned DVD iso image. It seems everything goes smoothly till first reboot. Emacs was completely removed and new version was not installed. On my Compaq 8710w laptop with Quadro FX 1600M graphics card splash screen was displayed in low resolution and looked quite ugly. Moreover I was not able to install Emacs again.</p>
 
 <p>I’ve decided to reinstall everything, so I’ve made backup of my home folder and start installation on a newly formatted partitions. Situation was a little bit better. I was able to install Emacs and all applications I need but problem with graphics card was still there as well as lousy splash screen. I’ve found few suggestions how to fix that by altering grub files and it really solved resolution problem but, at the same time, whole splash screen was shifted left and basically I was again on the beginning.</p>
@@ -658,9 +658,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ruby, Rails and MS SQL server]]></title>
-    <link href="http://pragdevnotes.com/blog/2010/02/18/ruby-rails-and-ms-sql-server/"/>
+    <link href="http://pragdevnotes.com/2010/02/18/ruby-rails-and-ms-sql-server/"/>
     <updated>2010-02-18T22:34:00+01:00</updated>
-    <id>http://pragdevnotes.com/blog/2010/02/18/ruby-rails-and-ms-sql-server</id>
+    <id>http://pragdevnotes.com/2010/02/18/ruby-rails-and-ms-sql-server</id>
     <content type="html"><![CDATA[<p>Setting up Rails and Ruby to use MS SQL server was always painful task. Fortunately things have changed &ndash; a lot! With new <a href="http://github.com/rails-sqlserver/2000-2005-adapter">Rails SQL Server 2000, 2005 and 2008 Adapter</a> and Christian Werner’s <a href="http://www.ch-werner.de/rubyodbc">ruby-odbc gem</a> you can do it in a few minutes.</p>
 
 <p>If you want to use these gems on Windows grab Ruby installation from <a href="http://www.rubyinstaller.org">RubyInstaller</a> site and be sure to install <a href="http://rubyforge.org/frs/download.php/66888/devkit-3.4.5r3-20091110.7z">DevKit</a> prior to installing ruby-odbc.</p>
@@ -673,9 +673,9 @@
   
   <entry>
     <title type="html"><![CDATA[RStreamTuner in action]]></title>
-    <link href="http://pragdevnotes.com/blog/2010/01/26/rstreamtuner-in-action/"/>
+    <link href="http://pragdevnotes.com/2010/01/26/rstreamtuner-in-action/"/>
     <updated>2010-01-26T19:00:00+01:00</updated>
-    <id>http://pragdevnotes.com/blog/2010/01/26/rstreamtuner-in-action</id>
+    <id>http://pragdevnotes.com/2010/01/26/rstreamtuner-in-action</id>
     <content type="html"><![CDATA[<p>Friend of mine criticised me why I didn’t put some screenshots on <a href="http://github.com/bosko/rstreamtuner">project page</a>. Since I couldn’t find a way to do it there I’ve decided to put some screenshots here, so
 here they are.</p>
 
@@ -687,9 +687,9 @@ here they are.</p>
   
   <entry>
     <title type="html"><![CDATA[RStreamTuner - new streaming directories browser]]></title>
-    <link href="http://pragdevnotes.com/blog/2010/01/22/rstreamtuner-new-streaming-directories-browser/"/>
+    <link href="http://pragdevnotes.com/2010/01/22/rstreamtuner-new-streaming-directories-browser/"/>
     <updated>2010-01-22T19:00:00+01:00</updated>
-    <id>http://pragdevnotes.com/blog/2010/01/22/rstreamtuner-new-streaming-directories-browser</id>
+    <id>http://pragdevnotes.com/2010/01/22/rstreamtuner-new-streaming-directories-browser</id>
     <content type="html"><![CDATA[<p>I like to listen various Internet radio stations while I work. My favourite application was
 <a href="http://www.nongnu.org/streamtuner">streamtuner</a> mostly because it had support for SHOUTcast. Unluckily new SHOUTcast design cannot be handled by <strong>streamtuner</strong> and future development on this application is
 stopped. In other words there is a little chance for streamtuner to be upgraded so I’ve decided to make my own streaming directories browser &ndash; <a href="http://github.com/bosko/rstreamtuner">RStreamTuner (Ruby Stream Tuner)</a>.</p>
@@ -708,9 +708,9 @@ course if you have suggestions do not hasitate to drop me a note and if you make
   
   <entry>
     <title type="html"><![CDATA[Still on CVS? Too Bad!]]></title>
-    <link href="http://pragdevnotes.com/blog/2009/06/05/still-on-cvs-too-bad/"/>
+    <link href="http://pragdevnotes.com/2009/06/05/still-on-cvs-too-bad/"/>
     <updated>2009-06-05T19:00:00+02:00</updated>
-    <id>http://pragdevnotes.com/blog/2009/06/05/still-on-cvs-too-bad</id>
+    <id>http://pragdevnotes.com/2009/06/05/still-on-cvs-too-bad</id>
     <content type="html"><![CDATA[<p>At the and of May 2009 Savannah disks crashed. You can read more about it <a href="http://lists.gnu.org/archive/html/savannah-users/2009-05/msg00023.html">here</a>. This is something no one can predict. You never know when your hardware will let you down, and there is no cure for that. Disks will be replaced, system reinstalled, backups restored and that’s it. Or is it?</p>
 
 <p>Not completely if you are using CVS or SVN and there were some commits after the last backup. Emacs developers spent few days in the <a href="http://lists.gnu.org/archive/html/emacs-devel/2009-06/msg00056.html">discussion</a> to determine what commits they lost.</p>
@@ -723,9 +723,9 @@ to mention that Git gives you possibilities you can only dream of in CVS and SVN
   
   <entry>
     <title type="html"><![CDATA[Splitting Ruby Array]]></title>
-    <link href="http://pragdevnotes.com/blog/2009/06/04/splitting-ruby-array/"/>
+    <link href="http://pragdevnotes.com/2009/06/04/splitting-ruby-array/"/>
     <updated>2009-06-04T19:00:00+02:00</updated>
-    <id>http://pragdevnotes.com/blog/2009/06/04/splitting-ruby-array</id>
+    <id>http://pragdevnotes.com/2009/06/04/splitting-ruby-array</id>
     <content type="html"><![CDATA[<p>Recently I had to process arrays of data with more than thousand of members but requirement was not to process them one by one. Instead I had to split array into chunks and to process each of sub-arrays separately. I&rsquo;ve found one definition of chunk method within comments on this <a href="http://snippets.dzone.com/posts/show/3486">post</a> and I&rsquo;m including it here. This method splits array in given number of sub-arrays and I needed a version that will split array in the sub-arrays that have predefined size (ok, I know I could simply calculate a number of chunks by dividing total number of elements by required number of elements, but I just wanted one method that&rsquo;ll do all that for me). So I wrote chunk_max_num method. If maximum number of elements per array is zero or negative it will return original array and for all other cases it will return array which has arrays of given size as members.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -765,9 +765,9 @@ to mention that Git gives you possibilities you can only dream of in CVS and SVN
   
   <entry>
     <title type="html"><![CDATA[Easy Emacs]]></title>
-    <link href="http://pragdevnotes.com/blog/2009/05/20/easy-emacs/"/>
+    <link href="http://pragdevnotes.com/2009/05/20/easy-emacs/"/>
     <updated>2009-05-20T21:43:00+02:00</updated>
-    <id>http://pragdevnotes.com/blog/2009/05/20/easy-emacs</id>
+    <id>http://pragdevnotes.com/2009/05/20/easy-emacs</id>
     <content type="html"><![CDATA[<h2>First step</h2>
 
 <p>In my <a href="http://pragmaticdevnotes.wordpress.com">previous articles</a> I wrote a lot about Emacs, its customization and adjusting it for Ruby and Ruby on Rails development. Although these articles give detailed

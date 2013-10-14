@@ -1,71 +1,67 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://pragdevnotes.com/blog/2009/05/20/easy-emacs/</loc>
+        <loc>http://pragdevnotes.com/2009/05/20/easy-emacs/</loc>
         <lastmod>2013-08-10T00:01:24+02:00</lastmod>
     </url>
     <url>
-        <loc>http://pragdevnotes.com/blog/2009/06/04/splitting-ruby-array/</loc>
+        <loc>http://pragdevnotes.com/2009/06/04/splitting-ruby-array/</loc>
         <lastmod>2013-08-10T00:01:24+02:00</lastmod>
     </url>
     <url>
-        <loc>http://pragdevnotes.com/blog/2009/06/05/still-on-cvs-too-bad/</loc>
-        <lastmod>2013-08-10T00:01:24+02:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://pragdevnotes.com/blog/2010/01/22/rstreamtuner-new-streaming-directories-browser/
-        </loc>
-        <lastmod>2013-08-10T00:01:24+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://pragdevnotes.com/blog/2010/01/26/rstreamtuner-in-action/</loc>
-        <lastmod>2013-08-10T00:01:24+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://pragdevnotes.com/blog/2010/02/18/ruby-rails-and-ms-sql-server/</loc>
-        <lastmod>2013-08-10T00:01:24+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://pragdevnotes.com/blog/2010/05/16/upgrade-to-lucid-lynx-problems/</loc>
-        <lastmod>2013-08-10T00:01:24+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://pragdevnotes.com/blog/2010/08/19/ruby-1-9-2-on-windows-coming-soon/</loc>
+        <loc>http://pragdevnotes.com/2009/06/05/still-on-cvs-too-bad/</loc>
         <lastmod>2013-08-10T00:01:24+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://pragdevnotes.com/blog/2010/09/30/rmre-rails-models-reverse-engineering-gem/
+            http://pragdevnotes.com/2010/01/22/rstreamtuner-new-streaming-directories-browser/
         </loc>
+        <lastmod>2013-08-10T00:01:24+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://pragdevnotes.com/2010/01/26/rstreamtuner-in-action/</loc>
+        <lastmod>2013-08-10T00:01:24+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://pragdevnotes.com/2010/02/18/ruby-rails-and-ms-sql-server/</loc>
+        <lastmod>2013-08-10T00:01:24+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://pragdevnotes.com/2010/05/16/upgrade-to-lucid-lynx-problems/</loc>
+        <lastmod>2013-08-10T00:01:24+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://pragdevnotes.com/2010/08/19/ruby-1-9-2-on-windows-coming-soon/</loc>
+        <lastmod>2013-08-10T00:01:24+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://pragdevnotes.com/2010/09/30/rmre-rails-models-reverse-engineering-gem/</loc>
+        <lastmod>2013-08-10T00:01:24+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://pragdevnotes.com/2010/10/03/activerecord-schemadumper-and-mysql-problem/</loc>
         <lastmod>2013-08-10T00:01:24+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://pragdevnotes.com/blog/2010/10/03/activerecord-schemadumper-and-mysql-problem/
+            http://pragdevnotes.com/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose/
         </loc>
         <lastmod>2013-08-10T00:01:24+02:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://pragdevnotes.com/blog/2010/10/31/using-selenium-with-cucumber-through-webrat-or-capybara-which-one-to-choose/
-        </loc>
+        <loc>http://pragdevnotes.com/2011/05/07/dep-walker-gem/</loc>
         <lastmod>2013-08-10T00:01:24+02:00</lastmod>
     </url>
     <url>
-        <loc>http://pragdevnotes.com/blog/2011/05/07/dep-walker-gem/</loc>
+        <loc>http://pragdevnotes.com/2012/03/07/ruby-on-windows-guides-the-book/</loc>
         <lastmod>2013-08-10T00:01:24+02:00</lastmod>
     </url>
     <url>
-        <loc>http://pragdevnotes.com/blog/2012/03/07/ruby-on-windows-guides-the-book/</loc>
+        <loc>http://pragdevnotes.com/2012/06/25/exefy-em-all/</loc>
         <lastmod>2013-08-10T00:01:24+02:00</lastmod>
     </url>
     <url>
-        <loc>http://pragdevnotes.com/blog/2012/06/25/exefy-em-all/</loc>
-        <lastmod>2013-08-10T00:01:24+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://pragdevnotes.com/blog/2012/06/27/make-ruby-tests-greener/</loc>
+        <loc>http://pragdevnotes.com/2012/06/27/make-ruby-tests-greener/</loc>
         <lastmod>2013-08-10T00:01:24+02:00</lastmod>
     </url>
     <url>

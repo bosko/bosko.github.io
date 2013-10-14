@@ -4,7 +4,7 @@
   <title><![CDATA[Category: general | Pragmatic Development Notes]]></title>
   <link href="http://pragdevnotes.com/blog/categories/general/atom.xml" rel="self"/>
   <link href="http://pragdevnotes.com/"/>
-  <updated>2013-08-26T08:56:57+02:00</updated>
+  <updated>2013-10-14T09:13:12+02:00</updated>
   <id>http://pragdevnotes.com/</id>
   <author>
     <name><![CDATA[Boško Ivanišević]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Upgrade to Lucid Lynx problems]]></title>
-    <link href="http://pragdevnotes.com/blog/2010/05/16/upgrade-to-lucid-lynx-problems/"/>
+    <link href="http://pragdevnotes.com/2010/05/16/upgrade-to-lucid-lynx-problems/"/>
     <updated>2010-05-16T10:41:00+02:00</updated>
-    <id>http://pragdevnotes.com/blog/2010/05/16/upgrade-to-lucid-lynx-problems</id>
+    <id>http://pragdevnotes.com/2010/05/16/upgrade-to-lucid-lynx-problems</id>
     <content type="html"><![CDATA[<p>After several successful updates of Ubuntu (starting from 8.10) last one was, more or less, complete mess. I was waiting impatiently for new Lucid Lynx to be released and started update as soon as I downloaded and burned DVD iso image. It seems everything goes smoothly till first reboot. Emacs was completely removed and new version was not installed. On my Compaq 8710w laptop with Quadro FX 1600M graphics card splash screen was displayed in low resolution and looked quite ugly. Moreover I was not able to install Emacs again.</p>
 
 <p>I’ve decided to reinstall everything, so I’ve made backup of my home folder and start installation on a newly formatted partitions. Situation was a little bit better. I was able to install Emacs and all applications I need but problem with graphics card was still there as well as lousy splash screen. I’ve found few suggestions how to fix that by altering grub files and it really solved resolution problem but, at the same time, whole splash screen was shifted left and basically I was again on the beginning.</p>

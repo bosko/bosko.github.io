@@ -4,7 +4,7 @@
   <title><![CDATA[Category: book | Pragmatic Development Notes]]></title>
   <link href="http://pragdevnotes.com/blog/categories/book/atom.xml" rel="self"/>
   <link href="http://pragdevnotes.com/"/>
-  <updated>2013-08-26T08:56:57+02:00</updated>
+  <updated>2013-10-14T09:13:12+02:00</updated>
   <id>http://pragdevnotes.com/</id>
   <author>
     <name><![CDATA[Boško Ivanišević]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ruby on Windows Guides - The Book]]></title>
-    <link href="http://pragdevnotes.com/blog/2012/03/07/ruby-on-windows-guides-the-book/"/>
+    <link href="http://pragdevnotes.com/2012/03/07/ruby-on-windows-guides-the-book/"/>
     <updated>2012-03-07T20:02:00+01:00</updated>
-    <id>http://pragdevnotes.com/blog/2012/03/07/ruby-on-windows-guides-the-book</id>
+    <id>http://pragdevnotes.com/2012/03/07/ruby-on-windows-guides-the-book</id>
     <content type="html"><![CDATA[<p>I use Windows on my everyday work. First thing I do after installing Windows is to set up complete environment for Ruby. In “ancient” days (measuring in computer years, of course) I have used One Click Installer. Later, <a href="http://www.rubyinstaller.org">RubyInstaller</a> came on the scene.</p>
 
 <p>With much better foundations, RubyInstaller simplified Ruby usage and made it look like on Linux, Ruby’s native platform. Key benefit of RubyInstaller over One Click installer was possibility to install Ruby native gems written in C. Switching from commercial VisualStudio, used in One Click Installer, to MinGW build tool-chain in RubyInstaller was crucial decision made by Luis Lavena, great author of RubyInstaller.</p>

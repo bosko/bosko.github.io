@@ -4,7 +4,7 @@
   <title><![CDATA[Category: internet-radio, | Pragmatic Development Notes]]></title>
   <link href="http://pragdevnotes.com/blog/categories/internet-radio/atom.xml" rel="self"/>
   <link href="http://pragdevnotes.com/"/>
-  <updated>2013-08-26T08:56:57+02:00</updated>
+  <updated>2013-10-14T09:13:12+02:00</updated>
   <id>http://pragdevnotes.com/</id>
   <author>
     <name><![CDATA[Boško Ivanišević]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[RStreamTuner in action]]></title>
-    <link href="http://pragdevnotes.com/blog/2010/01/26/rstreamtuner-in-action/"/>
+    <link href="http://pragdevnotes.com/2010/01/26/rstreamtuner-in-action/"/>
     <updated>2010-01-26T19:00:00+01:00</updated>
-    <id>http://pragdevnotes.com/blog/2010/01/26/rstreamtuner-in-action</id>
+    <id>http://pragdevnotes.com/2010/01/26/rstreamtuner-in-action</id>
     <content type="html"><![CDATA[<p>Friend of mine criticised me why I didn’t put some screenshots on <a href="http://github.com/bosko/rstreamtuner">project page</a>. Since I couldn’t find a way to do it there I’ve decided to put some screenshots here, so
 here they are.</p>
 
@@ -29,9 +29,9 @@ here they are.</p>
   
   <entry>
     <title type="html"><![CDATA[RStreamTuner - new streaming directories browser]]></title>
-    <link href="http://pragdevnotes.com/blog/2010/01/22/rstreamtuner-new-streaming-directories-browser/"/>
+    <link href="http://pragdevnotes.com/2010/01/22/rstreamtuner-new-streaming-directories-browser/"/>
     <updated>2010-01-22T19:00:00+01:00</updated>
-    <id>http://pragdevnotes.com/blog/2010/01/22/rstreamtuner-new-streaming-directories-browser</id>
+    <id>http://pragdevnotes.com/2010/01/22/rstreamtuner-new-streaming-directories-browser</id>
     <content type="html"><![CDATA[<p>I like to listen various Internet radio stations while I work. My favourite application was
 <a href="http://www.nongnu.org/streamtuner">streamtuner</a> mostly because it had support for SHOUTcast. Unluckily new SHOUTcast design cannot be handled by <strong>streamtuner</strong> and future development on this application is
 stopped. In other words there is a little chance for streamtuner to be upgraded so I’ve decided to make my own streaming directories browser &ndash; <a href="http://github.com/bosko/rstreamtuner">RStreamTuner (Ruby Stream Tuner)</a>.</p>

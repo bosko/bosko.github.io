@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ActiveRecord | Pragmatic Development Notes]]></title>
   <link href="http://pragdevnotes.com/blog/categories/activerecord/atom.xml" rel="self"/>
   <link href="http://pragdevnotes.com/"/>
-  <updated>2013-08-26T08:56:57+02:00</updated>
+  <updated>2013-10-14T09:13:12+02:00</updated>
   <id>http://pragdevnotes.com/</id>
   <author>
     <name><![CDATA[Boško Ivanišević]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[ActiveRecord SchemaDumper and MySQL problem]]></title>
-    <link href="http://pragdevnotes.com/blog/2010/10/03/activerecord-schemadumper-and-mysql-problem/"/>
+    <link href="http://pragdevnotes.com/2010/10/03/activerecord-schemadumper-and-mysql-problem/"/>
     <updated>2010-10-03T20:31:00+02:00</updated>
-    <id>http://pragdevnotes.com/blog/2010/10/03/activerecord-schemadumper-and-mysql-problem</id>
+    <id>http://pragdevnotes.com/2010/10/03/activerecord-schemadumper-and-mysql-problem</id>
     <content type="html"><![CDATA[<p>After finishing first version of <a href="http://github.com/bosko/rmre">Rmre</a> and issuing fix gem dependency in version 0.0.2, I got an idea for additional functionality. Why not use Rmre for dumping complete schema with all foreign keys data? What would be possible scenario for using this, one might ask? We have possibility to create ActiveRecord models in order to move to Ruby on Rails where main premise is to keep logic out of database and maintain it in application. Therefore we do not need foreign keys since we already have constraints defined in models.</p>
 
 <p>But what if you cannot move to Ruby on Rails and you only have to change DBE, i.e. instead of MS SQL you must use Oracle? In that case you still have to work with legacy database from PHP or Hibernate in Java and “<em>only</em>” thing you have to do is to make create script for all tables but for another DBE. When database has hundreds of tables with lots of relations this can turn into nightmare, especially if you have to maintain both versions.</p>
@@ -94,9 +94,9 @@ end
   
   <entry>
     <title type="html"><![CDATA[RMRE - rails models reverse engineering gem]]></title>
-    <link href="http://pragdevnotes.com/blog/2010/09/30/rmre-rails-models-reverse-engineering-gem/"/>
+    <link href="http://pragdevnotes.com/2010/09/30/rmre-rails-models-reverse-engineering-gem/"/>
     <updated>2010-09-30T13:50:00+02:00</updated>
-    <id>http://pragdevnotes.com/blog/2010/09/30/rmre-rails-models-reverse-engineering-gem</id>
+    <id>http://pragdevnotes.com/2010/09/30/rmre-rails-models-reverse-engineering-gem</id>
     <content type="html"><![CDATA[<p>Very often I have to work on databases which do not follow ActiveRecord convention and making ActiveRecord models, if number of tables is large, is very slow and boring task. In order to speed up and simplify it I’ve created <a href="http://github.com/bosko/rmre">Rmre gem</a>. Gem is quite simple yet you might find it useful if you want to create fixtures, migrations or simply port application to Ruby on Rails.</p>
 
 <p>So how it works? For each table in the database, gem creates model. Name of the model is created using Rails <code>classify</code> method. Moreover, if table’s primary key is not column named “id” gem sets primary key by adding <code>set_primary_key "primaryKeyColumnName"</code> line to the model. In addition for MySQL, PostgreSQL, Oracle or MS SQL foreign keys are analyzed and for each constraint gem generates <code>belongs_to</code> or <code>has_many</code> lines. Here is model created for table <em>store</em> in <a href="http://dev.mysql.com/doc/sakila/en/sakila.html">Sakila</a> MySQL test database:</p>
