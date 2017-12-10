@@ -1,0 +1,14 @@
+---
+layout: post
+title: "Still on CVS? Too Bad!"
+date: 2009-06-05 19:00
+comments: true
+tags: emacs git
+---
+At the and of May 2009 Savannah disks crashed. You can read more about it [here](http://lists.gnu.org/archive/html/savannah-users/2009-05/msg00023.html). This is something no one can predict. You never know when your hardware will let you down, and there is no cure for that. Disks will be replaced, system reinstalled, backups restored and that’s it. Or is it?
+
+Not completely if you are using CVS or SVN and there were some commits after the last backup. Emacs developers spent few days in the [discussion](http://lists.gnu.org/archive/html/emacs-devel/2009-06/msg00056.html) to determine what commits they lost.
+
+Luckily they had Git mirror of CVS repository but what surprises me is they didn’t move to Git yet. If they were using Git they would have been able to restore complete repository in a few minutes (maybe longer for
+large repositories). Since they already have Git mirror for Emacs code I really do not understand why do they not switch to Git completely. Having full history at each developer’s computer is a huge benefit. Not
+to mention that Git gives you possibilities you can only dream of in CVS and SVN.

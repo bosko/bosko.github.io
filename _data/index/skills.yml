@@ -1,0 +1,6 @@
+# skills section data
+
+label: Ability
+id : cs
+aspects: Ruby, JavaScript, HTML/CSS, C++, Elixir, Python
+percentage: 100, 90, 55, 80, 50, 30

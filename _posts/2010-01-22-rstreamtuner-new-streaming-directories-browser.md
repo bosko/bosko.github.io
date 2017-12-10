@@ -1,0 +1,20 @@
+---
+layout: post
+title: "RStreamTuner - new streaming directories browser"
+date: 2010-01-22 19:00
+comments: true
+tags: ruby internet-radio GUI
+---
+I like to listen various Internet radio stations while I work. My favourite application was
+[streamtuner](http://www.nongnu.org/streamtuner) mostly because it had support for SHOUTcast. Unluckily new SHOUTcast design cannot be handled by **streamtuner** and future development on this application is
+stopped. In other words there is a little chance for streamtuner to be upgraded so I’ve decided to make my own streaming directories browser - [RStreamTuner (Ruby Stream Tuner)](http://github.com/bosko/rstreamtuner).
+
+As usual developing in Ruby was real pleasure and only doubt was what to use for GUI part. I’ve started with Ruby/Tk and left it very quickly due to very poor documentation (and probably lack of Tcl knowledge). I had
+to find replacement and my primary goal was to find library that works equally well on Linux and Windows. WxWidgets with WxRuby gem was my final choice. Although **RStreamTuner** is still in early development
+phase it is quite usable. At the moment it supports SHOUTcast and Xiph directories, but I plan to add more as soon as I find good one. Good candidate could be Live365 but they’ve made their pages quite hard to
+parse so I’ll probably leave it for later.
+
+Once I reach beta version, making support for new streaming directories will be quite easy and will require implementation of just a few methods. As a matter of act it is already so simple but I’m not
+satisfied with the code and will change it once I find a little bit more time. Code is quite rough (I had little time to make **RStreamTuner** and was eager to get working version as soon as possible). Besides I
+want to write detailed instructions how to add support for new directories. Anyway if you like to listen Internet radion stations and like Ruby clone [RStreamTuner](http://github.com/bosko/rstreamtuner). Of
+course if you have suggestions do not hasitate to drop me a note and if you make support for new streaming directory just send me a pull request and I’ll try to grab it as soon as possible.

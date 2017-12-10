@@ -1,0 +1,26 @@
+# careers section data
+# if you don't have language feature(language.yml is empty), ignore "i18n" items
+- name: Quark Solutions
+  link: http://quark-solutio-ns.com
+  date: December 2012 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
+  job: Founder/Developer
+
+- name: ProZone d.o.o
+  link: http://www.prozone.co.rs
+  date: August 2008 – December 2012
+  job: Sotfware Developer and Project Manager
+
+- name: Daxon CD d.o.o
+  link: http://www.daxon.de
+  date: March 2005 – July 2008
+  job: Sotfware Developer and Project Manager
+
+- name: Teletrader Software AG
+  link: https://www.teletrader.com
+  date: May 1999 - December 2004
+  job: Sotfware Developer and Project Manager
+
+- name: Institute for Nuclear Sciences Vinca
+  link: https://www.vin.bg.ac.rs
+  date: January 1992 - May 1999
+  job: Scientific Research Associate
