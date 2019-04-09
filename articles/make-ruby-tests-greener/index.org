@@ -1,0 +1,59 @@
+#+TITLE: Make Ruby Tests Greener
+#+STYLE: <link rel="stylesheet" type="text/css" href="../../pdn.css" />
+
+[[https://groups.google.com/forum/?fromgroups#!topic/rubyinstaller/A92K_EYJX2A][The Ruby Greener Test Challenge]] is here. It is attempt to make Ruby on
+Windows better and more stable and direct goal of this challenge is to
+fix all tests and to reach 0F0E (0 failures, 0 errors) state. If you
+are Ruby developer on Windows you should consider taking a role in the
+challenge.
+
+If you decide to try to fix some failing tests or existing errors it
+is easy to set up complete environment with the help of [[http://cdn.rubyinstaller.org/archives/experimental/RubyChallengePack-v1.exe][Ruby Challenge
+Pack]]. I will not write about details here since you have all you need
+in the initial challenge post given in the link on top of the
+article. Instead I will give you few suggestions about participating
+in the challenge.
+
+You should be aware of three things when you run tests:
+
+1. **Set up console code page to 1252 or 65001.** Some tests may fail
+   due to the console code page, so before running tests you should
+   execute ~chcp 1252~ or ~chcp 65001~.
+2. **Option -j2 may lead to errors.** In case you want to run tests
+   faster you can use `make test-al TESTS="-qv -j2"` but be aware that
+   this can also lead to fals failures or errors.
+3. **Anti-virus software.** If you see ~Errno::EACCES: Permission
+   denied~ error in test, most likely the cause is anti-virus which
+   locked the file during tests.
+
+With these things on your mind you can proceed to fixing. Here is
+simple workflow you can use. The very first thing you should do is to
+clone Ruby source from GitHub:
+
+#+BEGIN_SRC sh
+git clone git://github.com/ruby/ruby.git
+#+END_SRC
+
+After deciding what you want to fix you should make new local branch
+in which you work:
+
+#+BEGIN_SRC sh
+git checkout -b fix-win32ole-fso-encoding-misuse
+#+END_SRC
+
+After you find a source of failures or errors you will make fixes and
+commit changes to your local branch. I would suggest making small
+commits. If commits contain too many changes, patches are harder to
+apply and are more likely to cause conflicts. Finally after finishing
+all fixes you just have to make a patch (es).
+
+#+BEGIN_SRC sh
+git checkout -b fix-win32ole-fso-encoding-misuse
+#+END_SRC
+
+Adjust last number in above command to the number of commits you made
+on your local branch. This will create one or more patch files (one
+file per commit). In the case of [[https://bugs.ruby-lang.org/issues/6650][already submitted fix]] single file was
+created: ~0001-FileSystemObject-does-not-support-UTF-8.patch~. At the
+end open a ticket, write small description, attach your patch file(s)
+and assign ticket to Luis Lavena.
