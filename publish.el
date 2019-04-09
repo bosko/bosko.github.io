@@ -55,8 +55,7 @@
          :headline-levels 3
          :section-numbers nil
          :with-toc nil
-         ;; :html-head "<link rel=\"stylesheet\"
-         ;;          href=\"../pdn.css\" type=\"text/css\"/>"
+         :html-head "<link rel=\"stylesheet\" href=\"../pdn.css\" type=\"text/css\"/>"
          :html-preamble pdn/preamble
          ;; :auto-sitemap t
          ;; :sitemap-title "Articles"

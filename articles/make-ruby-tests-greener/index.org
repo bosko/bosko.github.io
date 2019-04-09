@@ -1,5 +1,4 @@
 #+TITLE: Make Ruby Tests Greener
-#+STYLE: <link rel="stylesheet" type="text/css" href="../../pdn.css" />
 
 [[https://groups.google.com/forum/?fromgroups#!topic/rubyinstaller/A92K_EYJX2A][The Ruby Greener Test Challenge]] is here. It is attempt to make Ruby on
 Windows better and more stable and direct goal of this challenge is to
