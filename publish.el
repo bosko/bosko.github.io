@@ -30,12 +30,11 @@
 <a href=\"%1$s/power-apps/index.html\">Apps</a>
 <a href=\"%1$s/atom.xml\">Feed</a>" prefix)))
 
-(setq ;; org-html-divs '((preamble "header" "top")
-      ;;                 (content "main" "content")
-      ;;                 (postamble "footer" "postamble"))
+(setq org-html-divs '((preamble "header" "top")
+                      (content "main" "content")
+                      (postamble "footer" "postamble"))
       ;; org-html-postamble t
       ;; Use custom preamble function to compute relative links.
-      ;; org-html-preamble #'pdn/preamble
       ;; org-html-container-element "section"
       org-html-metadata-timestamp-format "%Y-%m-%d"
       org-html-checkbox-type 'html
