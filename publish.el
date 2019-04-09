@@ -30,7 +30,7 @@
 <a href=\"%1$s/power-apps/index.html\">Apps</a>
 <a href=\"%1$s/atom.xml\">Feed</a>" prefix)))
 
-(setq org-html-divs '((preamble "header" "top")
+(setq org-html-divs '((preamble "nav" "side-nav")
                       (content "main" "content")
                       (postamble "footer" "postamble"))
       ;; org-html-postamble t
@@ -52,7 +52,6 @@
          :base-extension "org"
          :publishing-directory "./public"
          :publishing-function org-html-publish-to-html
-         :headline-levels 3
          :section-numbers nil
          :with-toc nil
          :html-head "<link rel=\"stylesheet\" href=\"../pdn.css\" type=\"text/css\"/>"
