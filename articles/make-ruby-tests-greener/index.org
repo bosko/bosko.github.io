@@ -1,4 +1,5 @@
 #+TITLE: Make Ruby Tests Greener
+#+DATE: <2012-06-27 Wed>
 
 [[https://groups.google.com/forum/?fromgroups#!topic/rubyinstaller/A92K_EYJX2A][The Ruby Greener Test Challenge]] is here. It is attempt to make Ruby on
 Windows better and more stable and direct goal of this challenge is to
