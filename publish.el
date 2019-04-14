@@ -62,6 +62,10 @@
     (insert-file-contents article-file)
     (plist-get (org-export-get-environment) ':date)))
 
+(defun pdn/article-date (props)
+  (plist-get (car (cdr (car (plist-get (car (cdr props)) :date)))) :year-start)
+  )
+
 ;; Praviti HTML strukturu sa @@html:<b>@@bold text@@html:</b>@@
 (defun pdn/create-index-page ()
     "Returns all subdirectories of articles directory"
@@ -74,8 +78,9 @@
            (properties (mapcar
                         (lambda(article-dir)
                           `(,article-dir . ,(list (pdn/article-env (concat article-dir "/index.org")))))
-                        only-subfolders)))
-      properties
+                        only-subfolders))
+           (by-year (seq-group-by #'pdn/article-date properties)))
+      by-year
       ))
 
 ;; Timestamps can be used to avoid rebuilding everything.
