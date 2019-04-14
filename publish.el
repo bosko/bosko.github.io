@@ -1,39 +1,12 @@
 (require 'ox-publish)
 
-;; Timestamps can be used to avoid rebuilding everything.
-;; This is useful locally for testing.
-;; It won't work on Gitlab when stored in ./: the timestamps file should
-;; probably be put inside the public/ directory.  It's not so useful there
-;; however since generation is fast enough.
-(setq org-publish-use-timestamps-flag t
-      org-publish-timestamp-directory "./"
-      org-export-with-section-numbers nil
-      org-export-with-smart-quotes t
-      org-export-with-email t
-      org-export-with-date t
-      org-export-with-tags 'not-in-toc
-      org-export-with-toc t)
-
 ;; Get rid of index.html~ and the like that pop up during generation.
 (setq make-backup-files nil)
+(setq pdn/root (file-name-directory (buffer-file-name)))
 
-(defun pdn/preamble (info)
-  "Return preamble as a string."
-  (let* ((file (plist-get info :input-file))
-         (prefix (file-relative-name (expand-file-name "source" (expand-file-name "./"))
-                                     (file-name-directory file))))
-    (format
-     "<a href=\"%1$s/index.html\">About</a1>
-<a href=\"%1$s/articles.html\">Articles</a2>
-<a href=\"%1$s/projects/index.html\">Projects</a3>
-<a href=\"%1$s/links/index.html\">Links</a4>
-<a href=\"%1$s/power-apps/index.html\">Apps</a>
-<a href=\"%1$s/atom.xml\">Feed</a>" prefix)))
-
-(setq org-html-divs '((preamble "nav" "side-nav")
-                      (content "main" "content")
+(setq org-html-divs '((content "main" "content")
                       (postamble "footer" "postamble"))
-      ;; org-html-postamble t
+      org-html-postamble nil
       ;; Use custom preamble function to compute relative links.
       ;; org-html-container-element "section"
       org-html-metadata-timestamp-format "%Y-%m-%d"
@@ -73,3 +46,74 @@
          :publishing-directory "./public"
          :publishing-function org-publish-attachment)
         ))
+
+;; Extract string from string property is done with
+;; (substring-no-properties (car (plist-get article-env ':title)))
+;; (org-export-get-date argicle-env "%Y-%m-%d")
+(defun pdn/article-env (article-file)
+  "Returns Org publish environment"
+  (with-temp-buffer
+    (insert-file-contents article-file)
+    (org-export-get-environment)))
+
+(defun pdn/get-article-date (article-file)
+  "Returns date of article"
+  (with-temp-buffer
+    (insert-file-contents article-file)
+    (plist-get (org-export-get-environment) ':date)))
+
+;; Praviti HTML strukturu sa @@html:<b>@@bold text@@html:</b>@@
+(defun pdn/create-index-page ()
+    "Returns all subdirectories of articles directory"
+    (let* ((content (directory-files (concat pdn/root "articles") t))
+           (only-subfolders (seq-filter (lambda(name)
+                                          (and
+                                           (file-directory-p name)
+                                           (not (equal name (concat pdn/root "articles/.")))
+                                           (not (equal name (concat pdn/root "articles/.."))))) content))
+           (properties (mapcar
+                        (lambda(article-dir)
+                          `(,article-dir . ,(list (pdn/article-env (concat article-dir "/index.org")))))
+                        only-subfolders)))
+      properties
+      ))
+
+;; Timestamps can be used to avoid rebuilding everything.
+;; This is useful locally for testing.
+;; It won't work on Gitlab when stored in ./: the timestamps file should
+;; probably be put inside the public/ directory.  It's not so useful there
+;; however since generation is fast enough.
+(setq org-publish-use-timestamps-flag t
+      org-publish-timestamp-directory "./"
+      org-export-with-section-numbers nil
+      org-export-with-smart-quotes t
+      org-export-with-author nil
+      org-export-with-email nil
+      org-export-with-date t
+      org-export-with-title nil
+      org-export-with-tags 'not-in-toc
+      org-export-with-toc t)
+
+(defun pdn/preamble (info)
+  "Return preamble as a string."
+  (let* ((file (plist-get info :input-file))
+         (spec (org-html-format-spec info))
+         (date (cdr (assq ?T spec)))
+         (title (substring-no-properties (car (plist-get info :title))))
+         (prefix (file-relative-name (expand-file-name "articles" (expand-file-name pdn/root))
+                                     (file-name-directory file))))
+    (concat
+     (format
+      "<nav id=\"sidenav\" <a href=\"%1$s/index.html\">About</a1>
+<a href=\"%1$s/articles.html\">Articles</a2>
+<a href=\"%1$s/projects/index.html\">Projects</a3>
+<a href=\"%1$s/links/index.html\">Links</a4>
+<a href=\"%1$s/power-apps/index.html\">Apps</a>
+<a href=\"%1$s/atom.xml\">Feed</a></nav>
+<h1 class=\"title\">%2$s</h1>
+<p class=\"subtitle\">%3$s</p>" prefix title date))))
+
+(defun pdn/publish ()
+  "Publishes all articles and creates index page"
+  (org-publish-all)
+  )
