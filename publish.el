@@ -1,3 +1,4 @@
+(require 'ox)
 (require 'ox-publish)
 (require 'seq)
 
@@ -50,29 +51,27 @@
 
 ;; Extract string from string property is done with
 ;; (substring-no-properties (car (plist-get article-env ':title)))
-;; (org-export-get-date argicle-env "%Y-%m-%d")
+;; (org-export-get-date article-env "%Y-%m-%d")
 (defun pdn/article-env (article-file)
   "Returns Org publish environment"
   (with-temp-buffer
     (insert-file-contents article-file)
     (org-export-get-environment)))
 
-(defun pdn/get-article-date (article-file)
-  "Returns date of article"
-  (with-temp-buffer
-    (insert-file-contents article-file)
-    (plist-get (org-export-get-environment) ':date)))
-
-(defun pdn/article-date (props)
+(defun pdn/article-year (props)
   (plist-get (car (cdr (car (plist-get (car (cdr props)) :date)))) :year-start)
   )
+
+(defun pdn/compare-by-article-date (first second)
+  (string> (org-export-get-date (car (cdr first)) "%Y-%m-%d")
+      (org-export-get-date (car (cdr second)) "%Y-%m-%d")))
 
 (defun pdn/append-year-links-to-index (article-props)
   (goto-char (point-max))
   (newline)
   (insert "@@html:<div class=\"timeline\">@@\n")
-  (insert (format "**** %s\n" (car article-props)))
-  (dolist (article (cdr article-props))
+  (insert (format "* %s\n" (car article-props)))
+  (dolist (article (sort (cdr article-props) 'pdn/compare-by-article-date))
     (insert (format "+ [[./%s/index.org][%s]]\n"
                     (file-name-nondirectory (car article))
                     (substring-no-properties (car (plist-get (car (cdr article)) :title)))))
@@ -94,7 +93,7 @@
                         (lambda(article-dir)
                           `(,article-dir . ,(list (pdn/article-env (concat article-dir "/index.org")))))
                         only-subfolders))
-           (by-year (sort (seq-group-by #'pdn/article-date properties) 'pdn/compare-by-year)))
+           (by-year (sort (seq-group-by 'pdn/article-year properties) 'pdn/compare-by-year)))
 
       (set-buffer (generate-new-buffer "index-page.org"))
       (erase-buffer)
