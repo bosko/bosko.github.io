@@ -2,6 +2,8 @@
 #+DATE: <2012-06-25 Mon>
 #+TAGS: ruby rubygems RubyInstaller
 
+** Introduction
+
 Recently Luis Lavena started thread [[https://groups.google.com/d/topic/rubyinstaller/fQCuPfiuuRc/discussion][(Idea: executable stubs to replace
 batch)]] on RubyInstaller mailing list. In short, the idea is to use
 command line applications - executable stubs - instead of batch files
