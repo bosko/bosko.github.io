@@ -1,8 +1,9 @@
 (require 'ox-publish)
+(require 'seq)
 
 ;; Get rid of index.html~ and the like that pop up during generation.
 (setq make-backup-files nil)
-(setq pdn/root (file-name-directory (buffer-file-name)))
+(setq pdn/root (expand-file-name default-directory))
 
 (setq org-html-divs '((content "main" "content")
                       (postamble "footer" "postamble"))
@@ -66,6 +67,18 @@
   (plist-get (car (cdr (car (plist-get (car (cdr props)) :date)))) :year-start)
   )
 
+(defun pdn/append-year-links-to-index (article-props)
+  (goto-char (point-max))
+  (newline)
+  (insert "@@html:<div class=\"timeline\">@@\n")
+  (insert (format "**** %s\n" (car article-props)))
+  (dolist (article (cdr article-props))
+    (insert (format "+ [[./%s/index.org][%s]]\n"
+                    (file-name-nondirectory (car article))
+                    (substring-no-properties (car (plist-get (car (cdr article)) :title)))))
+    )
+  (insert "@@html:</div>@@\n"))
+
 ;; Praviti HTML strukturu sa @@html:<b>@@bold text@@html:</b>@@
 (defun pdn/create-index-page ()
     "Returns all subdirectories of articles directory"
@@ -80,7 +93,16 @@
                           `(,article-dir . ,(list (pdn/article-env (concat article-dir "/index.org")))))
                         only-subfolders))
            (by-year (seq-group-by #'pdn/article-date properties)))
-      by-year
+
+      (set-buffer (generate-new-buffer "index-page.org"))
+      (erase-buffer)
+      (insert-file-contents (concat pdn/root "/index.org"))
+
+      (dolist (curr-year by-year)
+        (pdn/append-year-links-to-index curr-year))
+
+      (write-file (concat pdn/root "articles/index.org"))
+      (kill-buffer)
       ))
 
 ;; Timestamps can be used to avoid rebuilding everything.
@@ -120,5 +142,6 @@
 
 (defun pdn/publish ()
   "Publishes all articles and creates index page"
+  (pdn/create-index-page)
   (org-publish-all)
   )

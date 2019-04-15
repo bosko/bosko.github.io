@@ -1,12 +1,4 @@
 #+TITLE: Pragmatic Development Notes
-#+DATE: <2019-04-14 Sun>
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="pdn.css">
 #+HTML_HEAD_EXTRA: <link rel="icon" type="image/x-icon" href="images/logo.png">
 #+HTML_HEAD_EXTRA: <link href="https://pragdevnotes.com/" rel="canonical">
-
-@@html:<div class="timeline">@@
-*** 2012
- + jedan
- + dva
- + tri
-@@html:</div>@@
