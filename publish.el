@@ -66,14 +66,21 @@
   (string> (org-export-get-date (car (cdr first)) "%Y-%m-%d")
       (org-export-get-date (car (cdr second)) "%Y-%m-%d")))
 
+(defun pdn/month-day-as-html (data)
+  (format "%s%s%s"
+          "@@html:<span class=\"article-date\">@@"
+          (org-export-get-date (car data) "%b %d")
+          "@@html:</span>@@"))
+
 (defun pdn/append-year-org-links-to-index (article-props)
   (goto-char (point-max))
   (newline)
   (insert "@@html:<div class=\"timeline\">@@\n")
   (insert (format "* %s\n" (car article-props)))
   (dolist (article (sort (cdr article-props) 'pdn/compare-by-article-date))
-    (insert (format "+ [[./%s/index.org][%s]]\n"
+    (insert (format "+ [[./%s/index.org][%s %s]]\n"
                     (file-name-nondirectory (car article))
+                    (pdn/month-day-as-html (cdr article))
                     (substring-no-properties (car (plist-get (car (cdr article)) :title))))))
   (insert "@@html:</div>@@\n"))
 
