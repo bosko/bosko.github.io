@@ -79,7 +79,9 @@
     )
   (insert "@@html:</div>@@\n"))
 
-;; Praviti HTML strukturu sa @@html:<b>@@bold text@@html:</b>@@
+(defun pdn/compare-by-year (first second)
+  (>= (car first) (car second)))
+
 (defun pdn/create-index-page ()
     "Returns all subdirectories of articles directory"
     (let* ((content (directory-files (concat pdn/root "articles") t))
@@ -92,7 +94,7 @@
                         (lambda(article-dir)
                           `(,article-dir . ,(list (pdn/article-env (concat article-dir "/index.org")))))
                         only-subfolders))
-           (by-year (seq-group-by #'pdn/article-date properties)))
+           (by-year (sort (seq-group-by #'pdn/article-date properties) 'pdn/compare-by-year)))
 
       (set-buffer (generate-new-buffer "index-page.org"))
       (erase-buffer)
