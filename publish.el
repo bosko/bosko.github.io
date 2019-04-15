@@ -66,7 +66,7 @@
   (string> (org-export-get-date (car (cdr first)) "%Y-%m-%d")
       (org-export-get-date (car (cdr second)) "%Y-%m-%d")))
 
-(defun pdn/append-year-links-to-index (article-props)
+(defun pdn/append-year-org-links-to-index (article-props)
   (goto-char (point-max))
   (newline)
   (insert "@@html:<div class=\"timeline\">@@\n")
@@ -74,8 +74,7 @@
   (dolist (article (sort (cdr article-props) 'pdn/compare-by-article-date))
     (insert (format "+ [[./%s/index.org][%s]]\n"
                     (file-name-nondirectory (car article))
-                    (substring-no-properties (car (plist-get (car (cdr article)) :title)))))
-    )
+                    (substring-no-properties (car (plist-get (car (cdr article)) :title))))))
   (insert "@@html:</div>@@\n"))
 
 (defun pdn/compare-by-year (first second)
@@ -100,7 +99,7 @@
       (insert-file-contents (concat pdn/root "/index.org"))
 
       (dolist (curr-year by-year)
-        (pdn/append-year-links-to-index curr-year))
+        (pdn/append-year-org-links-to-index curr-year))
 
       (write-file (concat pdn/root "articles/index.org"))
       (kill-buffer)
