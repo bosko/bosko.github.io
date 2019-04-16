@@ -70,14 +70,14 @@
 
 (defun pdn/month-day-as-html (data)
   (format "%s%s%s"
-          "@@html:<span class=\"article-date\">@@"
+          "@@html:<span class='article-date'>@@"
           (org-export-get-date (car data) "%b %d")
           "@@html:</span>@@"))
 
 (defun pdn/append-year-org-links-to-index (article-props)
   (goto-char (point-max))
   (newline)
-  (insert "@@html:<div class=\"timeline\">@@\n")
+  (insert "@@html:<div id='timeline' class='timeline'>@@\n")
   (insert (format "* %s\n" (car article-props)))
   (setq sorted (sort (cdr article-props) 'pdn/compare-by-article-date))
 
@@ -155,12 +155,37 @@
                                      (file-name-directory file))))
     (concat
      (format
-      "<nav id=\"sidenav\" <a href=\"%1$s/index.html\">About</a1>
-<a href=\"%1$s/articles.html\">Articles</a2>
-<a href=\"%1$s/projects/index.html\">Projects</a3>
-<a href=\"%1$s/links/index.html\">Links</a4>
-<a href=\"%1$s/power-apps/index.html\">Apps</a>
-<a href=\"%1$s/atom.xml\">Feed</a></nav>" prefix))))
+      "<div class='cover'>
+<div class='cover-card'>
+<div class='author-name'>Boško Ivanišević</div>
+<div class='author-job'>Developer, Theoretical Physicist</div>
+<div class='author-bio mbm'>Ruby, JavaScript, Elixir, C++ and few more</div>
+<nav id='sidenav' clas='nav'>
+<a href='%1$s/index.html'>About</a1>
+<a href='%1$s/articles.html'>Articles</a2>
+<a href='%1$s/projects/index.html'>Projects</a3>
+<a href='%1$s/links/index.html'>Links</a4>
+<a href='%1$s/power-apps/index.html'>Apps</a>
+<a href='%1$s/atom.xml'>Feed</a>
+</nav>
+<div class='social-links'>
+<ul>
+<li><a href='http://twitter.com/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-twitter'></i>
+</a></li>
+<li><a href='http://linkedin.com/in/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-linkedin'></i>
+</a></li>
+<li><a href='http://github.com/bosko' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-github'></i>
+</a></li>
+<li><a href='http://stackoverflow.com/users/1665470/boško-ivanišević' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-stack-overflow'></i>
+</a></li>
+</ul>
+</div>
+</div>
+</div>" prefix))))
 
 (defun pdn/publish ()
   "Publishes all articles and creates index page"
