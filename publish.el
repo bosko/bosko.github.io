@@ -7,7 +7,8 @@
 (setq make-backup-files nil)
 (setq pdn/root (expand-file-name default-directory))
 
-(setq org-html-divs '((content "main" "content")
+(setq org-html-divs '((preamble "div" "preamble")
+                      (content "main" "content")
                       (postamble "footer" "postamble"))
       org-html-postamble nil
       ;; Use custom preamble function to compute relative links.
@@ -140,7 +141,7 @@
       org-export-with-author nil
       org-export-with-email nil
       org-export-with-date t
-      org-export-with-title nil
+      org-export-with-title t
       org-export-with-tags 'not-in-toc
       org-export-with-toc t)
 
@@ -159,9 +160,7 @@
 <a href=\"%1$s/projects/index.html\">Projects</a3>
 <a href=\"%1$s/links/index.html\">Links</a4>
 <a href=\"%1$s/power-apps/index.html\">Apps</a>
-<a href=\"%1$s/atom.xml\">Feed</a></nav>
-<h1 class=\"title\">%2$s</h1>
-<p class=\"subtitle\">%3$s</p>" prefix title date))))
+<a href=\"%1$s/atom.xml\">Feed</a></nav>" prefix))))
 
 (defun pdn/publish ()
   "Publishes all articles and creates index page"
