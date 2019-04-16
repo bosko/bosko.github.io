@@ -1,15 +1,16 @@
 #+TITLE: ActiveRecord SchemaDumper and MySQL problem
+#+SUBTITLE: 2010-10-03
 #+DATE: <2010-10-03 Sun>
 #+TAGS: ruby rails ActiveRecord
 
-After finishing first version of [Rmre](http://github.com/bosko/rmre)
-and issuing fix gem dependency in version 0.0.2, I got an idea for
-additional functionality. Why not use Rmre for dumping complete schema
-with all foreign keys data? What would be possible scenario for using
-this, one might ask? We have possibility to create ActiveRecord models
-in order to move to Ruby on Rails where main premise is to keep logic
-out of database and maintain it in application. Therefore we do not
-need foreign keys since we already have constraints defined in models.
+After finishing first version of [[http://github.com/bosko/rmre][Rmre]] and issuing fix gem dependency
+in version 0.0.2, I got an idea for additional functionality. Why not
+use Rmre for dumping complete schema with all foreign keys data? What
+would be possible scenario for using this, one might ask? We have
+possibility to create ActiveRecord models in order to move to Ruby on
+Rails where main premise is to keep logic out of database and maintain
+it in application. Therefore we do not need foreign keys since we
+already have constraints defined in models.
 
 But what if you cannot move to Ruby on Rails and you only have to
 change DBE, i.e. instead of MS SQL you must use Oracle? In that case
@@ -26,11 +27,11 @@ should correctly create tables, indices and foreign keys on any
 database engine. That’s theory and, as usual, practice is a little bit
 different. On a very first step I’ve faced problem in MySQL database.
 
-Let’s examine database with just a two tables - `city` and
-`country`. Create script would look like (example from
-[Sakila](http://dev.mysql.com/doc/sakila/en/sakila.html) database):
+Let’s examine database with just a two tables - ~city~ and
+~country~. Create script would look like (example from [[http://dev.mysql.com/doc/sakila/en/sakila.html][Sakila]]
+database):
 
-{% highlight sql %}
+#+BEGIN_SRC sql
 CREATE TABLE city (
   city_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
   city VARCHAR(50) NOT NULL,
@@ -52,12 +53,13 @@ CREATE TABLE country (
     ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY  (country_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-{% endhighlight %}
 
-As can be seen from above script table `city` has foreign key on table
-`country`. Now let’s see what is result of a dump:
+#+END_SRC
 
-{% highlight ruby %}
+As can be seen from above script table ~city~ has foreign key on table
+~country~. Now let’s see what is result of a dump:
+
+#+BEGIN_SRC ruby
 ActiveRecord::Schema.define(:version => 0) do
 
   create_table "actor", :primary_key => "actor_id", :force => true do |t|
@@ -76,13 +78,13 @@ ActiveRecord::Schema.define(:version => 0) do
 
   execute "ALTER TABLE city ADD CONSTRAINT fk_city_country FOREIGN KEY (country_id) REFERENCES country(country_id)"
 end
-{% endhighlight %}
+#+END_SRC
 
 At the first glance this looks good but unfortunately doesn’t
 work. Problem is that loading this schema through ActiveRecord will
-create columns `city_id` in table `city` and `country_id` in table
-`country` as `integer` type but column `country_id` in table `city` is
-created as `smallint`. Defining constraint on columns which are not of
+create columns ~city_id~ in table ~city~ and ~country_id~ in table
+~country~ as ~integer~ type but column ~country_id~ in table ~city~ is
+created as ~smallint~. Defining constraint on columns which are not of
 same type is not allowed so last statement for altering table
 fails. At the moment I have no idea how to fix this and any suggestion
 is very welcome. I still have to check what happens on other DBEs:
