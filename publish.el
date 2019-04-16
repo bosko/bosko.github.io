@@ -77,8 +77,9 @@
 (defun pdn/append-year-org-links-to-index (article-props)
   (goto-char (point-max))
   (newline)
-  (insert "@@html:<div id='timeline' class='timeline'>@@\n")
+
   (insert (format "* %s\n" (car article-props)))
+
   (setq sorted (sort (cdr article-props) 'pdn/compare-by-article-date))
 
   (dolist (article sorted)
@@ -95,7 +96,7 @@
                     (file-name-nondirectory (car article))
                     (pdn/month-day-as-html (cdr article))
                     (substring-no-properties (car (plist-get (car (cdr article)) :title))))))
-  (insert "@@html:</div>@@\n"))
+  )
 
 (defun pdn/compare-by-year (first second)
   (>= (car first) (car second)))
@@ -120,8 +121,12 @@
 
       (setq navigation-data '())
 
+      (goto-char (point-max))
+      (newline)
+      (insert "@@html:<div class='archive'><div id='timeline' class='timeline'>@@\n")
       (dolist (curr-year by-year)
         (pdn/append-year-org-links-to-index curr-year))
+      (insert "@@html:</div></div>@@\n")
 
       (setq navigation-data (reverse navigation-data))
 
@@ -161,12 +166,14 @@
 <div class='author-job'>Developer, Theoretical Physicist</div>
 <div class='author-bio mbm'>Ruby, JavaScript, Elixir, C++ and few more</div>
 <nav id='sidenav' clas='nav'>
-<a href='%1$s/index.html'>About</a1>
-<a href='%1$s/articles.html'>Articles</a2>
-<a href='%1$s/projects/index.html'>Projects</a3>
-<a href='%1$s/links/index.html'>Links</a4>
-<a href='%1$s/power-apps/index.html'>Apps</a>
-<a href='%1$s/atom.xml'>Feed</a>
+<ul class='nav-list'>
+<li class='nav-item'><a href='%1$s/index.html'>About</a1> <span>/</span></li>
+<li class='nav-item'><a href='%1$s/articles.html'>Articles</a2> <span>/</span></li>
+<li class='nav-item'><a href='%1$s/projects/index.html'>Projects</a3> <span>/</span></li>
+<li class='nav-item'><a href='%1$s/links/index.html'>Links</a4> <span>/</span></li>
+<li class='nav-item'><a href='%1$s/power-apps/index.html'>Apps</a> <span>/</span></li>
+<li class='nav-item'><a href='%1$s/atom.xml'>Feed</a> <span>/</span></li>
+</ul>
 </nav>
 <div class='social-links'>
 <ul>
