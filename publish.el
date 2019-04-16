@@ -1,6 +1,7 @@
-(require 'ox)
 (require 'ox-publish)
 (require 'seq)
+
+(setq navigation-data '())
 
 ;; Get rid of index.html~ and the like that pop up during generation.
 (setq make-backup-files nil)
@@ -77,7 +78,18 @@
   (newline)
   (insert "@@html:<div class=\"timeline\">@@\n")
   (insert (format "* %s\n" (car article-props)))
-  (dolist (article (sort (cdr article-props) 'pdn/compare-by-article-date))
+  (setq sorted (sort (cdr article-props) 'pdn/compare-by-article-date))
+
+  (dolist (article sorted)
+    (let* ((art-dir (car article))
+           (art-date (plist-get (car (cdr article)) :date))
+           (art-year (plist-get (car (cdr (car art-date))) :year-start))
+           (art-title (substring-no-properties (car (plist-get (car (cdr article)) :title))))
+           (link-data `(dir ,art-dir year ,art-year title ,art-title)))
+      (if (= (length navigation-data) 0)
+          (setq navigation-data `(,link-data))
+        (add-to-list 'navigation-data link-data)
+          ))
     (insert (format "+ [[./%s/index.org][%s %s]]\n"
                     (file-name-nondirectory (car article))
                     (pdn/month-day-as-html (cdr article))
@@ -105,8 +117,12 @@
       (erase-buffer)
       (insert-file-contents (concat pdn/root "/index.org"))
 
+      (setq navigation-data '())
+
       (dolist (curr-year by-year)
         (pdn/append-year-org-links-to-index curr-year))
+
+      (setq navigation-data (reverse navigation-data))
 
       (write-file (concat pdn/root "articles/index.org"))
       (kill-buffer)
@@ -150,5 +166,4 @@
 (defun pdn/publish ()
   "Publishes all articles and creates index page"
   (pdn/create-index-page)
-  (org-publish-all)
-  )
+  (org-publish-all))
