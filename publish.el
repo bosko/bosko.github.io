@@ -174,12 +174,8 @@
 <div class='author-bio mbm'>Ruby, JavaScript, Elixir, C++ and few more</div>
 <nav id='sidenav' clas='nav'>
 <ul class='nav-list'>
-<li class='nav-item'><a href='%1$s/index.html'>About</a1> <span>/</span></li>
-<li class='nav-item'><a href='%1$s/articles.html'>Articles</a2> <span>/</span></li>
-<li class='nav-item'><a href='%1$s/projects/index.html'>Projects</a3> <span>/</span></li>
-<li class='nav-item'><a href='%1$s/links/index.html'>Links</a4> <span>/</span></li>
-<li class='nav-item'><a href='%1$s/power-apps/index.html'>Apps</a> <span>/</span></li>
-<li class='nav-item'><a href='%1$s/atom.xml'>Feed</a> <span>/</span></li>
+<li class='nav-item'><a href='%1$s/index.html'>Home</a1> <span>/</span></li>
+<li class='nav-item'><a href='%1$s/about.html'>About</a> <span>/</span></li>
 </ul>
 </nav>
 <div class='social-links'>
