@@ -41,6 +41,7 @@
 
         ("images"
          :base-directory "./images/"
+         :recursive t
          :base-extension "jpg\\|gif\\|png"
          :publishing-directory "../images/"
          :publishing-function org-publish-attachment)
