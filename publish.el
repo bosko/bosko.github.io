@@ -31,7 +31,8 @@
          :publishing-function org-html-publish-to-html
          :section-numbers nil
          :with-toc nil
-         :html-head "<link rel=\"stylesheet\" href=\"../pdn.css\" type=\"text/css\"/>"
+         :html-head "<link rel=\"stylesheet\" href=\"../pdn.css\" type=\"text/css\"/>
+<link rel=\"stylesheet\" href=\"../font-awesome.min.css\" type=\"text/css\"/>"
          :html-preamble pdn/preamble
          ;; :auto-sitemap t
          ;; :sitemap-title "Articles"
@@ -42,6 +43,12 @@
          :base-directory "./images/"
          :base-extension "jpg\\|gif\\|png"
          :publishing-directory "./public/images/"
+         :publishing-function org-publish-attachment)
+
+        ("fonts"
+         :base-directory "./fonts/"
+         :base-extension "eot\\|svg\\|ttf\\|woff\\|woff2\\|otf"
+         :publishing-directory "./public/fonts/"
          :publishing-function org-publish-attachment)
 
         ("styles"
