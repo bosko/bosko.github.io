@@ -1,16 +1,15 @@
 #+TITLE: RStreamTuner - new streaming directories browser
+#+SUBTITLE: 2010-01-22
 #+DATE: <2010-01-22 Fri>
 #+TAGS: ruby internet-radio GUI
 
 I like to listen various Internet radio stations while I work. My
-favourite application was
-[streamtuner](http://www.nongnu.org/streamtuner) mostly because it had
-support for SHOUTcast. Unluckily new SHOUTcast design cannot be
-handled by **streamtuner** and future development on this application
-is stopped. In other words there is a little chance for streamtuner to
-be upgraded so I’ve decided to make my own streaming directories
-browser - [RStreamTuner (Ruby Stream
-Tuner)](http://github.com/bosko/rstreamtuner).
+favourite application was [[http://www.nongnu.org/streamtuner][streamtuner]] mostly because it had support
+for SHOUTcast. Unluckily new SHOUTcast design cannot be handled by
+**streamtuner** and future development on this application is
+stopped. In other words there is a little chance for streamtuner to be
+upgraded so I’ve decided to make my own streaming directories
+browser - [[http://github.com/bosko/rstreamtuner][RStreamTuner (Ruby Stream Tuner)]].
 
 As usual developing in Ruby was real pleasure and only doubt was what
 to use for GUI part. I’ve started with Ruby/Tk and left it very
@@ -31,8 +30,7 @@ more time. Code is quite rough (I had little time to make
 **RStreamTuner** and was eager to get working version as soon as
 possible). Besides I want to write detailed instructions how to add
 support for new directories. Anyway if you like to listen Internet
-radion stations and like Ruby clone
-[RStreamTuner](http://github.com/bosko/rstreamtuner). Of course if you
+radion stations and like Ruby clone [[http://github.com/bosko/rstreamtuner][RStreamTuner]]. Of course if you
 have suggestions do not hasitate to drop me a note and if you make
 support for new streaming directory just send me a pull request and
 I’ll try to grab it as soon as possible.

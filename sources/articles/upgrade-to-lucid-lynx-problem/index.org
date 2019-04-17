@@ -1,4 +1,5 @@
 #+TITLE: Upgrade to Lucid Lynx problems
+#+SUBTITLE: 2010-05-16
 #+DATE: <2010-05-16 Sun>
 #+TAGS: general
 

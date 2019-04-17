@@ -1,19 +1,16 @@
 #+TITLE: Ruby, Rails and MS SQL server
+#+SUBTITLE: 2010-02-18
 #+DATE: <2010-02-18 Thu>
 #+TAGS: ruby ActiveRecord rails mssql
 
 Setting up Rails and Ruby to use MS SQL server was always painful
-task. Fortunately things have changed - a lot! With new [Rails SQL
-Server 2000, 2005 and 2008
-Adapter](http://github.com/rails-sqlserver/2000-2005-adapter) and
-Christian Werner’s [ruby-odbc gem](http://www.ch-werner.de/rubyodbc)
-you can do it in a few minutes.
+task. Fortunately things have changed - a lot! With new [[http://github.com/rails-sqlserver/2000-2005-adapter][Rails SQL
+Server 2000, 2005 and 2008 Adapter]] and Christian Werner’s [[http://www.ch-werner.de/rubyodbc][ruby-odbc
+gem]] you can do it in a few minutes.
 
 If you want to use these gems on Windows grab Ruby installation from
-[RubyInstaller](http://www.rubyinstaller.org) site and be sure to
-install
-[DevKit](http://rubyforge.org/frs/download.php/66888/devkit-3.4.5r3-20091110.7z)
-prior to installing ruby-odbc.
+[[http://www.rubyinstaller.org][RubyInstaller]] site and be sure to install [[http://rubyforge.org/frs/download.php/66888/devkit-3.4.5r3-20091110.7z][DevKit]] prior to installing
+ruby-odbc.
 
 Versions of ruby-odbc before 0.9999 do not work on mingw based
 (RubyInstaller) Ruby. Luckily author was very fast and made new

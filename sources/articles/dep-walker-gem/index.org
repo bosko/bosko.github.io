@@ -14,7 +14,7 @@ for the SQlite3 embedded database. If sqlite3.dll is missing from the
 system, after installation of sqlite3 Gem any attempt to use it causes
 following message box to appear.
 
-![Missing DLL message box.]({{ site.url }}/images/dep_walker/missing_dll_msg_box.png)
+[[file:../images/dep_walker/missing_dll_msg_box.png]]
 
 If two versions of a required dll exist on the system Gem might use
 the wrong one and strange crashes can appear.

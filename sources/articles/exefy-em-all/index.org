@@ -139,7 +139,5 @@ implemented is yet to be seen.
 
 ** Acknowledgements
 
-I want to thanks
-[@luislavena](https://github.com/luislavena),[@azolo](https://github.com/azolo)
-and [@jonforums](https://github.com/jonforums) for helping me out
+I want to thanks [[https://github.com/luislavena][@luislavena]], [[https://github.com/azolo][@azolo]] and [[https://github.com/jonforums][@jonforums]] for helping me out
 making gem-exefy.

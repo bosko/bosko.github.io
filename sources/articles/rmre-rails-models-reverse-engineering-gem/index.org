@@ -1,14 +1,14 @@
 #+TITLE: RMRE - rails models reverse engineering gem
+#+SUBTITLE: 2010-09-30
 #+DATE: <2010-09-30 Thu>
 #+TAGS: ruby rails ActiveRecord
 
 Very often I have to work on databases which do not follow
 ActiveRecord convention and making ActiveRecord models, if number of
 tables is large, is very slow and boring task. In order to speed up
-and simplify it I’ve created [Rmre
-gem](http://github.com/bosko/rmre). Gem is quite simple yet you might
-find it useful if you want to create fixtures, migrations or simply
-port application to Ruby on Rails.
+and simplify it I’ve created [[http://github.com/bosko/rmre][Rmre gem]]. Gem is quite simple yet you
+might find it useful if you want to create fixtures, migrations or
+simply port application to Ruby on Rails.
 
 So how it works? For each table in the database, gem creates
 model. Name of the model is created using Rails `classify`
@@ -17,10 +17,9 @@ sets primary key by adding `set_primary_key "primaryKeyColumnName"`
 line to the model. In addition for MySQL, PostgreSQL, Oracle or MS SQL
 foreign keys are analyzed and for each constraint gem generates
 `belongs_to` or `has_many` lines. Here is model created for table
-*store* in [Sakila](http://dev.mysql.com/doc/sakila/en/sakila.html)
-MySQL test database:
+*store* in [[http://dev.mysql.com/doc/sakila/en/sakila.html][Sakila]] MySQL test database:
 
-{% highlight ruby %}
+#+BEGIN_SRC ruby
 class Store < ActiveRecord::Base
   set_primary_key :store_id
   set_table_name 'store'
@@ -30,4 +29,4 @@ class Store < ActiveRecord::Base
   belongs_to :address, :class_name => 'Addres', :foreign_key => :address_id
   belongs_to :staff, :class_name => 'Staff', :foreign_key => :manager_staff_id
 end
-{% endhighlight %}
+#+END_SRC
