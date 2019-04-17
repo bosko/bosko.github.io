@@ -27,7 +27,7 @@
          :base-directory "./articles/"
          :recursive t
          :base-extension "org"
-         :publishing-directory "./public"
+         :publishing-directory "../"
          :publishing-function org-html-publish-to-html
          :section-numbers nil
          :with-toc nil
@@ -42,19 +42,19 @@
         ("images"
          :base-directory "./images/"
          :base-extension "jpg\\|gif\\|png"
-         :publishing-directory "./public/images/"
+         :publishing-directory "../images/"
          :publishing-function org-publish-attachment)
 
         ("fonts"
          :base-directory "./fonts/"
          :base-extension "eot\\|svg\\|ttf\\|woff\\|woff2\\|otf"
-         :publishing-directory "./public/fonts/"
+         :publishing-directory "../fonts/"
          :publishing-function org-publish-attachment)
 
         ("styles"
          :base-directory "./styles/"
          :base-extension "css\\|el"
-         :publishing-directory "./public"
+         :publishing-directory "../"
          :publishing-function org-publish-attachment)
         ))
 
@@ -141,11 +141,6 @@
       (kill-buffer)
       ))
 
-;; Timestamps can be used to avoid rebuilding everything.
-;; This is useful locally for testing.
-;; It won't work on Gitlab when stored in ./: the timestamps file should
-;; probably be put inside the public/ directory.  It's not so useful there
-;; however since generation is fast enough.
 (setq org-publish-use-timestamps-flag t
       org-publish-timestamp-directory "./"
       org-export-with-section-numbers nil
