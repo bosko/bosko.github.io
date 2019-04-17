@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2019-04-17 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ruby on Windows Guides - The Book</title>
+<meta name="generator" content="Org mode">
+<link rel="stylesheet" href="../pdn.css" type="text/css"/>
+<link rel="stylesheet" href="../font-awesome.min.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class='cover'>
+<div class='cover-card'>
+<div class='author-name'>Boško Ivanišević</div>
+<div class='author-job'>Developer, Theoretical Physicist</div>
+<div class='author-bio mbm'>Ruby, JavaScript, Elixir, C++ and few more</div>
+<nav id='sidenav' clas='nav'>
+<ul class='nav-list'>
+<li class='nav-item'><a href='../index.html'>Home</a1> <span>/</span></li>
+<li class='nav-item'><a href='../about.html'>About</a> <span>/</span></li>
+</ul>
+</nav>
+<div class='social-links'>
+<ul>
+<li><a href='http://twitter.com/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-twitter'></i>
+</a></li>
+<li><a href='http://linkedin.com/in/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-linkedin'></i>
+</a></li>
+<li><a href='http://github.com/bosko' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-github'></i>
+</a></li>
+<li><a href='http://stackoverflow.com/users/1665470/boško-ivanišević' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-stack-overflow'></i>
+</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<main id="content">
+<header>
+<h1 class="title">Ruby on Windows Guides - The Book</h1>
+<p class="subtitle">2012-03-07</p>
+</header><p>
+I use Windows on my everyday work. First thing I do after installing
+Windows is to set up complete environment for Ruby. In “ancient” days
+(measuring in computer years, of course) I have used One Click
+Installer. Later, <a href="http://www.rubyinstaller.org">RubyInstaller</a> came on the scene.
+</p>
+
+<p>
+With much better foundations, RubyInstaller simplified Ruby usage and
+made it look like on Linux, Ruby’s native platform. Key benefit of
+RubyInstaller over One Click installer was possibility to install Ruby
+native gems written in C. Switching from commercial VisualStudio, used
+in One Click Installer, to MinGW build tool-chain in RubyInstaller was
+crucial decision made by Luis Lavena, great author of RubyInstaller.
+</p>
+
+<p>
+After RubyInstaller, one more project appeared with the goal to
+simplify Ruby on Rails installation and usage on
+Windows. RailsInstaller. I haven’t tried it, but I’m sure it will help
+increasing number of Rails users on Windows.
+</p>
+
+<p>
+But do you really need installer for Ruby on Rails on Windows? It
+depends of your attitude. If you are not interested what is going on
+behind the scenes and just want to be able to start using Rails after
+few mouse clicks RailsInstaller is definitely for you.
+</p>
+
+<p>
+If, on the other hand, you want to know how things work, you should
+try to install Ruby on Rails without installer. With RubyInstaller
+installing Ruby on Rails on Windows is, actually, just a matter of
+issuing
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">gem install rails
+gem install sqlite3
+</pre>
+</div>
+
+<p>
+Of course you might face problems building and installing some gems,
+primarily because gem authors don’t want to bother with Windows
+support or simply because gems rely of third party libraries that are
+not ported to Windows. In any case you can ask for help on
+<a href="http://groups.google.com/group/rubyinstaller">RubyInstaller mailing list</a>.
+</p>
+
+<p>
+People wonder if Ruby and Ruby on Rails are really usable on
+Windows. My opinion is that they are. Of course, there are some
+problems mainly with speed, but I would dare to say that solutions are
+on the way and hopefully very soon this will not be problem any
+more. I guess main reason why they are not so widespread on Windows
+platforms is scepticism and lack of experience.
+</p>
+
+<p>
+As one of contributors to RubyInstaller project I noticed same
+questions are repeated on RubyInstaller mailing list. Mainly because
+of lack of familiarity with Ruby and RoR on Windows. That’s why I
+decided to write <a href="http://rubyonwindowsguides.github.com">a book</a> where I tried to give deeper insight on all
+details about installing and using Ruby and Ruby on Rails on
+Windows. The <a href="http://rubyonwindowsguides.github.io">Ruby on Windows Guides</a> is still in beta. However it
+already covers the most important issues and I think all novices and
+advanced developers can learn something new from it. Work on the book
+is still in progress so if you have any suggestions, ideas and wishes
+you can send them as an <a href="https://github.com/rubyonwindowsguides/rubyonwindowsguides.github.com/issues">issue on the GitHub</a>.
+</p>
+
+<p>
+If you want to get deeper understanding of Ruby and Ruby on Rails on
+Windows, find out how to build native gems in several ways or just
+want to get an idea for what you can use Ruby on Windows go ahead and
+read the book. Of course I expect your comments, here or on GitHub.
+</p>
+</main>
+</body>
+</html>

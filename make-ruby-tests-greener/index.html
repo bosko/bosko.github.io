@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2019-04-17 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Make Ruby Tests Greener</title>
+<meta name="generator" content="Org mode">
+<link rel="stylesheet" href="../pdn.css" type="text/css"/>
+<link rel="stylesheet" href="../font-awesome.min.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class='cover'>
+<div class='cover-card'>
+<div class='author-name'>Boško Ivanišević</div>
+<div class='author-job'>Developer, Theoretical Physicist</div>
+<div class='author-bio mbm'>Ruby, JavaScript, Elixir, C++ and few more</div>
+<nav id='sidenav' clas='nav'>
+<ul class='nav-list'>
+<li class='nav-item'><a href='../index.html'>Home</a1> <span>/</span></li>
+<li class='nav-item'><a href='../about.html'>About</a> <span>/</span></li>
+</ul>
+</nav>
+<div class='social-links'>
+<ul>
+<li><a href='http://twitter.com/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-twitter'></i>
+</a></li>
+<li><a href='http://linkedin.com/in/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-linkedin'></i>
+</a></li>
+<li><a href='http://github.com/bosko' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-github'></i>
+</a></li>
+<li><a href='http://stackoverflow.com/users/1665470/boško-ivanišević' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-stack-overflow'></i>
+</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<main id="content">
+<header>
+<h1 class="title">Make Ruby Tests Greener</h1>
+<p class="subtitle">2012-06-27</p>
+</header><p>
+<a href="https://groups.google.com/forum/?fromgroups#!topic/rubyinstaller/A92K_EYJX2A">The Ruby Greener Test Challenge</a> is here. It is attempt to make Ruby on
+Windows better and more stable and direct goal of this challenge is to
+fix all tests and to reach 0F0E (0 failures, 0 errors) state. If you
+are Ruby developer on Windows you should consider taking a role in the
+challenge.
+</p>
+
+<p>
+If you decide to try to fix some failing tests or existing errors it
+is easy to set up complete environment with the help of <a href="http://cdn.rubyinstaller.org/archives/experimental/RubyChallengePack-v1.exe">Ruby Challenge
+Pack</a>. I will not write about details here since you have all you need
+in the initial challenge post given in the link on top of the
+article. Instead I will give you few suggestions about participating
+in the challenge.
+</p>
+
+<p>
+You should be aware of three things when you run tests:
+</p>
+
+<ol class="org-ol">
+<li><b><b>Set up console code page to 1252 or 65001.</b></b> Some tests may fail
+due to the console code page, so before running tests you should
+execute <code>chcp 1252</code> or <code>chcp 65001</code>.</li>
+<li><b><b>Option -j2 may lead to errors.</b></b> In case you want to run tests
+faster you can use `make test-al TESTS=&ldquo;-qv -j2&rdquo;` but be aware that
+this can also lead to fals failures or errors.</li>
+<li><b><b>Anti-virus software.</b></b> If you see <code>Errno::EACCES: Permission
+   denied</code> error in test, most likely the cause is anti-virus which
+locked the file during tests.</li>
+</ol>
+
+<p>
+With these things on your mind you can proceed to fixing. Here is
+simple workflow you can use. The very first thing you should do is to
+clone Ruby source from GitHub:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">git clone git://github.com/ruby/ruby.git
+</pre>
+</div>
+
+<p>
+After deciding what you want to fix you should make new local branch
+in which you work:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">git checkout -b fix-win32ole-fso-encoding-misuse
+</pre>
+</div>
+
+<p>
+After you find a source of failures or errors you will make fixes and
+commit changes to your local branch. I would suggest making small
+commits. If commits contain too many changes, patches are harder to
+apply and are more likely to cause conflicts. Finally after finishing
+all fixes you just have to make a patch (es).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">git checkout -b fix-win32ole-fso-encoding-misuse
+</pre>
+</div>
+
+<p>
+Adjust last number in above command to the number of commits you made
+on your local branch. This will create one or more patch files (one
+file per commit). In the case of <a href="https://bugs.ruby-lang.org/issues/6650">already submitted fix</a> single file was
+created: <code>0001-FileSystemObject-does-not-support-UTF-8.patch</code>. At the
+end open a ticket, write small description, attach your patch file(s)
+and assign ticket to Luis Lavena.
+</p>
+</main>
+</body>
+</html>

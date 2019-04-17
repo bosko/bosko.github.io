@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2019-04-17 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActiveRecord SchemaDumper and MySQL problem</title>
+<meta name="generator" content="Org mode">
+<link rel="stylesheet" href="../pdn.css" type="text/css"/>
+<link rel="stylesheet" href="../font-awesome.min.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class='cover'>
+<div class='cover-card'>
+<div class='author-name'>Boško Ivanišević</div>
+<div class='author-job'>Developer, Theoretical Physicist</div>
+<div class='author-bio mbm'>Ruby, JavaScript, Elixir, C++ and few more</div>
+<nav id='sidenav' clas='nav'>
+<ul class='nav-list'>
+<li class='nav-item'><a href='../index.html'>Home</a1> <span>/</span></li>
+<li class='nav-item'><a href='../about.html'>About</a> <span>/</span></li>
+</ul>
+</nav>
+<div class='social-links'>
+<ul>
+<li><a href='http://twitter.com/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-twitter'></i>
+</a></li>
+<li><a href='http://linkedin.com/in/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-linkedin'></i>
+</a></li>
+<li><a href='http://github.com/bosko' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-github'></i>
+</a></li>
+<li><a href='http://stackoverflow.com/users/1665470/boško-ivanišević' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-stack-overflow'></i>
+</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<main id="content">
+<header>
+<h1 class="title">ActiveRecord SchemaDumper and MySQL problem</h1>
+<p class="subtitle">2010-10-03</p>
+</header><p>
+After finishing first version of <a href="http://github.com/bosko/rmre">Rmre</a> and issuing fix gem dependency
+in version 0.0.2, I got an idea for additional functionality. Why not
+use Rmre for dumping complete schema with all foreign keys data? What
+would be possible scenario for using this, one might ask? We have
+possibility to create ActiveRecord models in order to move to Ruby on
+Rails where main premise is to keep logic out of database and maintain
+it in application. Therefore we do not need foreign keys since we
+already have constraints defined in models.
+</p>
+
+<p>
+But what if you cannot move to Ruby on Rails and you only have to
+change DBE, i.e. instead of MS SQL you must use Oracle? In that case
+you still have to work with legacy database from PHP or Hibernate in
+Java and “*only*” thing you have to do is to make create script for
+all tables but for another DBE. When database has hundreds of tables
+with lots of relations this can turn into nightmare, especially if you
+have to maintain both versions.
+</p>
+
+<p>
+Rmre should simplify this. First you use Rmre to dump schema to some
+file and later you can use ActiveRecord’s capabilities to load it on
+different DBE. Since loading schema in ActiveRecord is DBE agnostic it
+should correctly create tables, indices and foreign keys on any
+database engine. That’s theory and, as usual, practice is a little bit
+different. On a very first step I’ve faced problem in MySQL database.
+</p>
+
+<p>
+Let’s examine database with just a two tables - <code>city</code> and
+<code>country</code>. Create script would look like (example from <a href="http://dev.mysql.com/doc/sakila/en/sakila.html">Sakila</a>
+database):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql">CREATE TABLE city (
+  city_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  city VARCHAR(50) NOT NULL,
+  country_id SMALLINT UNSIGNED NOT NULL,
+  last_update TIMESTAMP NOT NULL DEFAULT
+    CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY  (city_id),
+  KEY idx_fk_country_id (country_id),
+  CONSTRAINT `fk_city_country`
+    FOREIGN KEY (country_id)
+    REFERENCES country (country_id)
+    ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE country (
+  country_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  country VARCHAR(50) NOT NULL,
+  last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY  (country_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+</pre>
+</div>
+
+<p>
+As can be seen from above script table <code>city</code> has foreign key on table
+<code>country</code>. Now let’s see what is result of a dump:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ruby">ActiveRecord::Schema.define(:version =&gt; 0) do
+
+  create_table "actor", :primary_key =&gt; "actor_id", :force =&gt; true do |t|
+  create_table "city", :primary_key =&gt; "city_id", :force =&gt; true do |t|
+    t.string    "city",        :limit =&gt; 50, :null =&gt; false
+    t.integer   "country_id",  :limit =&gt; 2,  :null =&gt; false
+    t.timestamp "last_update",               :null =&gt; false
+  end
+
+  add_index "city", ["country_id"], :name =&gt; "idx_fk_country_id"
+
+  create_table "country", :primary_key =&gt; "country_id", :force =&gt; true do |t|
+    t.string    "country",     :limit =&gt; 50, :null =&gt; false
+    t.timestamp "last_update",               :null =&gt; false
+  end
+
+  execute "ALTER TABLE city ADD CONSTRAINT fk_city_country FOREIGN KEY (country_id) REFERENCES country(country_id)"
+end
+</pre>
+</div>
+
+<p>
+At the first glance this looks good but unfortunately doesn’t
+work. Problem is that loading this schema through ActiveRecord will
+create columns <code>city_id</code> in table <code>city</code> and <code>country_id</code> in table
+<code>country</code> as <code>integer</code> type but column <code>country_id</code> in table <code>city</code> is
+created as <code>smallint</code>. Defining constraint on columns which are not of
+same type is not allowed so last statement for altering table
+fails. At the moment I have no idea how to fix this and any suggestion
+is very welcome. I still have to check what happens on other DBEs:
+PostgreSQL, Oracle and MS SQL.
+</p>
+</main>
+</body>
+</html>

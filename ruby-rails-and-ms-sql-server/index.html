@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2019-04-17 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ruby, Rails and MS SQL server</title>
+<meta name="generator" content="Org mode">
+<link rel="stylesheet" href="../pdn.css" type="text/css"/>
+<link rel="stylesheet" href="../font-awesome.min.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class='cover'>
+<div class='cover-card'>
+<div class='author-name'>Boško Ivanišević</div>
+<div class='author-job'>Developer, Theoretical Physicist</div>
+<div class='author-bio mbm'>Ruby, JavaScript, Elixir, C++ and few more</div>
+<nav id='sidenav' clas='nav'>
+<ul class='nav-list'>
+<li class='nav-item'><a href='../index.html'>Home</a1> <span>/</span></li>
+<li class='nav-item'><a href='../about.html'>About</a> <span>/</span></li>
+</ul>
+</nav>
+<div class='social-links'>
+<ul>
+<li><a href='http://twitter.com/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-twitter'></i>
+</a></li>
+<li><a href='http://linkedin.com/in/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-linkedin'></i>
+</a></li>
+<li><a href='http://github.com/bosko' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-github'></i>
+</a></li>
+<li><a href='http://stackoverflow.com/users/1665470/boško-ivanišević' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-stack-overflow'></i>
+</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<main id="content">
+<header>
+<h1 class="title">Ruby, Rails and MS SQL server</h1>
+<p class="subtitle">2010-02-18</p>
+</header><p>
+Setting up Rails and Ruby to use MS SQL server was always painful
+task. Fortunately things have changed - a lot! With new <a href="http://github.com/rails-sqlserver/2000-2005-adapter">Rails SQL
+Server 2000, 2005 and 2008 Adapter</a> and Christian Werner’s <a href="http://www.ch-werner.de/rubyodbc">ruby-odbc
+gem</a> you can do it in a few minutes.
+</p>
+
+<p>
+If you want to use these gems on Windows grab Ruby installation from
+<a href="http://www.rubyinstaller.org">RubyInstaller</a> site and be sure to install <a href="http://rubyforge.org/frs/download.php/66888/devkit-3.4.5r3-20091110.7z">DevKit</a> prior to installing
+ruby-odbc.
+</p>
+
+<p>
+Versions of ruby-odbc before 0.9999 do not work on mingw based
+(RubyInstaller) Ruby. Luckily author was very fast and made new
+version very quickly after I sent him a patch. Thanks Christian!
+</p>
+
+<p>
+Both gems work well on Ruby 1.8.6 and 1.9.1 Ruby versions on Windows
+with old ActiveRecords, but I hope rails adapter will be ported to
+ActiveRecords 3 soon.
+</p>
+</main>
+</body>
+</html>

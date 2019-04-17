@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2019-04-17 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exefy &rsquo;Em All</title>
+<meta name="generator" content="Org mode">
+<link rel="stylesheet" href="../pdn.css" type="text/css"/>
+<link rel="stylesheet" href="../font-awesome.min.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class='cover'>
+<div class='cover-card'>
+<div class='author-name'>Boško Ivanišević</div>
+<div class='author-job'>Developer, Theoretical Physicist</div>
+<div class='author-bio mbm'>Ruby, JavaScript, Elixir, C++ and few more</div>
+<nav id='sidenav' clas='nav'>
+<ul class='nav-list'>
+<li class='nav-item'><a href='../index.html'>Home</a1> <span>/</span></li>
+<li class='nav-item'><a href='../about.html'>About</a> <span>/</span></li>
+</ul>
+</nav>
+<div class='social-links'>
+<ul>
+<li><a href='http://twitter.com/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-twitter'></i>
+</a></li>
+<li><a href='http://linkedin.com/in/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-linkedin'></i>
+</a></li>
+<li><a href='http://github.com/bosko' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-github'></i>
+</a></li>
+<li><a href='http://stackoverflow.com/users/1665470/boško-ivanišević' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-stack-overflow'></i>
+</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<main id="content">
+<header>
+<h1 class="title">Exefy &rsquo;Em All</h1>
+</header>
+<div id="outline-container-org26d2ab4" class="outline-2">
+<h2 id="org26d2ab4">Introduction</h2>
+<div class="outline-text-2" id="text-org26d2ab4">
+<p>
+Recently Luis Lavena started thread <a href="https://groups.google.com/d/topic/rubyinstaller/fQCuPfiuuRc/discussion">(Idea: executable stubs to replace
+batch)</a> on RubyInstaller mailing list. In short, the idea is to use
+command line applications - executable stubs - instead of batch files
+in RubyInstaller Ruby versions. Using command line applications
+instead of batch files has several benefits. First one, maybe not so
+important, is to avoid annoying
+</p>
+
+<p>
+Terminate batch job (Y/N)?
+</p>
+
+<p>
+question when execution is interrupted with Ctrl-C key
+combination. The second is to get meaningful list of processes in the
+system. With batch files we can only see bunch of ruby.exe processes
+in the list. This gives us possibility to define firewall rules for
+these applications which will not be applied globally for all Ruby
+scripts. Finally, installing Ruby applications as services, with the
+help of some service wrapper, is usually easier if we use executable
+file. These are reasons why new <a href="http://github.com/bosko/gem-exefy">gem-exefy</a> gem was made.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf65a767" class="outline-2">
+<h2 id="orgf65a767">Gem-exefy Internals</h2>
+<div class="outline-text-2" id="text-orgf65a767">
+<p>
+Gem-exefy mimics behavior of batch files installed by RubyGems and to
+see how it works we must know how existing batch files work. First
+step is to install gem that has executable value defined in gem
+specification. Example of such gem is Bundler. After installing it on
+Windows, RubyGems will create bundle.bat file in
+<code>&lt;path_to_ruby_installation&gt;/bin</code> folder. Content of that file is:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">@ECHO OFF
+IF NOT "%~f0" == "~f0" GOTO :WinNT
+@"ruby.exe" "c:/path/to/ruby/installation/bin/bundle" %1 %2 %3 %4 %5 %6 %7 %8 %9
+GOTO :EOF
+:WinNT
+@"ruby.exe" "%~dpn0" %*
+</pre>
+</div>
+
+<p>
+Without digging too much into all details we can see that batch file
+starts ruby.exe passing it full path to Ruby script (bundle, in this
+case) using all arguments passed to batch file as arguments of Ruby
+script. So all we have to do is to make application which will be able
+to execute Ruby script and will accept arguments passed in the command
+line. Sounds familiar, isn’t it? Exactly! We already have ruby.exe and
+in Ruby code we can find almost everything we need. Here is a slightly
+simplified version of Ruby’s main.c file:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c">#include "ruby.h"
+
+#ifdef HAVE_LOCALE_H
+#include &lt;locale.h&gt;
+#endif
+
+int
+main(int argc, char **argv)
+{
+#ifdef HAVE_LOCALE_H
+  setlocale(LC_CTYPE, "");
+#endif
+
+  ruby_sysinit(&amp;argc, &amp;argv);
+  {
+    RUBY_INIT_STACK;
+    ruby_init();
+    return ruby_run_node(ruby_options(argc, argv));
+  }
+}
+</pre>
+</div>
+
+<p>
+If we build application from this source we will get the same
+application as ruby.exe. This means if we want to execute some Ruby
+script we will have to pass path to it as a first argument with
+optional arguments following it. But our goal is not to invoke
+application with the path to Ruby script. Instead we want to invoke
+predefined script. In order to achieve that, we obviously have to
+alter the list of arguments (argv) and to insert path to target Ruby
+script. But there is a catch (I spent almost whole day to figure it
+out). We must change the list of arguments after the call
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c">ruby_sysinit(&amp;argc, &amp;argv);
+</pre>
+</div>
+
+<p>
+Ruby performs system dependent arguments initialization in the above
+method and the list of arguments will be reverted back if we change it
+before this initialization. Of course there are some additional
+details that we must take care of, but you can figure them out
+directly from <a href="https://github.com/bosko/gem-exefy/blob/master/templates/gem_exe.c">&ldquo;the source&rdquo;</a>. After we change the list of arguments,
+Ruby will execute script we passed it and that’s all the magic
+gem-exefy does.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd1a321a" class="outline-2">
+<h2 id="orgd1a321a">Let’s Exefy</h2>
+<div class="outline-text-2" id="text-orgd1a321a">
+<p>
+We are now ready to exefy existing and new gems on our RubyInstaller
+version. gem-exefy is made as RubyGems plugin. After installing it
+with:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">gem install gem-exefy
+</pre>
+</div>
+
+<p>
+new gem command will be available - exefy. This command is used for
+replacing batch files for single or all installed gems. Replacing
+batch files with executable stubs for single gem is performed by
+passing name of the targeted gem to the exefy command.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">gem exefy bundler
+</pre>
+</div>
+
+<p>
+Exefying all installed gems is simple - just pass `&#x2013;all` to `exefy`
+command
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">gem exefy --all
+</pre>
+</div>
+
+<p>
+If you are not satisfied and still want to use batch files - don’t
+worry. You can always revert old batch files for single or all gems
+with `&#x2013;revert` argument
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">gem exefy bundler --revert
+gem exefy --all --revert
+</pre>
+</div>
+
+<p>
+After gem-exefy is installed it will, by default, install executable
+stubs instead of batch files for all gems installed after it.
+</p>
+
+<p>
+It is important to mention that gem-exefy will not replace batch files
+for commands installed with RubyInstaller (irb, rake&#x2026;) and are part
+of Ruby core. Will support for converting these batch files be
+implemented is yet to be seen.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf9e1a4d" class="outline-2">
+<h2 id="orgf9e1a4d">Acknowledgements</h2>
+<div class="outline-text-2" id="text-orgf9e1a4d">
+<p>
+I want to thanks <a href="https://github.com/luislavena">@luislavena</a>, <a href="https://github.com/azolo">@azolo</a> and <a href="https://github.com/jonforums">@jonforums</a> for helping me out
+making gem-exefy.
+</p>
+</div>
+</div>
+</main>
+</body>
+</html>

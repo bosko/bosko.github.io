@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2019-04-17 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RStreamTuner - new streaming directories browser</title>
+<meta name="generator" content="Org mode">
+<link rel="stylesheet" href="../pdn.css" type="text/css"/>
+<link rel="stylesheet" href="../font-awesome.min.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class='cover'>
+<div class='cover-card'>
+<div class='author-name'>Boško Ivanišević</div>
+<div class='author-job'>Developer, Theoretical Physicist</div>
+<div class='author-bio mbm'>Ruby, JavaScript, Elixir, C++ and few more</div>
+<nav id='sidenav' clas='nav'>
+<ul class='nav-list'>
+<li class='nav-item'><a href='../index.html'>Home</a1> <span>/</span></li>
+<li class='nav-item'><a href='../about.html'>About</a> <span>/</span></li>
+</ul>
+</nav>
+<div class='social-links'>
+<ul>
+<li><a href='http://twitter.com/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-twitter'></i>
+</a></li>
+<li><a href='http://linkedin.com/in/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-linkedin'></i>
+</a></li>
+<li><a href='http://github.com/bosko' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-github'></i>
+</a></li>
+<li><a href='http://stackoverflow.com/users/1665470/boško-ivanišević' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-stack-overflow'></i>
+</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<main id="content">
+<header>
+<h1 class="title">RStreamTuner - new streaming directories browser</h1>
+<p class="subtitle">2010-01-22</p>
+</header><p>
+I like to listen various Internet radio stations while I work. My
+favourite application was <a href="http://www.nongnu.org/streamtuner">streamtuner</a> mostly because it had support
+for SHOUTcast. Unluckily new SHOUTcast design cannot be handled by
+<b><b>streamtuner</b></b> and future development on this application is
+stopped. In other words there is a little chance for streamtuner to be
+upgraded so I’ve decided to make my own streaming directories
+browser - <a href="http://github.com/bosko/rstreamtuner">RStreamTuner (Ruby Stream Tuner)</a>.
+</p>
+
+<p>
+As usual developing in Ruby was real pleasure and only doubt was what
+to use for GUI part. I’ve started with Ruby/Tk and left it very
+quickly due to very poor documentation (and probably lack of Tcl
+knowledge). I had to find replacement and my primary goal was to find
+library that works equally well on Linux and Windows. WxWidgets with
+WxRuby gem was my final choice. Although <b><b>RStreamTuner</b></b> is still in
+early development phase it is quite usable. At the moment it supports
+SHOUTcast and Xiph directories, but I plan to add more as soon as I
+find good one. Good candidate could be Live365 but they’ve made their
+pages quite hard to parse so I’ll probably leave it for later.
+</p>
+
+<p>
+Once I reach beta version, making support for new streaming
+directories will be quite easy and will require implementation of just
+a few methods. As a matter of act it is already so simple but I’m not
+satisfied with the code and will change it once I find a little bit
+more time. Code is quite rough (I had little time to make
+<b><b>RStreamTuner</b></b> and was eager to get working version as soon as
+possible). Besides I want to write detailed instructions how to add
+support for new directories. Anyway if you like to listen Internet
+radion stations and like Ruby clone <a href="http://github.com/bosko/rstreamtuner">RStreamTuner</a>. Of course if you
+have suggestions do not hasitate to drop me a note and if you make
+support for new streaming directory just send me a pull request and
+I’ll try to grab it as soon as possible.
+</p>
+</main>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2019-04-17 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Easy Emacs</title>
+<meta name="generator" content="Org mode">
+<link rel="stylesheet" href="../pdn.css" type="text/css"/>
+<link rel="stylesheet" href="../font-awesome.min.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class='cover'>
+<div class='cover-card'>
+<div class='author-name'>Boško Ivanišević</div>
+<div class='author-job'>Developer, Theoretical Physicist</div>
+<div class='author-bio mbm'>Ruby, JavaScript, Elixir, C++ and few more</div>
+<nav id='sidenav' clas='nav'>
+<ul class='nav-list'>
+<li class='nav-item'><a href='../index.html'>Home</a1> <span>/</span></li>
+<li class='nav-item'><a href='../about.html'>About</a> <span>/</span></li>
+</ul>
+</nav>
+<div class='social-links'>
+<ul>
+<li><a href='http://twitter.com/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-twitter'></i>
+</a></li>
+<li><a href='http://linkedin.com/in/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-linkedin'></i>
+</a></li>
+<li><a href='http://github.com/bosko' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-github'></i>
+</a></li>
+<li><a href='http://stackoverflow.com/users/1665470/boško-ivanišević' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-stack-overflow'></i>
+</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<main id="content">
+<header>
+<h1 class="title">Easy Emacs</h1>
+<p class="subtitle">2009-05-20</p>
+</header>
+<div id="outline-container-orgf228092" class="outline-2">
+<h2 id="orgf228092">First step</h2>
+<div class="outline-text-2" id="text-orgf228092">
+<p>
+Setting up Emacs for Ruby and Ruby on Rails development is very easy
+with <a href="http://github.com/technomancy/emacs-starter-kit/tree/master">Emacs starter kit</a> from Github and you will be able to develop
+Ruby and RoR applications in Emacs in just a few simple steps. Emacs
+starter kit uses <a href="http://tromey.com/elpa/">Elpa</a> packaging and is very easy to configure. But
+let’s start from the beginning.
+</p>
+
+<p>
+Clone <a href="http://github.com/technomancy/emacs-starter-kit/tree/master">Emacs starter kit</a> with <a href="http://git-scm.com/">Git</a>, to your <b><b>empty</b></b> .emacs.d
+directory. Be sure that init.el file is in .emacs.d folder. If you do
+not use Git (do you realize what you are missing?) you can get
+archived sources if you press <b>download</b> button on Emacs starter kit
+page on Github. Unpack archive to the .emacs.d and be sure that
+init.el is in .emacs.d folder.
+</p>
+
+<p>
+Emacs starter kit has some packages that are still not in Elpa but
+you’ll have to install additional packages required for Ruby and
+RoR. Let’s do it now:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">M-x package-list-packages
+</pre>
+</div>
+
+<p>
+New buffer with list of available packages will open and you can
+select those you want to install. If you plan to use Emacs for Ruby
+and RoR you’ll definitely need <b>Rinari</b>. It will install all dependent
+packages.
+</p>
+
+<p>
+There are few other that might come in handy like css-mode, javascript
+or yasnippet but you can always add them later. If you install
+yasnippet you should probably need <a href="http://github.com/eschulte/yasnippets-rails/tree/master">yassnippets-rails</a>, but more about
+that later. Installing packages is very easy. Just place cursor on the
+package line and press <code>i</code>. When you are finished with selection press
+<code>x</code> and packages will be installed. At any time you can press <code>h</code> to
+get quick help for Elpa packaging system. In order to uninstall
+package you have to press <code>d</code> (and <code>x</code> after that).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org89af0f3" class="outline-2">
+<h2 id="org89af0f3">Further customization</h2>
+<div class="outline-text-2" id="text-org89af0f3">
+<p>
+When you are done with packages installation just restart Emacs and
+you are ready to continue work in your favorite language - Ruby and
+framework - Ruby on Rails :) But what if you want to adjust some
+settings or keep some of those you set according to my previous
+articles? Luckily that is easy to do, too.
+</p>
+
+<p>
+First create sub-directory in .emacs.d directory with your user name
+on the system you are using. Put your .el files there and Emacs
+starter kit will load them automatically during Emacs start up. If you
+have changed color theme and you’ve used theme from color-theme
+library put color-theme-library.el in this folder and add, for
+example, line
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(color-theme-deep-blue)
+</pre>
+</div>
+
+<p>
+to any of .el files in this folder. I keep all my additional settings
+in customization.el file.
+</p>
+
+<p>
+I already mentioned yasnippet and yasnippets-rails packages. Simplest
+way to install yasnippet library is from Elpa system following above
+mentioned procedure. Unfortunately yasnippets-rails cannot be
+installed that way so you should clone it from the Github:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">git clone git://github.com/eschulte/yasnippets-rails.git
+</pre>
+</div>
+
+<p>
+Directory yasnippets-rails should be in the directory with your user
+name under .emacs.d. Add following lines to your customization.el
+file:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(add-to-list ’load-path\
+ (concat dotfiles-dir “/&lt;user-name&gt;/yasnippets-rails”))
+
+(add-hook ‘ruby-mode-hook ; or rails-minor-mode-hook ?
+’(lambda ()
+ (make-variable-buffer-local ’yas/trigger-key)
+ (setq yas/trigger-key [tab])))
+
+(require ’yasnippet)
+(add-to-list ’yas/extra-mode-hooks
+ ’ruby-mode-hook)
+
+(yas/initialize)
+(setq yas/window-system-popup-function ’yas/x-popup-menu-for-template)
+(yas/load-directory (concat dotfiles-dir
+“/&lt;user-name&gt;/yasnippet/snippets”))
+
+(yas/load-directory
+ (concat
+ dotfiles-dir “/&lt;user-name&gt;/yasnippets-rails/rails-snippets/”))
+
+(make-variable-buffer-local ’yas/trigger-key)
+</pre>
+</div>
+
+<p>
+and you will be ready for using new snippets during development.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8493607" class="outline-2">
+<h2 id="org8493607">Final word</h2>
+<div class="outline-text-2" id="text-org8493607">
+<p>
+My previous articles were based on Rails reloaded package for RoR
+development in Emacs. It is good library and if you like fancy GUI
+things you can still use it. There is a <a href="http://github.com/dima-exe/emacs-rails-reloaded/tree/master">new version</a> on Github.
+</p>
+
+<p>
+Still, I would recommend trying Rinari that is a package from Elpa. It
+doesn’t have any GUI features but once your fingers “learn” all
+shortcuts your RoR development will be much easier and faster.
+</p>
+</div>
+</div>
+</main>
+</body>
+</html>

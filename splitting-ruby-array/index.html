@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2019-04-17 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Splitting Ruby Array</title>
+<meta name="generator" content="Org mode">
+<link rel="stylesheet" href="../pdn.css" type="text/css"/>
+<link rel="stylesheet" href="../font-awesome.min.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class='cover'>
+<div class='cover-card'>
+<div class='author-name'>Boško Ivanišević</div>
+<div class='author-job'>Developer, Theoretical Physicist</div>
+<div class='author-bio mbm'>Ruby, JavaScript, Elixir, C++ and few more</div>
+<nav id='sidenav' clas='nav'>
+<ul class='nav-list'>
+<li class='nav-item'><a href='../index.html'>Home</a1> <span>/</span></li>
+<li class='nav-item'><a href='../about.html'>About</a> <span>/</span></li>
+</ul>
+</nav>
+<div class='social-links'>
+<ul>
+<li><a href='http://twitter.com/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-twitter'></i>
+</a></li>
+<li><a href='http://linkedin.com/in/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-linkedin'></i>
+</a></li>
+<li><a href='http://github.com/bosko' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-github'></i>
+</a></li>
+<li><a href='http://stackoverflow.com/users/1665470/boško-ivanišević' class='social-link-item' target='_blank'>
+<i class='fa fa-fw fa-stack-overflow'></i>
+</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<main id="content">
+<header>
+<h1 class="title">Splitting Ruby Array</h1>
+<p class="subtitle">2009-06-04</p>
+</header><p>
+Recently I had to process arrays of data with more than thousand of
+members but requirement was not to process them one by one. Instead I
+had to split array into chunks and to process each of sub-arrays
+separately. I&rsquo;ve found one definition of chunk method within comments
+on this <a href="http://snippets.dzone.com/posts/show/3486">post</a> and I&rsquo;m including it here. This method splits array in
+given number of sub-arrays and I needed a version that will split
+array in the sub-arrays that have predefined size (ok, I know I could
+simply calculate a number of chunks by dividing total number of
+elements by required number of elements, but I just wanted one method
+that&rsquo;ll do all that for me). So I wrote chunk<sub>max</sub><sub>num</sub> method. If
+maximum number of elements per array is zero or negative it will
+return original array and for all other cases it will return array
+which has arrays of given size as members.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ruby">require 'enumerator'
+
+class Array
+  def chunk_max_num(max_num)
+    return slice(0...length) unless max_num &gt; 0
+    quot, mod = length.divmod(max_num)
+    quot += 1 if mod &gt; 0
+    (0..quot).map {|i| i*max_num}.enum_cons(2).map {|a,b| slice(a...b)}
+  end
+
+  def chunk(pieces)
+    q,r = length.divmod(pieces)
+    (0..pieces).map {|i| i * q + [r,i].min}.enum_cons(2).map {|a,b| slice(a...b)}
+  end
+end
+</pre>
+</div>
+</main>
+</body>
+</html>
