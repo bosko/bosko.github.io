@@ -1,0 +1,39 @@
+#+TITLE: Upgrade to Lucid Lynx problems
+#+DATE: <2010-05-16 Sun>
+#+TAGS: general
+
+After several successful updates of Ubuntu (starting from 8.10) last
+one was, more or less, complete mess. I was waiting impatiently for
+new Lucid Lynx to be released and started update as soon as I
+downloaded and burned DVD iso image. It seems everything goes smoothly
+till first reboot. Emacs was completely removed and new version was
+not installed. On my Compaq 8710w laptop with Quadro FX 1600M graphics
+card splash screen was displayed in low resolution and looked quite
+ugly. Moreover I was not able to install Emacs again.
+
+I’ve decided to reinstall everything, so I’ve made backup of my home
+folder and start installation on a newly formatted
+partitions. Situation was a little bit better. I was able to install
+Emacs and all applications I need but problem with graphics card was
+still there as well as lousy splash screen. I’ve found few suggestions
+how to fix that by altering grub files and it really solved resolution
+problem but, at the same time, whole splash screen was shifted left
+and basically I was again on the beginning.
+
+There is one more thing that annoyed me. I like Shere Khan Black Hand
+mouse pointers so I’ve installed that theme, but arrow pointer was
+still white, although some other pointers were changed (hand is small
+and black). Whatever I’ve tried arrow was keep staying white.
+
+Then, after a few days, I saw black arrow and was really surprised. It
+turned out that it was unpleasant surprise because compiz stopped
+working and Nvidia driver was not enabled. Obviously it was time to
+try latest Nvidia drivers so I’ve downloaded and installed them. I
+must say that situation is now a little bit better - compiz is
+working, but I still have no luck with mouse pointers, nor with splash
+screen.
+
+If Canonical’s goal is to increase number of Ubuntu users, they should
+really try to avoid such problems, since average user will certainly
+not be able to fix them and will switch to some other operating
+system.

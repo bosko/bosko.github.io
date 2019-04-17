@@ -1,0 +1,113 @@
+#+TITLE: Easy Emacs
+#+SUBTITLE: 2009-05-20
+#+DATE: <2009-05-20 Wed>
+#+TAGS: emacs editors
+
+** First step
+
+Setting up Emacs for Ruby and Ruby on Rails development is very easy
+with [[http://github.com/technomancy/emacs-starter-kit/tree/master][Emacs starter kit]] from Github and you will be able to develop
+Ruby and RoR applications in Emacs in just a few simple steps. Emacs
+starter kit uses [[http://tromey.com/elpa/][Elpa]] packaging and is very easy to configure. But
+let’s start from the beginning.
+
+Clone [[http://github.com/technomancy/emacs-starter-kit/tree/master][Emacs starter kit]] with [[http://git-scm.com/][Git]], to your **empty** .emacs.d
+directory. Be sure that init.el file is in .emacs.d folder. If you do
+not use Git (do you realize what you are missing?) you can get
+archived sources if you press *download* button on Emacs starter kit
+page on Github. Unpack archive to the .emacs.d and be sure that
+init.el is in .emacs.d folder.
+
+Emacs starter kit has some packages that are still not in Elpa but
+you’ll have to install additional packages required for Ruby and
+RoR. Let’s do it now:
+
+#+BEGIN_SRC lisp
+M-x package-list-packages
+#+END_SRC
+
+New buffer with list of available packages will open and you can
+select those you want to install. If you plan to use Emacs for Ruby
+and RoR you’ll definitely need *Rinari*. It will install all dependent
+packages.
+
+There are few other that might come in handy like css-mode, javascript
+or yasnippet but you can always add them later. If you install
+yasnippet you should probably need [[http://github.com/eschulte/yasnippets-rails/tree/master][yassnippets-rails]], but more about
+that later. Installing packages is very easy. Just place cursor on the
+package line and press ~i~. When you are finished with selection press
+~x~ and packages will be installed. At any time you can press ~h~ to
+get quick help for Elpa packaging system. In order to uninstall
+package you have to press ~d~ (and ~x~ after that).
+
+** Further customization
+
+When you are done with packages installation just restart Emacs and
+you are ready to continue work in your favorite language - Ruby and
+framework - Ruby on Rails :) But what if you want to adjust some
+settings or keep some of those you set according to my previous
+articles? Luckily that is easy to do, too.
+
+First create sub-directory in .emacs.d directory with your user name
+on the system you are using. Put your .el files there and Emacs
+starter kit will load them automatically during Emacs start up. If you
+have changed color theme and you’ve used theme from color-theme
+library put color-theme-library.el in this folder and add, for
+example, line
+
+#+BEGIN_SRC lisp
+(color-theme-deep-blue)
+#+END_SRC
+
+to any of .el files in this folder. I keep all my additional settings
+in customization.el file.
+
+I already mentioned yasnippet and yasnippets-rails packages. Simplest
+way to install yasnippet library is from Elpa system following above
+mentioned procedure. Unfortunately yasnippets-rails cannot be
+installed that way so you should clone it from the Github:
+
+#+BEGIN_SRC sh
+git clone git://github.com/eschulte/yasnippets-rails.git
+#+END_SRC
+
+Directory yasnippets-rails should be in the directory with your user
+name under .emacs.d. Add following lines to your customization.el
+file:
+
+#+BEGIN_SRC lisp
+(add-to-list ’load-path\
+ (concat dotfiles-dir “/<user-name>/yasnippets-rails”))
+
+(add-hook ‘ruby-mode-hook ; or rails-minor-mode-hook ?
+’(lambda ()
+ (make-variable-buffer-local ’yas/trigger-key)
+ (setq yas/trigger-key [tab])))
+
+(require ’yasnippet)
+(add-to-list ’yas/extra-mode-hooks
+ ’ruby-mode-hook)
+
+(yas/initialize)
+(setq yas/window-system-popup-function ’yas/x-popup-menu-for-template)
+(yas/load-directory (concat dotfiles-dir
+“/<user-name>/yasnippet/snippets”))
+
+(yas/load-directory
+ (concat
+ dotfiles-dir “/<user-name>/yasnippets-rails/rails-snippets/”))
+
+(make-variable-buffer-local ’yas/trigger-key)
+#+END_SRC
+
+and you will be ready for using new snippets during development.
+
+** Final word
+
+My previous articles were based on Rails reloaded package for RoR
+development in Emacs. It is good library and if you like fancy GUI
+things you can still use it. There is a [[http://github.com/dima-exe/emacs-rails-reloaded/tree/master][new version]] on Github.
+
+Still, I would recommend trying Rinari that is a package from Elpa. It
+doesn’t have any GUI features but once your fingers “learn” all
+shortcuts your RoR development will be much easier and faster.
