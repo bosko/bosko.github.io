@@ -59,13 +59,13 @@ configuration parameters ~prompt-regexp~ and ~prompt-cont-regexp~.
 
 Docker commands can require different parameters like setting
 environment variable for ~docker exec~. This could be done through
-~arguments-compose-func~ confguration parameter that, if needed,
-should keep a name of a function that will be executed and which
-should return full list of Docker command with all its arguments.
+~:exec-arguments-func~ confguration parameter that, if needed, should
+keep a name of a function that will be executed and which should
+return full list of Docker command with all its arguments.
 
 Finally some commands might require additional arguments like ~psql~
 or ~mysql~ that need user and database name. These arguments can be
 composed through last package configuration parameter
 ~:arguments-compose-func~ which, if points to the function, will be
-used to gatter command arguments before command is executed in the
+used to gather command arguments before command is executed in the
 target container.
