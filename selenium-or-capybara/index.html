@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-04-17 -->
+<!-- 2019-05-26 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Using Selenium with Cucumber through Webrat or Capybara. Which one to choose?</title>
 <meta name="generator" content="Org mode">
 <link rel="stylesheet" href="../pdn.css" type="text/css"/>
-<link rel="stylesheet" href="../font-awesome.min.css" type="text/css"/>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css' integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' crossorigin='anonymous'>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -70,17 +70,20 @@ for the JavaScript code in this tag.
 </nav>
 <div class='social-links'>
 <ul>
-<li><a href='http://twitter.com/boskoivanisevic' class='social-link-item' target='_blank'>
-<i class='fa fa-fw fa-twitter'></i>
+<li><a href='https://twitter.com/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fab fa-twitter'></i>
 </a></li>
-<li><a href='http://linkedin.com/in/boskoivanisevic' class='social-link-item' target='_blank'>
-<i class='fa fa-fw fa-linkedin'></i>
+<li><a href='https://linkedin.com/in/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fab fa-linkedin'></i>
 </a></li>
-<li><a href='http://github.com/bosko' class='social-link-item' target='_blank'>
-<i class='fa fa-fw fa-github'></i>
+<li><a href='https://github.com/bosko' class='social-link-item' target='_blank'>
+<i class='fab fa-github'></i>
 </a></li>
-<li><a href='http://stackoverflow.com/users/1665470/boško-ivanišević' class='social-link-item' target='_blank'>
-<i class='fa fa-fw fa-stack-overflow'></i>
+<li><a href='https://stackoverflow.com/users/1665470/boško-ivanišević' class='social-link-item' target='_blank'>
+<i class='fab fa-stack-overflow'></i>
+</a></li>
+<li><a href='https://dev.to/bosko' class='social-link-item' target='_blank'>
+  <i class='fab fa-dev' title='bosko's DEV Profile'></i>
 </a></li>
 </ul>
 </div>
@@ -92,9 +95,9 @@ for the JavaScript code in this tag.
 <h1 class="title">Using Selenium with Cucumber through Webrat or Capybara. Which one to choose?</h1>
 <p class="subtitle">2010-10-31</p>
 </header>
-<div id="outline-container-org03bed43" class="outline-2">
-<h2 id="org03bed43">Introduction</h2>
-<div class="outline-text-2" id="text-org03bed43">
+<div id="outline-container-orgdf489a1" class="outline-2">
+<h2 id="orgdf489a1">Introduction</h2>
+<div class="outline-text-2" id="text-orgdf489a1">
 <p>
 Testing is (or should be) important part of every software
 development. Over time various testing strategies and supporting tools
@@ -151,9 +154,9 @@ gem install selenium-webdriver
 </div>
 </div>
 
-<div id="outline-container-org440fcee" class="outline-2">
-<h2 id="org440fcee">Important notice for MS Windows users: Webrat depends on Json gem which installs binaries compiled against [Rubyinstaller](<a href="http://www.rubyinstaller.org">http://www.rubyinstaller.org</a>) Ruby 1.8.x version. If you are using 1.9.2 Ruby you must uninstall Json gem and install it again but with `&#x2013;platform=ruby` option:**</h2>
-<div class="outline-text-2" id="text-org440fcee">
+<div id="outline-container-orgadf439a" class="outline-2">
+<h2 id="orgadf439a">Important notice for MS Windows users: Webrat depends on Json gem which installs binaries compiled against [Rubyinstaller](<a href="http://www.rubyinstaller.org">http://www.rubyinstaller.org</a>) Ruby 1.8.x version. If you are using 1.9.2 Ruby you must uninstall Json gem and install it again but with `&#x2013;platform=ruby` option:**</h2>
+<div class="outline-text-2" id="text-orgadf439a">
 <div class="org-src-container">
 <pre class="src src-ruby">gem uninstall json
 gem install json --platform=ruby
@@ -162,9 +165,9 @@ gem install json --platform=ruby
 </div>
 </div>
 
-<div id="outline-container-orgeb95eb9" class="outline-2">
-<h2 id="orgeb95eb9">Introduction</h2>
-<div class="outline-text-2" id="text-orgeb95eb9">
+<div id="outline-container-org4601340" class="outline-2">
+<h2 id="org4601340">Introduction</h2>
+<div class="outline-text-2" id="text-org4601340">
 <p>
 Since article focuses on the functional testing outside of Rails we
 should manually create folder structure that Cucumber expects.
@@ -187,9 +190,9 @@ be made. Finally steps are implemented in Ruby files in
 </div>
 </div>
 
-<div id="outline-container-orgc047aa8" class="outline-2">
-<h2 id="orgc047aa8">Webrat</h2>
-<div class="outline-text-2" id="text-orgc047aa8">
+<div id="outline-container-org04d4b62" class="outline-2">
+<h2 id="org04d4b62">Webrat</h2>
+<div class="outline-text-2" id="text-org04d4b62">
 <p>
 <a href="http://github.com/brynary/webrat/wiki">Webrat</a> controls Selenium through Selenium RC (remote control) and
 selenium-client gem. In order to use Selenium through Webrat put
@@ -271,9 +274,9 @@ Explorer is set) add following line to `config` block:
 </div>
 </div>
 
-<div id="outline-container-org95a231d" class="outline-2">
-<h2 id="org95a231d">Capybara</h2>
-<div class="outline-text-2" id="text-org95a231d">
+<div id="outline-container-orgf2f3e81" class="outline-2">
+<h2 id="orgf2f3e81">Capybara</h2>
+<div class="outline-text-2" id="text-orgf2f3e81">
 <p>
 Although <a href="http://github.com/jnicklas/capybara">Capybara</a> can use Selenium RC, it primarily uses Selenium
 WebDriver which is still in beta phase but is working good. Since we
@@ -372,9 +375,9 @@ World(Capybara)
 </div>
 </div>
 
-<div id="outline-container-orgfc3a1f7" class="outline-2">
-<h2 id="orgfc3a1f7">Conclusion</h2>
-<div class="outline-text-2" id="text-orgfc3a1f7">
+<div id="outline-container-org5668167" class="outline-2">
+<h2 id="org5668167">Conclusion</h2>
+<div class="outline-text-2" id="text-org5668167">
 <p>
 Both gems for running Selenium as a base for functional tests - Webrat
 and Capybara are easy to use. Although Webrat needs more patching to

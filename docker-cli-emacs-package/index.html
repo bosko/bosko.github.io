@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2019-05-26 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docker CLI Emacs Package</title>
+<meta name="generator" content="Org mode">
+<link rel="stylesheet" href="../pdn.css" type="text/css"/>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css' integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' crossorigin='anonymous'>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class='cover'>
+<div class='cover-card'>
+<div class='author-name'>Boško Ivanišević</div>
+<div class='author-job'>Developer, Theoretical Physicist</div>
+<div class='author-bio mbm'>Ruby, JavaScript, Elixir, C++ and few more</div>
+<nav id='sidenav' clas='nav'>
+<ul class='nav-list'>
+<li class='nav-item'><a href='../index.html'>Home</a1> <span>/</span></li>
+<li class='nav-item'><a href='../about.html'>About</a> <span>/</span></li>
+</ul>
+</nav>
+<div class='social-links'>
+<ul>
+<li><a href='https://twitter.com/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fab fa-twitter'></i>
+</a></li>
+<li><a href='https://linkedin.com/in/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fab fa-linkedin'></i>
+</a></li>
+<li><a href='https://github.com/bosko' class='social-link-item' target='_blank'>
+<i class='fab fa-github'></i>
+</a></li>
+<li><a href='https://stackoverflow.com/users/1665470/boško-ivanišević' class='social-link-item' target='_blank'>
+<i class='fab fa-stack-overflow'></i>
+</a></li>
+<li><a href='https://dev.to/bosko' class='social-link-item' target='_blank'>
+  <i class='fab fa-dev' title='bosko's DEV Profile'></i>
+</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<main id="content">
+<header>
+<h1 class="title">Docker CLI Emacs Package</h1>
+<p class="subtitle">2019-05-26</p>
+</header><p>
+Being Emacs user for a long time, I&rsquo;ve finally decided to develop my
+first Emacs package and publish it on MELPA. Trigger was my recent
+move to Docker based development environment.
+</p>
+
+<p>
+Instead of installing various databases I&rsquo;ve started using them
+through the Docker. This not only releived me from problems when I
+have to use various versions of the same database, but gave me
+possibility to quickly and easily switch to a new computer in very
+short time having exactly the same environment without too many
+hassle. Beside databases I&rsquo;ve also dockerized Ruby on Rails
+development environment.
+</p>
+
+<p>
+With every component of development stack running in its own Docker
+container I frequently had to start shell in containers, run database
+commands line interfaces (psql, mysql, redis-cli), etc. Soon it became
+boring typing <code>docker-compose exec</code> all the time and I decided to
+speed it up, so I made <a href="https://github.com/bosko/docker-cli">docker-cli</a> Emacs package.
+</p>
+
+
+<figure>
+<a href="../images/docker-cli-emacs-package/docker-cli.gif" width="400" height="400"><img src="../images/docker-cli-emacs-package/docker-cli.gif" alt="docker-cli.gif" width="400" height="400"></a>
+
+<figcaption><span class="figure-number">Figure 1: </span>docker-cli package in action</figcaption>
+</figure>
+
+<p>
+Package is relatively simple and comes with a small set of predefined
+commands for running shell, bash, psql, mysql or Redis clients within
+Emacs buffers.
+</p>
+
+<p>
+After calling interactive function <code>docker-cli</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">M-x docker-cli
+</pre>
+</div>
+
+<p>
+package asks for a command name that should be executed and the target
+Docker container both of which can be chosen from the list of
+available commands and a list of running containers
+respectively. After selecting both package, runs Docker command
+interactively with <code>docker exec -it</code> and opens buffer with name made
+by concatenating command and container name.
+</p>
+
+<p>
+Package can be extended with new commands by adding new element to the
+<code>docker-cli-commands-alist</code> list. Each element of the list must have
+following format:
+</p>
+
+<pre class="example">
+(COMMAND-KEY FEAUTRE VALUE)
+</pre>
+
+<p>
+where <code>COMMAND-KEY</code> must be unique and is value that is listed on
+command auto-complete after executing <code>docker-cli</code>. Only obligatory
+feature is <code>:command</code> property which contains string that is actual
+command that will be executed in the container. Each <code>docker-cli</code>
+command definition can define prompt structure (part of the buffer
+that Emacs will treat as read-only content) through two additional
+configuration parameters <code>prompt-regexp</code> and <code>prompt-cont-regexp</code>.
+</p>
+
+<p>
+Docker commands can require different parameters like setting
+environment variable for <code>docker exec</code>. This could be done through
+<code>arguments-compose-func</code> confguration parameter that, if needed,
+should keep a name of a function that will be executed and which
+should return full list of Docker command with all its arguments.
+</p>
+
+<p>
+Finally some commands might require additional arguments like <code>psql</code>
+or <code>mysql</code> that need user and database name. These arguments can be
+composed through last package configuration parameter
+<code>:arguments-compose-func</code> which, if points to the function, will be
+used to gatter command arguments before command is executed in the
+target container.
+</p>
+</main>
+</body>
+</html>
