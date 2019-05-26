@@ -1,0 +1,71 @@
+#+TITLE: Docker CLI Emacs Package
+#+SUBTITLE: 2019-05-26
+#+DATE: <2019-05-26 Sat>
+
+Being Emacs user for a long time, I've finally decided to develop my
+first Emacs package and publish it on MELPA. Trigger was my recent
+move to Docker based development environment.
+
+Instead of installing various databases I've started using them
+through the Docker. This not only releived me from problems when I
+have to use various versions of the same database, but gave me
+possibility to quickly and easily switch to a new computer in very
+short time having exactly the same environment without too many
+hassle. Beside databases I've also dockerized Ruby on Rails
+development environment.
+
+With every component of development stack running in its own Docker
+container I frequently had to start shell in containers, run database
+commands line interfaces (psql, mysql, redis-cli), etc. Soon it became
+boring typing ~docker-compose exec~ all the time and I decided to
+speed it up, so I made [[https://github.com/bosko/docker-cli][docker-cli]] Emacs package.
+
+#+CAPTION: docker-cli package in action
+#+ATTR_HTML: :width 400 :height 400
+[[file:../images/docker-cli-emacs-package/docker-cli.gif][file:../images/docker-cli-emacs-package/docker-cli.gif]]
+
+Package is relatively simple and comes with a small set of predefined
+commands for running shell, bash, psql, mysql or Redis clients within
+Emacs buffers.
+
+After calling interactive function ~docker-cli~
+
+#+BEGIN_SRC lisp
+M-x docker-cli
+#+END_SRC
+
+package asks for a command name that should be executed and the target
+Docker container both of which can be chosen from the list of
+available commands and a list of running containers
+respectively. After selecting both package, runs Docker command
+interactively with ~docker exec -it~ and opens buffer with name made
+by concatenating command and container name.
+
+Package can be extended with new commands by adding new element to the
+~docker-cli-commands-alist~ list. Each element of the list must have
+following format:
+
+#+BEGIN_SRC
+(COMMAND-KEY FEAUTRE VALUE)
+#+END_SRC
+
+where ~COMMAND-KEY~ must be unique and is value that is listed on
+command auto-complete after executing ~docker-cli~. Only obligatory
+feature is ~:command~ property which contains string that is actual
+command that will be executed in the container. Each ~docker-cli~
+command definition can define prompt structure (part of the buffer
+that Emacs will treat as read-only content) through two additional
+configuration parameters ~prompt-regexp~ and ~prompt-cont-regexp~.
+
+Docker commands can require different parameters like setting
+environment variable for ~docker exec~. This could be done through
+~arguments-compose-func~ confguration parameter that, if needed,
+should keep a name of a function that will be executed and which
+should return full list of Docker command with all its arguments.
+
+Finally some commands might require additional arguments like ~psql~
+or ~mysql~ that need user and database name. These arguments can be
+composed through last package configuration parameter
+~:arguments-compose-func~ which, if points to the function, will be
+used to gatter command arguments before command is executed in the
+target container.
