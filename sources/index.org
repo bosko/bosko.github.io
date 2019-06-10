@@ -1,5 +1,6 @@
 #+TITLE: Pragmatic Development Notes
-#+HTML_HEAD_EXTRA: <script type="text/javascript" src="google.js">
+#+HTML_HEAD_EXTRA: <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4023697-2"></script>
+#+HTML_HEAD_EXTRA: <script type="text/javascript" src="google.js"></script>
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="pdn.css">
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="font-awesome.min.css">
 #+HTML_HEAD_EXTRA: <link rel="icon" type="image/x-icon" href="images/logo.png">

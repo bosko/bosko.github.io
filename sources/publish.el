@@ -31,7 +31,8 @@
          :publishing-function org-html-publish-to-html
          :section-numbers nil
          :with-toc nil
-         :html-head "<script type=\"text/javascript\" src=\"../google.js\">
+         :html-head "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-4023697-2\"></script>
+<script type=\"text/javascript\" src=\"../google.js\"></script>
 <link rel=\"stylesheet\" href=\"../pdn.css\" type=\"text/css\"/>
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css' integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' crossorigin='anonymous'>"
          :html-preamble pdn/preamble
