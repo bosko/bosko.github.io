@@ -31,7 +31,8 @@
          :publishing-function org-html-publish-to-html
          :section-numbers nil
          :with-toc nil
-         :html-head "<link rel=\"stylesheet\" href=\"../pdn.css\" type=\"text/css\"/>
+         :html-head "<script type=\"text/javascript\" src=\"../google.js\">
+<link rel=\"stylesheet\" href=\"../pdn.css\" type=\"text/css\"/>
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css' integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' crossorigin='anonymous'>"
          :html-preamble pdn/preamble
          ;; :auto-sitemap t

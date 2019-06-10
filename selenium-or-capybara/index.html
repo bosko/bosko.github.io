@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-05-26 -->
+<!-- 2019-06-10 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Using Selenium with Cucumber through Webrat or Capybara. Which one to choose?</title>
 <meta name="generator" content="Org mode">
+<script type="text/javascript" src="../google.js">
 <link rel="stylesheet" href="../pdn.css" type="text/css"/>
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css' integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' crossorigin='anonymous'>
 <script type="text/javascript">
@@ -95,9 +96,9 @@ for the JavaScript code in this tag.
 <h1 class="title">Using Selenium with Cucumber through Webrat or Capybara. Which one to choose?</h1>
 <p class="subtitle">2010-10-31</p>
 </header>
-<div id="outline-container-orgdf489a1" class="outline-2">
-<h2 id="orgdf489a1">Introduction</h2>
-<div class="outline-text-2" id="text-orgdf489a1">
+<div id="outline-container-org373952a" class="outline-2">
+<h2 id="org373952a">Introduction</h2>
+<div class="outline-text-2" id="text-org373952a">
 <p>
 Testing is (or should be) important part of every software
 development. Over time various testing strategies and supporting tools
@@ -154,9 +155,9 @@ gem install selenium-webdriver
 </div>
 </div>
 
-<div id="outline-container-orgadf439a" class="outline-2">
-<h2 id="orgadf439a">Important notice for MS Windows users: Webrat depends on Json gem which installs binaries compiled against [Rubyinstaller](<a href="http://www.rubyinstaller.org">http://www.rubyinstaller.org</a>) Ruby 1.8.x version. If you are using 1.9.2 Ruby you must uninstall Json gem and install it again but with `&#x2013;platform=ruby` option:**</h2>
-<div class="outline-text-2" id="text-orgadf439a">
+<div id="outline-container-org7df3590" class="outline-2">
+<h2 id="org7df3590">Important notice for MS Windows users: Webrat depends on Json gem which installs binaries compiled against [Rubyinstaller](<a href="http://www.rubyinstaller.org">http://www.rubyinstaller.org</a>) Ruby 1.8.x version. If you are using 1.9.2 Ruby you must uninstall Json gem and install it again but with `&#x2013;platform=ruby` option:**</h2>
+<div class="outline-text-2" id="text-org7df3590">
 <div class="org-src-container">
 <pre class="src src-ruby">gem uninstall json
 gem install json --platform=ruby
@@ -165,9 +166,9 @@ gem install json --platform=ruby
 </div>
 </div>
 
-<div id="outline-container-org4601340" class="outline-2">
-<h2 id="org4601340">Introduction</h2>
-<div class="outline-text-2" id="text-org4601340">
+<div id="outline-container-org31fa08b" class="outline-2">
+<h2 id="org31fa08b">Introduction</h2>
+<div class="outline-text-2" id="text-org31fa08b">
 <p>
 Since article focuses on the functional testing outside of Rails we
 should manually create folder structure that Cucumber expects.
@@ -190,9 +191,9 @@ be made. Finally steps are implemented in Ruby files in
 </div>
 </div>
 
-<div id="outline-container-org04d4b62" class="outline-2">
-<h2 id="org04d4b62">Webrat</h2>
-<div class="outline-text-2" id="text-org04d4b62">
+<div id="outline-container-org9e8dc6a" class="outline-2">
+<h2 id="org9e8dc6a">Webrat</h2>
+<div class="outline-text-2" id="text-org9e8dc6a">
 <p>
 <a href="http://github.com/brynary/webrat/wiki">Webrat</a> controls Selenium through Selenium RC (remote control) and
 selenium-client gem. In order to use Selenium through Webrat put
@@ -274,9 +275,9 @@ Explorer is set) add following line to `config` block:
 </div>
 </div>
 
-<div id="outline-container-orgf2f3e81" class="outline-2">
-<h2 id="orgf2f3e81">Capybara</h2>
-<div class="outline-text-2" id="text-orgf2f3e81">
+<div id="outline-container-org063dee9" class="outline-2">
+<h2 id="org063dee9">Capybara</h2>
+<div class="outline-text-2" id="text-org063dee9">
 <p>
 Although <a href="http://github.com/jnicklas/capybara">Capybara</a> can use Selenium RC, it primarily uses Selenium
 WebDriver which is still in beta phase but is working good. Since we
@@ -375,9 +376,9 @@ World(Capybara)
 </div>
 </div>
 
-<div id="outline-container-org5668167" class="outline-2">
-<h2 id="org5668167">Conclusion</h2>
-<div class="outline-text-2" id="text-org5668167">
+<div id="outline-container-org8fcfd3a" class="outline-2">
+<h2 id="org8fcfd3a">Conclusion</h2>
+<div class="outline-text-2" id="text-org8fcfd3a">
 <p>
 Both gems for running Selenium as a base for functional tests - Webrat
 and Capybara are easy to use. Although Webrat needs more patching to
