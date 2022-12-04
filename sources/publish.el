@@ -178,6 +178,9 @@
 </nav>
 <div class='social-links'>
 <ul>
+<li><a href='https://ruby.social/@bosko' class='social-link-item' target='_blank'>
+<i class='fab fa-mastodon'></i>
+</a></li>
 <li><a href='https://twitter.com/boskoivanisevic' class='social-link-item' target='_blank'>
 <i class='fab fa-twitter'></i>
 </a></li>
