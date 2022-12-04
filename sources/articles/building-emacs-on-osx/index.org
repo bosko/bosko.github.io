@@ -1,0 +1,86 @@
+#+TITLE: Building Emacs on OS X
+#+SUBTITLE: 2022-12-04
+#+DATE: <2022-12-04 Sun>
+#+TAGS: emacs editors osx
+
+There are a lot of ways to install plain Emacs on OS X. Just to list a
+few:
+
+- [[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]]
+- [[https://github.com/jimeh/emacs-builds][Emacs Builds]]
+- [[https://github.com/jimeh/build-emacs-for-macos][Build Emacs for Mac OS]]
+
+While I was on Intel based MacBook Pro I was using [[https://github.com/jimeh/emacs-builds][Emacs Builds]] but
+after switch to new Apple M2 processor I had to move to [[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]]
+since former one had only versions for Intel.
+
+[[https://github.com/d12frosted/homebrew-emacs-plus][Emacs Plus]] allows installing older, as well as new, yet unreleased,
+versions (at the moment of writing this next version that will be
+released is 29) but sometimes it may be a bit behind Emacs development
+version.
+
+What is common to all these packages is that they give me a feeling
+that I don't have complete control what is going on behind the scene
+and that I'm not in the complete control over the build
+process. That's why I created simple script that can be used to build
+any Emacs version.
+
+#+begin_src sh
+#!/bin/sh
+# Be sure to install autoconf and texinfo manually with
+#
+# brew install autoconf texinfo
+#
+# prior starting this script.
+declare -a libraries=("gcc" "jansson" "libxml2" "gnutls" "librsvg" "p11-kit" "libgccjit" "sqlite3" "tree-sitter")
+
+for lib in "${libraries[@]}"
+do
+    brew install $lib
+done
+
+# On Intel based processors Homebrew is installed in /usr/local!
+PKG_CONFIG_PATH="/opt/homebrew/opt"
+
+for lib in "${libraries[@]}"
+do
+    PKG_CONFIG_PATH=$PKG_CONFIG_PATH:"`brew --prefix $lib`/lib/pkgconfig"
+done
+
+export PKG_CONFIG_PATH
+
+./autogen.sh
+./configure --with-native-compilation --with-xwidgets --with-tree-sitter --with-json --with-modules
+make
+make install
+#+end_src
+
+Usage is very simple. Save above script anywhere on disk as, for
+example, ~build-emacs.sh~. After cloning Emacs project with
+
+#+begin_src sh
+git clone git://git.savannah.gnu.org/emacs.git
+#+end_src
+
+checkout desired version/branch/tag and execute
+
+#+begin_src sh
+sh <path_to_build-emacs.sh>
+#+end_src
+
+When script finishes, new version will be in
+~<path_to_emacs_folder>/nextstep/Emacs.app~.
+
+Script is very short and pretty much self explanatory but here are few
+remarks.
+
+It is important to manually install ~autoconf~ and ~texinfo~ as is
+stated in the comment. In the ~libraries~ variable script keeps all
+dependencies required by features given in the ~./configure~
+line. Script first installs dependencies with Homebrew, configures
+build with required features and finally builds Emacs and Mac OS
+package.
+
+Feel free to use it anyway it suits you and if you have some remarks
+or improvement suggestions you can send them on any social network
+given in the side bar.

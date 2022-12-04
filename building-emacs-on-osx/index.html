@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2022-12-04 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Building Emacs on OS X</title>
+<meta name="generator" content="Org Mode" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4023697-2"></script>
+<script type="text/javascript" src="../google.js"></script>
+<link rel="stylesheet" href="../pdn.css" type="text/css"/>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css' integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' crossorigin='anonymous'>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class='cover'>
+<div class='cover-card'>
+<div class='author-name'>Boško Ivanišević</div>
+<div class='author-job'>Developer, Theoretical Physicist</div>
+<div class='author-bio mbm'>Ruby, JavaScript, Elixir, C++ and few more</div>
+<nav id='sidenav' clas='nav'>
+<ul class='nav-list'>
+<li class='nav-item'><a href='../index.html'>Home</a1> <span>/</span></li>
+<li class='nav-item'><a href='../about.html'>About</a> <span>/</span></li>
+</ul>
+</nav>
+<div class='social-links'>
+<ul>
+<li><a href='https://ruby.social/@bosko' class='social-link-item' target='_blank'>
+<i class='fab fa-mastodon'></i>
+</a></li>
+<li><a href='https://twitter.com/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fab fa-twitter'></i>
+</a></li>
+<li><a href='https://linkedin.com/in/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fab fa-linkedin'></i>
+</a></li>
+<li><a href='https://github.com/bosko' class='social-link-item' target='_blank'>
+<i class='fab fa-github'></i>
+</a></li>
+<li><a href='https://stackoverflow.com/users/1665470/boško-ivanišević' class='social-link-item' target='_blank'>
+<i class='fab fa-stack-overflow'></i>
+</a></li>
+<li><a href='https://dev.to/bosko' class='social-link-item' target='_blank'>
+  <i class='fab fa-dev' title='bosko's DEV Profile'></i>
+</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<main id="content" class="content">
+<header>
+<h1 class="title">Building Emacs on OS X</h1>
+<p class="subtitle" role="doc-subtitle">2022-12-04</p>
+</header><p>
+There are a lot of ways to install plain Emacs on OS X. Just to list a
+few:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://github.com/d12frosted/homebrew-emacs-plus">Emacs Plus</a></li>
+<li><a href="https://github.com/jimeh/emacs-builds">Emacs Builds</a></li>
+<li><a href="https://github.com/jimeh/build-emacs-for-macos">Build Emacs for Mac OS</a></li>
+</ul>
+
+<p>
+While I was on Intel based MacBook Pro I was using <a href="https://github.com/jimeh/emacs-builds">Emacs Builds</a> but
+after switch to new Apple M2 processor I had to move to <a href="https://github.com/d12frosted/homebrew-emacs-plus">Emacs Plus</a>
+since former one had only versions for Intel.
+</p>
+
+<p>
+<a href="https://github.com/d12frosted/homebrew-emacs-plus">Emacs Plus</a> allows installing older, as well as new, yet unreleased,
+versions (at the moment of writing this next version that will be
+released is 29) but sometimes it may be a bit behind Emacs development
+version.
+</p>
+
+<p>
+What is common to all these packages is that they give me a feeling
+that I don&rsquo;t have complete control what is going on behind the scene
+and that I&rsquo;m not in the complete control over the build
+process. That&rsquo;s why I created simple script that can be used to build
+any Emacs version.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">#!/bin/sh
+# Be sure to install autoconf and texinfo manually with
+#
+# brew install autoconf texinfo
+#
+# prior starting this script.
+declare -a libraries=("gcc" "jansson" "libxml2" "gnutls" "librsvg" "p11-kit" "libgccjit" "sqlite3" "tree-sitter")
+
+for lib in "${libraries[@]}"
+do
+    brew install $lib
+done
+
+# On Intel based processors Homebrew is installed in /usr/local!
+PKG_CONFIG_PATH="/opt/homebrew/opt"
+
+for lib in "${libraries[@]}"
+do
+    PKG_CONFIG_PATH=$PKG_CONFIG_PATH:"`brew --prefix $lib`/lib/pkgconfig"
+done
+
+export PKG_CONFIG_PATH
+
+./autogen.sh
+./configure --with-native-compilation --with-xwidgets --with-tree-sitter --with-json --with-modules
+make
+make install
+</pre>
+</div>
+
+<p>
+Usage is very simple. Save above script anywhere on disk as, for
+example, <code>build-emacs.sh</code>. After cloning Emacs project with
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">git clone git://git.savannah.gnu.org/emacs.git
+</pre>
+</div>
+
+<p>
+checkout desired version/branch/tag and execute
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">sh &lt;path_to_build-emacs.sh&gt;
+</pre>
+</div>
+
+<p>
+When script finishes, new version will be in
+<code>&lt;path_to_emacs_folder&gt;/nextstep/Emacs.app</code>.
+</p>
+
+<p>
+Script is very short and pretty much self explanatory but here are few
+remarks.
+</p>
+
+<p>
+It is important to manually install <code>autoconf</code> and <code>texinfo</code> as is
+stated in the comment. In the <code>libraries</code> variable script keeps all
+dependencies required by features given in the <code>./configure</code>
+line. Script first installs dependencies with Homebrew, configures
+build with required features and finally builds Emacs and Mac OS
+package.
+</p>
+
+<p>
+Feel free to use it anyway it suits you and if you have some remarks
+or improvement suggestions you can send them on any social network
+given in the side bar.
+</p>
+</main>
+</body>
+</html>
