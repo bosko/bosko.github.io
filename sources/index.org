@@ -1,5 +1,4 @@
 #+TITLE: Pragmatic Development Notes
-#+HTML_HEAD_EXTRA: <meta http-equiv="refresh" content="0; URL=https://github.com/bosko">
 #+HTML_HEAD_EXTRA: <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4023697-2"></script>
 #+HTML_HEAD_EXTRA: <script type="text/javascript" src="google.js"></script>
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="pdn.css">
