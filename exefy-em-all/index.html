@@ -1,61 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2019-06-10 -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Exefy &rsquo;Em All</title>
-<meta name="generator" content="Org mode">
+<!-- 2023-04-26 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Exefy 'Em All</title>
+<meta name="generator" content="Org Mode" />
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4023697-2"></script>
 <script type="text/javascript" src="../google.js"></script>
 <link rel="stylesheet" href="../pdn.css" type="text/css"/>
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css' integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' crossorigin='anonymous'>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -72,6 +26,9 @@ for the JavaScript code in this tag.
 </nav>
 <div class='social-links'>
 <ul>
+<li><a href='https://ruby.social/@bosko' class='social-link-item' target='_blank' rel='me'>
+<i class='fab fa-mastodon'></i>
+</a></li>
 <li><a href='https://twitter.com/boskoivanisevic' class='social-link-item' target='_blank'>
 <i class='fab fa-twitter'></i>
 </a></li>
@@ -92,13 +49,13 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<main id="content">
+<main id="content" class="content">
 <header>
 <h1 class="title">Exefy &rsquo;Em All</h1>
 </header>
-<div id="outline-container-org94ddc15" class="outline-2">
-<h2 id="org94ddc15">Introduction</h2>
-<div class="outline-text-2" id="text-org94ddc15">
+<div id="outline-container-org131740a" class="outline-2">
+<h2 id="org131740a">Introduction</h2>
+<div class="outline-text-2" id="text-org131740a">
 <p>
 Recently Luis Lavena started thread <a href="https://groups.google.com/d/topic/rubyinstaller/fQCuPfiuuRc/discussion">(Idea: executable stubs to replace
 batch)</a> on RubyInstaller mailing list. In short, the idea is to use
@@ -125,9 +82,9 @@ file. These are reasons why new <a href="http://github.com/bosko/gem-exefy">gem-
 </div>
 </div>
 
-<div id="outline-container-org93e3fce" class="outline-2">
-<h2 id="org93e3fce">Gem-exefy Internals</h2>
-<div class="outline-text-2" id="text-org93e3fce">
+<div id="outline-container-org8e97309" class="outline-2">
+<h2 id="org8e97309">Gem-exefy Internals</h2>
+<div class="outline-text-2" id="text-org8e97309">
 <p>
 Gem-exefy mimics behavior of batch files installed by RubyGems and to
 see how it works we must know how existing batch files work. First
@@ -211,9 +168,9 @@ gem-exefy does.
 </div>
 </div>
 
-<div id="outline-container-org83a9e20" class="outline-2">
-<h2 id="org83a9e20">Let’s Exefy</h2>
-<div class="outline-text-2" id="text-org83a9e20">
+<div id="outline-container-orgba113bc" class="outline-2">
+<h2 id="orgba113bc">Let’s Exefy</h2>
+<div class="outline-text-2" id="text-orgba113bc">
 <p>
 We are now ready to exefy existing and new gems on our RubyInstaller
 version. gem-exefy is made as RubyGems plugin. After installing it
@@ -273,9 +230,9 @@ implemented is yet to be seen.
 </div>
 </div>
 
-<div id="outline-container-orgf8c9387" class="outline-2">
-<h2 id="orgf8c9387">Acknowledgements</h2>
-<div class="outline-text-2" id="text-orgf8c9387">
+<div id="outline-container-org0ac02b9" class="outline-2">
+<h2 id="org0ac02b9">Acknowledgements</h2>
+<div class="outline-text-2" id="text-org0ac02b9">
 <p>
 I want to thanks <a href="https://github.com/luislavena">@luislavena</a>, <a href="https://github.com/azolo">@azolo</a> and <a href="https://github.com/jonforums">@jonforums</a> for helping me out
 making gem-exefy.
