@@ -5,5 +5,3 @@
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="font-awesome.min.css">
 #+HTML_HEAD_EXTRA: <link rel="icon" type="image/x-icon" href="images/logo.png">
 #+HTML_HEAD_EXTRA: <link href="https://pragdevnotes.com/" rel="me">
-#+HTML_HEAD_EXTRA: <link href="https://github.com/bosko" rel="me">
-#+HTML_HEAD_EXTRA: <link href="https://gitlab.com/boskoivanisevic" rel="me">
