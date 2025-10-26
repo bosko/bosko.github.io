@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2025-10-26 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Boem Weather</title>
+<meta name="generator" content="Org Mode" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4023697-2"></script>
+<script type="text/javascript" src="../google.js"></script>
+<link rel="stylesheet" href="../pdn.css" type="text/css"/>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css' integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' crossorigin='anonymous'>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class='cover'>
+<div class='cover-card'>
+<div class='author-name'>Boško Ivanišević</div>
+<div class='author-job'>Developer, Theoretical Physicist</div>
+<div class='author-bio mbm'>Ruby, JavaScript, Elixir, C++ and few more</div>
+<nav id='sidenav' clas='nav'>
+<ul class='nav-list'>
+<li class='nav-item'><a href='../index.html'>Home</a1> <span>/</span></li>
+<li class='nav-item'><a href='../about.html'>About</a> <span>/</span></li>
+</ul>
+</nav>
+<div class='social-links'>
+<ul>
+<li><a href='https://ruby.social/@bosko' class='social-link-item' target='_blank' rel='me'>
+<i class='fab fa-mastodon'></i>
+</a></li>
+<li><a href='https://twitter.com/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fab fa-twitter'></i>
+</a></li>
+<li><a href='https://linkedin.com/in/boskoivanisevic' class='social-link-item' target='_blank'>
+<i class='fab fa-linkedin'></i>
+</a></li>
+<li><a href='https://github.com/bosko' class='social-link-item' target='_blank'>
+<i class='fab fa-github'></i>
+</a></li>
+<li><a href='https://stackoverflow.com/users/1665470/boško-ivanišević' class='social-link-item' target='_blank'>
+<i class='fab fa-stack-overflow'></i>
+</a></li>
+<li><a href='https://dev.to/bosko' class='social-link-item' target='_blank'>
+  <i class='fab fa-dev' title='bosko's DEV Profile'></i>
+</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<main id="content" class="content">
+<header>
+<h1 class="title">Boem Weather</h1>
+<p class="subtitle" role="doc-subtitle">2025-10-24</p>
+</header><p>
+Whenever I glance at the temperature widget on my Mac, I find myself
+wishing for a way to check the weather from my natural
+habitat—Emacs. That’s when I discovered the <a href="https://open-meteo.com/en/docs">Open-Meteo API</a>, and I
+decided it was time to refresh my rusty Lisp skills and have some fun
+developing for Emacs, not just within it.
+</p>
+
+<p>
+After quite some time since I wrote my first and only Emacs
+package - <a href="https://github.com/bosko/docker-cli">docker-cli</a> I created <a href="https://gitlab.com/boskoivanisevic/boem-weather">boem-weather</a>. It&rsquo;s nothing fancy or
+complicated - just a simple way to check current weather, daily and
+hourly forecast, designed to be unobtrusive while I work.
+</p>
+
+<p>
+The package initially shows the current weather in a pop-up frame.
+</p>
+
+
+<figure id="org8432530">
+<a href="file:///Users/bosko/Code/drinatix/bosko.github.io/sources/articles/images/boem-weather/current_weather.png" width="400" height="400"><img src="../images/boem-weather/current_weather.png" alt="current_weather.png" width="400" height="400"></a>
+
+<figcaption><span class="figure-number">Figure 1: </span>Initial boem-weather display</figcaption>
+</figure>
+
+<p>
+You can easily switch between the different forecasts using the
+shortcut keys `d` for the 7-day daily forecast and `h` for the 24-hour
+hourly forecast.
+</p>
+
+
+<figure id="org2f2c12d">
+<a href="file:///Users/bosko/Code/drinatix/bosko.github.io/sources/articles/images/boem-weather/daily_forecast.png" width="400" height="400"><img src="../images/boem-weather/daily_forecast.png" alt="daily_forecast.png" width="400" height="400"></a>
+
+<figcaption><span class="figure-number">Figure 2: </span>Daily forecast</figcaption>
+</figure>
+
+
+<figure id="org87c1da0">
+<a href="file:///Users/bosko/Code/drinatix/bosko.github.io/sources/articles/images/boem-weather/hourly_forecast.png" width="400" height="400"><img src="../images/boem-weather/hourly_forecast.png" alt="hourly_forecast.png" width="400" height="400"></a>
+
+<figcaption><span class="figure-number">Figure 3: </span>Hourly forecast</figcaption>
+</figure>
+
+<p>
+Package is not on MELPA and can be installed directly with
+<code>use-package</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(use-package boem-weather
+    :vc (:url "https://gitlab.com/boskoivanisevic/boem-weather")
+    :config
+    (setq boem-weather-latitude 44.804
+          boem-weather-longitude 20.4651))
+</pre>
+</div>
+</main>
+</body>
+</html>

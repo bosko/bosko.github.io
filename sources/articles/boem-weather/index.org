@@ -1,0 +1,44 @@
+#+TITLE: Boem Weather
+#+SUBTITLE: 2025-10-24
+#+DATE: <2025-10-24 Fri>
+#+TAGS: emacs editors
+
+Whenever I glance at the temperature widget on my Mac, I find myself
+wishing for a way to check the weather from my natural
+habitat—Emacs. That’s when I discovered the [[https://open-meteo.com/en/docs][Open-Meteo API]], and I
+decided it was time to refresh my rusty Lisp skills and have some fun
+developing for Emacs, not just within it.
+
+After quite some time since I wrote my first and only Emacs
+package - [[https://github.com/bosko/docker-cli][docker-cli]] I created [[https://gitlab.com/boskoivanisevic/boem-weather][boem-weather]]. It's nothing fancy or
+complicated - just a simple way to check current weather, daily and
+hourly forecast, designed to be unobtrusive while I work.
+
+The package initially shows the current weather in a pop-up frame.
+
+#+CAPTION: Initial boem-weather display
+#+ATTR_HTML: :width 400 :height 400
+[[file:~/Code/drinatix/bosko.github.io/sources/articles/images/boem-weather/current_weather.png][file:../images/boem-weather/current_weather.png]]
+
+You can easily switch between the different forecasts using the
+shortcut keys `d` for the 7-day daily forecast and `h` for the 24-hour
+hourly forecast.
+
+#+CAPTION: Daily forecast
+#+ATTR_HTML: :width 400 :height 400
+[[file:~/Code/drinatix/bosko.github.io/sources/articles/images/boem-weather/daily_forecast.png][file:../images/boem-weather/daily_forecast.png]]
+
+#+CAPTION: Hourly forecast
+#+ATTR_HTML: :width 400 :height 400
+[[file:~/Code/drinatix/bosko.github.io/sources/articles/images/boem-weather/hourly_forecast.png][file:../images/boem-weather/hourly_forecast.png]]
+
+Package is not on MELPA and can be installed directly with
+~use-package~
+
+#+begin_src lisp
+  (use-package boem-weather
+      :vc (:url "https://gitlab.com/boskoivanisevic/boem-weather")
+      :config
+      (setq boem-weather-latitude 44.804
+            boem-weather-longitude 20.4651))
+#+end_src
